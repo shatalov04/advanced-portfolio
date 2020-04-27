@@ -1,6 +1,9 @@
-import "./styles/main.pcss";
-if (process.env.NODE_ENV === "development") {
-  require("file-loader!./index.pug");
-}
+/* eslint-disable global-require */
+import './styles/main.pcss';
 
-import "./scripts/skills";
+import './scripts/skills';
+
+if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line import/no-webpack-loader-syntax
+  require('file-loader!./index.pug');
+}
