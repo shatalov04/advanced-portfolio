@@ -1,7 +1,7 @@
 {
-  "name": "ls-advanced-boilerplate",
+  "name": "advanced-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Maxim Shatalov Portfolio",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode=development --hot",
@@ -9,7 +9,7 @@
     "reg": "node reg-util.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Maxim Shatalov",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
