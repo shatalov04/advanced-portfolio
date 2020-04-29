@@ -9,7 +9,26 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+       header.header
+        .container
+          .header__logo
+            .initials МШ
+          .header__menu
+            nav.nav
+              ul.nav__list
+                li.nav__item Главная
+                li.nav__item Обо мне
+                li.nav__item Навыки
+                li.nav__item Работы
+                li.nav__item Отзывы
+                li.nav__item Связаться
+          .header__socials
+            .socials
+      main.maincontent
+        .container
+
+
+
+        //- +image('content/user.jpg', 'user-pic')
+        //- +icon('link', 'link-class')
+        //- .icon-bg
