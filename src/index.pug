@@ -1,4 +1,34 @@
 include ./mixins.pug
+// nav
+-
+    var navItems = [
+     'Главная',
+     'Обо мне',
+     'Навыки',
+     'Работы',
+     'Отзывы',
+     'Связаться',
+    ]
+
+// socials
+-
+    var icons = {
+        vk: {
+            link:'http://vk.com/id224269077',
+            target:'_blank',
+            icon:'vk'
+        },
+        github: {
+            link:'https://github.com/furzeal',
+            target:'_blank',
+            icon:'github'
+        },
+        insta: {
+            link:'#',
+            target:'_blank',
+            icon:'insta'
+        }
+    }
 
 <!DOCTYPE html>
 html(lang="en")
@@ -9,26 +39,24 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-       header.header
+      header.header
         .container
           .header__logo
             .initials МШ
           .header__menu
             nav.nav
               ul.nav__list
-                li.nav__item Главная
-                li.nav__item Обо мне
-                li.nav__item Навыки
-                li.nav__item Работы
-                li.nav__item Отзывы
-                li.nav__item Связаться
+                each item in navItems
+                  li.nav__item= item
           .header__socials
             .socials
+              ul.socials__list
+                each icon in icons
+                  li.socials__item
+                      a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                        +icon(`${icon.icon}`,'socials__icon')
       main.maincontent
         .container
-
-
-
-        //- +image('content/user.jpg', 'user-pic')
-        //- +icon('link', 'link-class')
-        //- .icon-bg
+          //- +image('content/user.jpg', 'user-pic')
+          //- +icon('link', 'link-class')
+          //- .icon-bg
