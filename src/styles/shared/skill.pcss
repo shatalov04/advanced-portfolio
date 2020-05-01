@@ -1,30 +1,3 @@
-$transDelay: 0.3s;
-
-.skills {
-  margin-top: 50px;
-  & :nth-child(4) {
-    .skill__circle {
-      &_outer {
-        transition-delay: $transDelay;
-      }
-    }
-  }
-  & :nth-child(6) {
-    .skill__circle {
-      &_outer {
-        transition-delay: 2*$transDelay;
-      }
-    }
-  }
-  & :nth-child(8) {
-    .skill__circle {
-      &_outer {
-        transition-delay: 3*$transDelay;
-      }
-    }
-  }
-}
-
 .skill {
   width: 110px;
   height: 110px;
@@ -33,9 +6,11 @@ $transDelay: 0.3s;
   flex-direction: column;
   justify-content: center;
   @include tablets {
-    width: 1.15*110px;
-    height: 1.15*110px;
+    width: 1.15 * 110px;
+    height: 1.15 * 110px;
   }
+}
+.skill__title {
 }
 
 .skill__circle {

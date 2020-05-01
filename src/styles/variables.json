@@ -7,5 +7,6 @@
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
   "bp-phones": "480px",
-  "margin-safe": "20px"
+  "margin-safe": "20px",
+  "transDelay": "0.3s"
 }

@@ -1,0 +1,33 @@
+.skill-group {
+}
+
+.skill-group__title {
+}
+
+.skill-group__list {
+  margin-top: 50px;
+  & :nth-child(4) {
+    .skill__circle {
+      &_outer {
+        transition-delay: $transDelay;
+      }
+    }
+  }
+  & :nth-child(6) {
+    .skill__circle {
+      &_outer {
+        transition-delay: 2 * $transDelay;
+      }
+    }
+  }
+  & :nth-child(8) {
+    .skill__circle {
+      &_outer {
+        transition-delay: 3 * $transDelay;
+      }
+    }
+  }
+}
+
+.skill-group__item {
+}

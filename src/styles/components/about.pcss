@@ -6,16 +6,18 @@
 .about__container {
   margin-top: 50px;
   display: flex;
-  width: 980px;
+  max-width: 980px;
 }
 .about__info {
   flex: 3;
+  margin-right: $margin-safe;
 }
 
 .about__desc {
   flex: 5;
   display: flex;
   flex-direction: column;
+  margin-left: $margin-safe;
 }
 .about__welcome {
 }
@@ -25,4 +27,12 @@
 }
 .about__ps {
   margin-top: auto;
+}
+.about__triangles {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 8vmax;
+  color: white;
 }

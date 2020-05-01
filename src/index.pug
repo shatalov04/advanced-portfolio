@@ -172,28 +172,43 @@ html(lang="en")
                 p #{jobDescription}   
               .about__ps 
                 p #{jobContent}  
-        //- section.skills
-        //-   .container
-        //-     .section-title
-        //-       h2.section-title__text.section-title__text_small= skillsTitle      
-        //-     each skillGroup, key in skillsList
-        //-       h3.skills-group__title= key
-        //-       ul.skills__list
-        //-         each value, key in skillGroup
-        //-           li.skills__item
-        //-             .skill
-        //-               svg(
-        //-                 viewBox="0 0 40 40" 
-        //-                 preserveAspectRatio="none" 
-        //-                 stroke-alignment="inner").skill__circle.skill__circle_inner
-        //-                 circle(cx="20" cy="20" r="16")
-        //-               svg(
-        //-                 stroke-dasharray="65 100" 
-        //-                 viewBox="0 0 40 40" 
-        //-                 preserveAspectRatio="none" 
-        //-                 stroke-alignment="inner").skill__circle.skill__circle_outer
-        //-                 circle(cx="20" cy="20" r="16")
-        //-               .skill__title= value
+            .triangles.about__triangles
+              svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+                polygon(points="0,0 1000,0 1000,100")
+              svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+                polygon(points="0,0 1000,0 0,100")
+        section.skills
+          .container
+            .skills__section_title
+              .section-title
+                h2.section-title__text #{skillsTitle}
+                .section-title__desc  
+                  p #{jobContent}      
+            .skills__content
+              each skillGroup, key in skillsList
+                .skill-group
+                  h3.skill-group__title #{key}
+                  ul.skill-group__list
+                    each value, key in skillGroup
+                      li.skill-group__item
+                        .skill
+                          svg(
+                            viewBox="0 0 40 40" 
+                            preserveAspectRatio="none" 
+                            stroke-alignment="inner").skill__circle.skill__circle_inner
+                            circle(cx="20" cy="20" r="16")
+                          svg(
+                            stroke-dasharray="65 100" 
+                            viewBox="0 0 40 40" 
+                            preserveAspectRatio="none" 
+                            stroke-alignment="inner").skill__circle.skill__circle_outer
+                            circle(cx="20" cy="20" r="16")
+                          .skill__title #{value}
+              .triangles.skills__triangles
+                svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+                  polygon(points="0,0 1000,0 1000,100")
+                svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+                  polygon(points="0,0 1000,0 0,100")
         //- .works
         //-   .container
         //-     .section-title
