@@ -152,21 +152,26 @@ html(lang="en")
               .dev-info
                 .dev-info__desc Личный сайт разработчика
                 h1.dev-info__title #{developerName}
+            .developer__button
+              .scroll-button Скролл
         section.about
           .container.about__container
             .about__info
               .user
                 .avatar.user__avatar
+                  +image("content/user.jpg","avatar__img")
                 ul.user__list
                   each item in userList
-                    li.about__item
-                      .about__property= `${item.name}`
-                      .about__value= `${item.value}`
+                    li.user__item
+                      .user__property #{item.name}
+                      .user__value #{item.value}
             .about__desc
               .about__welcome Привет, меня зовут
               h2.about__title #{developerName}      
-              .about__text #{jobDescription}   
-              .about__ps #{jobContent}  
+              .about__text
+                p #{jobDescription}   
+              .about__ps 
+                p #{jobContent}  
         //- section.skills
         //-   .container
         //-     .section-title

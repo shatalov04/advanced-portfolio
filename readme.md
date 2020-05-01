@@ -1,14 +1,13 @@
 # Учебный проект Portfolio 
 ## Шаталов Максим, 04/2020 - 06/2020, Loftschool
 
-> Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
-[последняя версия Yarn](https://yarnpkg.com/ru/docs/install)
+> Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/)
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
 $ git clone git@github.com:loftschool/ls-advanced-portfolio.git
 $ cd advanced-portfolio
-$ yarn
+$ npm install
 ```
 
 ## Скрипты package.json:
@@ -22,9 +21,4 @@ $ yarn
 #### Чтобы запустить скрипт:
 ```sh
 $ npm run имя_скрипта
-```
-
-##### Либо:
-```sh
-$ yarn имя_скрипта
 ```
