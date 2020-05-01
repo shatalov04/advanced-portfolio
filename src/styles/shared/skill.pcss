@@ -1,0 +1,47 @@
+.skill {
+  width: 125px;
+  height: 125px;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include tablets {
+    width: 1.15 * 125px;
+    height: 1.15 * 125px;
+  }
+}
+.skill__title {
+  text-align: center;
+  display: block;
+  font-size: 15px;
+  max-width: 80px;
+  margin: auto;
+  font-weight: 700;
+  color: $text-color30;
+}
+
+.skill__circle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  fill: transparent;
+  stroke-width: 8%;
+  transform: rotate(-90deg);
+  &_outer {
+    stroke: #306;
+    transition: 1s 0.2s ease-out;
+    stroke-width: 12%;
+  }
+  &_inner {
+    stroke: #ddd;
+  }
+  /* &_outer {
+    stroke: $blue;
+    transition: 1s 0.2s ease-out;
+  }
+  &_inner {
+    stroke: $light-gray;
+  } */
+}

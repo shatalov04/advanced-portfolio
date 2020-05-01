@@ -1,5 +1,7 @@
 {
   "text-color": "#414c63",
+  "text-color30": "#babec5",
+  "text-color50": "#a0a5b2",
   "main-color": "#5500f2",
   "footer-color": "#1f232d",
   "links-color": "#4b6fd7",
@@ -7,5 +9,6 @@
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
   "bp-phones": "480px",
-  "margin-safe": "20px"
+  "margin-safe": "20px",
+  "transDelay": "0.3s"
 }

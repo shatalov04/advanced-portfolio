@@ -1,0 +1,43 @@
+.skill-group {
+  margin-bottom: 40px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.skill-group__title {
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.skill-group__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  & :nth-child(4) {
+    .skill__circle {
+      &_outer {
+        transition-delay: $transDelay;
+      }
+    }
+  }
+  & :nth-child(6) {
+    .skill__circle {
+      &_outer {
+        transition-delay: 2 * $transDelay;
+      }
+    }
+  }
+  & :nth-child(8) {
+    .skill__circle {
+      &_outer {
+        transition-delay: 3 * $transDelay;
+      }
+    }
+  }
+}
+
+.skill-group__item {
+}

@@ -1,28 +1,39 @@
 .about {
   position: relative;
-  height: 100vh;
-  min-height: 650px;
+  height: 50vh;
+  min-height: 500px;
 }
 .about__container {
   margin-top: 50px;
   display: flex;
-  width: 980px;
+  max-width: 980px;
 }
 .about__info {
   flex: 3;
+  margin-right: $margin-safe;
 }
 
 .about__desc {
   flex: 5;
   display: flex;
   flex-direction: column;
+  margin-left: $margin-safe;
 }
 .about__welcome {
+  font-weight: 600;
+  margin-bottom: $margin-safe;
+  color: $text-color50;
 }
 .about__title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: $margin-safe;
 }
 .about__text {
+  color: $text-color50;
+  font-weight: 600;
 }
 .about__ps {
   margin-top: auto;
+  color: $text-color50;
 }
