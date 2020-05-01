@@ -1,12 +1,40 @@
 .skills {
+  position: relative;
+  min-height: 650px;
 }
-
-.skills__section_title {
+.skills__container {
+  display: flex;
+  align-items: flex-end;
 }
-
+.skills__backpack {
+  flex: 4;
+  margin-right: $margin-safe;
+}
+.skills__backpack-wrapper {
+}
+.skills__backpack-img {
+  display: block;
+}
 .skills__content {
+  flex: 8;
+  display: flex;
+  flex-direction: column;
+  margin-top: 180px;
+  margin-left: $margin-safe;
+}
+.skills__section-title {
+}
+
+.skills__widget {
+  margin-top: auto;
+  margin-left: 125px;
 }
 
 .skills__triangles {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 8vmax;
   color: white;
 }

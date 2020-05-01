@@ -1,11 +1,21 @@
 .skill-group {
+  margin-bottom: 40px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .skill-group__title {
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .skill-group__list {
-  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
   & :nth-child(4) {
     .skill__circle {
       &_outer {
