@@ -1,34 +1,221 @@
 include ./mixins.pug
+// nav
+-
+  var navItems = [
+    'Главная',
+    'Обо мне',
+    'Навыки',
+    'Работы',
+    'Отзывы',
+    'Связаться',
+  ]
+
+// socials
+-
+  var icons = {
+    vk: {
+      link:'http://vk.com/id224269077',
+      target:'_blank',
+      icon:'vk'
+    },
+    github: {
+      link:'https://github.com/furzeal',
+      target:'_blank',
+      icon:'github'
+    },
+    insta: {
+      link:'#',
+      target:'_blank',
+      icon:'insta'
+    }
+  }
+
+// about
+-
+  var aboutList = {
+    location: {
+      name: 'Проживаю:',
+      value: 'Мытищи',
+    },
+    age: {
+      name: 'Возраст:',
+      value: '38 лет',
+    },
+    born: {
+      name: 'Родился:',
+      value: '26 февраля 1982',
+    },
+  }
+
+// developer
+- var developerName = 'Максим Шаталов'
+- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интеречные и современные проекты.'
+- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
+
+// skills
+- var skillsTitle = 'Чем я могу быть вам полезен'
+
+-
+  var skillsList={
+    Frontend:{
+      'HTML5':80,
+      'CSS3':50,
+      'JavaScript':60,
+      'WPf':70},
+    Backend:{
+      'C#':90,
+      'ASP.Net Core':40,
+      'SQL':50,
+      'EF Core':50,
+      'Node.js & npm':20,
+      'Mongo.db':40,
+    },
+    Workflow:{
+      'Git':70,
+      'Gulp':70,
+      'Webpack':30,
+      'Azure DevOps':70
+    }
+  }
+
+// works
+-
+  var worksList = {
+    work1: {
+      preview:'Превью работы 1',
+      title:'Сайт школы образования',
+      description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
+      link:'#',
+      target:'_blank',
+      img: ' ',
+      tags:['html','css','js'],
+    },
+    work2: {
+      preview:'Превью работы 2',
+      title:'Система проектирования',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
+      link:'#',
+      target:'_blank',
+      img: ' ',
+      tags:['C#','WPF','WCF'],
+    },
+    work3: {
+      preview:'Превью работы 3',
+      title:'Система аналитики',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+      link:'#',
+      target:'_blank',
+      img: ' ',
+      tags:['ASP.Net Core','React','SPA'],
+    },
+    work4: {
+      preview:'Превью работы 4',
+      title:'Сайт-портфолио',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+      link:'#',
+      target:'_blank',
+      img: ' ',
+      tags:['Vue','Webpack','SPA'],
+    }
+  }
+
+  var activeWork = worksList.work2
 
 <!DOCTYPE html>
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
     .wrapper
-       header.header
+    
+      header.header
         .container
           .header__logo
             .initials МШ
           .header__menu
             nav.nav
               ul.nav__list
-                li.nav__item Главная
-                li.nav__item Обо мне
-                li.nav__item Навыки
-                li.nav__item Работы
-                li.nav__item Отзывы
-                li.nav__item Связаться
+                each item in navItems
+                  li.nav__item= item
           .header__socials
             .socials
+              ul.socials__list
+                each icon in icons
+                  li.socials__item
+                    a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                      +icon(`${icon.icon}`,'socials__icon')
       main.maincontent
-        .container
+        .main
+          .container
+            .developer
+              .developer__desc
+                .text.text_centered Личный сайт разработчика
+                h1.developer__title= developerName
+        .about
+          .container
+            .about__info
+              .about__img
+              ul.about__list
+                each item in aboutList
+                  li.about__item
+                    .about__property= `${item.name}`
+                    .about__value= `${item.value}`
+            .about__desc
+              .text Привет, меня зовут
+              h2.section-title= developerName      
+              .text= jobDescription     
+              .text.text_italic= jobContent      
+        .skills
+          .container
+            .section-title
+              h2.section-title__text.section-title__text_small= skillsTitle      
+            each skillGroup, key in skillsList
+              h3.skills-group__title= key
+              ul.skills__list
+                each value, key in skillGroup
+                  li.skills__item
+                    .skill
+                      svg(
+                        viewBox="0 0 40 40" 
+                        preserveAspectRatio="none" 
+                        stroke-alignment="inner").skill__circle.skill__circle_inner
+                        circle(cx="20" cy="20" r="16")
+                      svg(
+                        stroke-dasharray="65 100" 
+                        viewBox="0 0 40 40" 
+                        preserveAspectRatio="none" 
+                        stroke-alignment="inner").skill__circle.skill__circle_outer
+                        circle(cx="20" cy="20" r="16")
+                      .skill__title= value
+        .works
+          .container
+            .section-title
+              h2.section-title__text Мои работы
+            .work
+              .work__slider
+                .work__view
+                  h3.work__title= `${activeWork.preview}`
+                  .work__text= `${activeWork.description}`
+                .work__index= 2
+                .work__buttons
+                  button.work__button.work__button_down
+                  button.work__button.work__button_up
+                ul.previews__list
+                  each preview in worksList
+                    li.previews__item= preview.title
+              .work__desc
+                ul.tags
+                  each tag in activeWork.tags
+                    li.tags__item= tag
+                .work__title activeWork.title
+                .work__text activeWork.description
+                a.link
+                  +icon('link', 'link__img')
+                  .link__text Посмотреть сайт
 
-
-
-        //- +image('content/user.jpg', 'user-pic')
-        //- +icon('link', 'link-class')
-        //- .icon-bg
+//- +image('content/user.jpg', 'user-pic')
+//- +icon('link', 'link-class')
+//- .icon-bg
