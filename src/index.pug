@@ -13,6 +13,11 @@ include ./mixins.pug
 // socials
 -
   var icons = {
+    insta: {
+      link:'#',
+      target:'_blank',
+      icon:'insta'
+    },
     vk: {
       link:'http://vk.com/id224269077',
       target:'_blank',
@@ -23,11 +28,6 @@ include ./mixins.pug
       target:'_blank',
       icon:'github'
     },
-    insta: {
-      link:'#',
-      target:'_blank',
-      icon:'insta'
-    }
   }
 
 // about
@@ -87,7 +87,8 @@ include ./mixins.pug
       description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
       link:'#',
       target:'_blank',
-      img: ' ',
+      image: 'content/work-1.jpg',
+      previewImage: 'content/preview-1.jpg',
       tags:['html','css','js'],
     },
     work2: {
@@ -96,7 +97,8 @@ include ./mixins.pug
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
       link:'#',
       target:'_blank',
-      img: ' ',
+      image: 'content/work-2.jpg',
+      previewImage: 'content/preview-2.jpg',
       tags:['C#','WPF','WCF'],
     },
     work3: {
@@ -105,7 +107,8 @@ include ./mixins.pug
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
       link:'#',
       target:'_blank',
-      img: ' ',
+      image: 'content/work-3.jpg',
+      previewImage: 'content/preview-3.jpg',
       tags:['ASP.Net Core','React','SPA'],
     },
     work4: {
@@ -114,7 +117,18 @@ include ./mixins.pug
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
       link:'#',
       target:'_blank',
-      img: ' ',
+      image: 'content/work-4.jpg',
+      previewImage: 'content/preview-4.jpg',
+      tags:['Vue','Webpack','SPA'],
+    },
+    work5: {
+      preview:'Превью работы 5',
+      title:'Сайт-портфолио',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+      link:'#',
+      target:'_blank',
+      image: 'content/work-5.jpg',
+      previewImage: 'content/preview-5.jpg',
       tags:['Vue','Webpack','SPA'],
     }
   }
@@ -203,38 +217,52 @@ html(lang="en")
                               viewBox="0 0 40 40" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_outer
-                              circle(cx="20" cy="20" r="16")
+                              defs
+                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
+                                  stop(offset="0%" stop-color="#9300e7") 
+                                  stop(offset="100%" stop-color="#4900ed") 
+                              circle(cx="20" cy="20" r="16" stroke="url(#gradient)")
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,100 1000,0 1000,100")
-      .works
-        .container
-          .section-title
-            h2.section-title__text Мои работы
-          .work
-            .work__slider
-              .work__view
-                h3.work__title= `${activeWork.preview}`
-                .work__text= `${activeWork.description}`
-              .work__index= 2
-              .work__buttons
-                button.work__button.work__button_down
-                button.work__button.work__button_up
-              ul.previews__list
-                each preview in worksList
-                  li.previews__item= preview.title
-            .work__desc
-              ul.tags
-                each tag in activeWork.tags
-                  li.tags__item= tag
-              .work__title activeWork.title
-              .work__text activeWork.description
-              a.link
-                +icon('link', 'link__img')
-                .link__text Посмотреть сайт
-
+      section.works
+        .container.works__container
+          .works__section-title
+            .section-title
+              h2.section-title__text Мои работы
+          .works__content
+            .work
+              .work__slider 
+                .work__index.text.text_super= 2
+                .work__view
+                  +image(`${activeWork.image}`, 'work__img')
+                  //- h3.work__title #{activeWork.preview}
+                  //- .work__text #{activeWork.description}
+                  .previews.work__previews
+                    ul.previews__list
+                      each preview in worksList
+                        li.previews__item 
+                          +image(`${preview.previewImage}`, 'previews__img')
+                  .work__buttons
+                    button.work__button.work__button_up вверх
+                    button.work__button.work__button_down вниз
+              .work__desc
+                .tags.work__tags
+                  ul.tags__list
+                    each tag in activeWork.tags
+                      li.tags__item #{tag}
+                .section-title__text.work__title #{activeWork.title}
+                .work__text.text.text_70-600 #{activeWork.description}
+                .work__link
+                  a.link(href= `${activeWork.link}`) Посмотреть сайт
+                    +icon('link', 'link__img')
+          //- .triangles.works__triangles
+          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+          //-     polygon(points="0,0 0,100 1000,100")
+          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+          //-     polygon(points="0,100 1000,0 1000,100")
 //- +image('content/user.jpg', 'user-pic')
 //- +icon('link', 'link-class')
 //- .icon-bg

@@ -1,14 +1,17 @@
 {
   "text-color": "#414c63",
+  "super-text-color": " #e6e6e6",
   "text-color30": "#babec5",
   "text-color50": "#a0a5b2",
+  "text-color70": "#9ca2ae",
   "main-color": "#5500f2",
   "footer-color": "#1f232d",
   "links-color": "#4b6fd7",
+  "tag-bg-color": "#859fc2",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
   "bp-phones": "480px",
-  "margin-safe": "20px",
+  "margin-safe": "15px",
   "transDelay": "0.3s"
 }
