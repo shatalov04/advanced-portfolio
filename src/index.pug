@@ -13,6 +13,11 @@ include ./mixins.pug
 // socials
 -
   var icons = {
+    insta: {
+      link:'#',
+      target:'_blank',
+      icon:'insta'
+    },
     vk: {
       link:'http://vk.com/id224269077',
       target:'_blank',
@@ -23,11 +28,6 @@ include ./mixins.pug
       target:'_blank',
       icon:'github'
     },
-    insta: {
-      link:'#',
-      target:'_blank',
-      icon:'insta'
-    }
   }
 
 // about
@@ -219,8 +219,8 @@ html(lang="en")
                               stroke-alignment="inner").skill__circle.skill__circle_outer
                               defs
                                 linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
-                                  stop(offset="0%" stop-color="#5500f2") 
-                                  stop(offset="100%" stop-color="#4b6fd7") 
+                                  stop(offset="0%" stop-color="#9300e7") 
+                                  stop(offset="100%" stop-color="#4900ed") 
                               circle(cx="20" cy="20" r="16" stroke="url(#gradient)")
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
@@ -235,31 +235,34 @@ html(lang="en")
           .works__content
             .work
               .work__slider 
-                .work__index= 2
+                .work__index.text.text_super= 2
                 .work__view
                   +image(`${activeWork.image}`, 'work__img')
                   //- h3.work__title #{activeWork.preview}
                   //- .work__text #{activeWork.description}
-                .work__buttons
-                  button.work__button.work__button_down вниз
-                  button.work__button.work__button_up вверх
-                .previews.work__previews
-                  ul.previews__list
-                    each preview in worksList
-                      li.previews__item 
-                        +image(`${preview.previewImage}`, 'previews__img')
+                  .previews.work__previews
+                    ul.previews__list
+                      each preview in worksList
+                        li.previews__item 
+                          +image(`${preview.previewImage}`, 'previews__img')
+                  .work__buttons
+                    button.work__button.work__button_up вверх
+                    button.work__button.work__button_down вниз
               .work__desc
                 .tags.work__tags
                   ul.tags__list
                     each tag in activeWork.tags
                       li.tags__item #{tag}
-                .work__title #{activeWork.title}
-                .work__text #{activeWork.description}
+                .section-title__text.work__title #{activeWork.title}
+                .work__text.text.text_70-600 #{activeWork.description}
                 .work__link
-                  a.link(href= `${activeWork.link}`)
+                  a.link(href= `${activeWork.link}`) Посмотреть сайт
                     +icon('link', 'link__img')
-                    .link__text Посмотреть сайт
-
+          //- .triangles.works__triangles
+          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+          //-     polygon(points="0,0 0,100 1000,100")
+          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+          //-     polygon(points="0,100 1000,0 1000,100")
 //- +image('content/user.jpg', 'user-pic')
 //- +icon('link', 'link-class')
 //- .icon-bg

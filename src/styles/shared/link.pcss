@@ -1,9 +1,19 @@
 .link {
-  color: $main-color;
+  color: $links-color;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  :hover {
+    color: $main-color;
+  }
 }
 
 .link__img {
-  width: 28px;
-  height: 28px;
+  width: 16px;
+  height: 16px;
   fill: currentColor;
+  margin-right: $margin-safe;
 }
