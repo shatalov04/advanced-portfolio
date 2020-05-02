@@ -1,7 +1,17 @@
 .double-slider {
+  display: flex;
+  flex-direction: column;
 }
 .double-slider__header {
+  display: flex;
+  align-items: center;
 }
+.double-slider__title {
+  margin-right: 125px;
+}
+.double-slider__title-text {
+}
+
 .double-slider__buttons {
 }
 .double-slider__button {
@@ -13,8 +23,18 @@
 .double-slider__content {
 }
 .double-slider__list {
+  display: flex;
 }
 .double-slider__item {
+  display: flex;
+  margin-right: 30px;
+  &:last-child {
+    margin-right: 0;
+  }
 }
 .double-slider__quote {
+  width: 75px;
+  height: 63px;
+  fill: $tag-bg-color;
+  margin-right: 20px;
 }
