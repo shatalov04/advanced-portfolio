@@ -332,17 +332,17 @@ html(lang="en")
           .feedback__content
             form(id="feedback-form").form.feedback__form
               ul.form__list
-              - for(var i = 0; i < feedbackInputs.length-1; i++) 
-                li.input
-                  +icon(`${feedbackInputs[i].icon}`,"input__icon")
-                  .input__label #{feedbackInputs[i].tooltip}
-                  input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].tooltip}`).input__control
-              li.input
+                - for(var i = 0; i < feedbackInputs.length-1; i++) 
+                  li.input
+                    +icon(`${feedbackInputs[i].icon}`,"input__icon")
+                    .input__label #{feedbackInputs[i].tooltip}
+                    input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
+              .input.input_textarea
                 +icon(`${lastInput.icon}`,"input__icon")
                 .input__label #{lastInput.tooltip}
-                textarea(name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).input__control
-              button(type="submit" form="feedback-form").form__button
-        .triangles.yells__triangles
+                textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
+              button(type="submit" form="feedback-form").form__button Отправить
+        .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
