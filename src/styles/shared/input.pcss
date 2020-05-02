@@ -1,0 +1,35 @@
+.input {
+  position: relative;
+  width: 50%;
+  margin-right: 95px;
+  border-bottom: 1px solid #464d62;
+  padding-bottom: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &_textarea {
+    width: 100%;
+  }
+}
+
+.input__icon {
+  position: absolute;
+  right: 100%;
+  top: 60px;
+  transform: translate(100%, -100%);
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: $text-color30;
+}
+.input__label {
+  margin-left: 50px;
+}
+.input__control {
+  border: 0;
+  margin-left: 50px;
+  width: calc(100%-50px);
+  &:focus {
+    outline: none;
+  }
+}

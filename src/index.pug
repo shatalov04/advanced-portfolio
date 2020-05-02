@@ -135,6 +135,48 @@ include ./mixins.pug
 
   var activeWork = worksList.work2
 
+// yells
+-
+  var yellsList = {
+    yell1: {
+      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
+      user:'Ковальчук Дмитрий',
+      occupation:'Основатель Loftschool',
+      avatar: 'content/avatar-1.jpg',
+    },
+    yell2: {
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
+      user:'Владимир Сабанцев',
+      occupation:'Преподаватель',
+      avatar: 'content/avatar-2.jpg',
+    }
+  }
+
+// feedback
+-
+  var feedbackInputs = [
+     {
+      tooltip:'Введите ваше имя',
+      placeholder:'Ковальчук Дмитрий',
+      icon: 'user',
+      name: 'username',
+    },
+     {
+      tooltip:'Введите ваш email',
+      placeholder:'loftschool@study.com',
+      icon: 'envelope',
+      name: 'email',
+    },
+    {
+      tooltip:'Сообщение к письму',
+      placeholder:'Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса.',
+      icon: 'message',
+      name: 'message',
+    }
+  ]
+
+  var lastInput = feedbackInputs[feedbackInputs.length-1];
+
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -258,11 +300,56 @@ html(lang="en")
                 .work__link
                   a.link(href= `${activeWork.link}`) Посмотреть сайт
                     +icon('link', 'link__img')
-          //- .triangles.works__triangles
-          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
-          //-     polygon(points="0,0 0,100 1000,100")
-          //-   svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
-          //-     polygon(points="0,100 1000,0 1000,100")
+      .closing-section
+        section.yells
+          .container.yells__container
+            .yells__slider 
+              .double-slider
+                .double-slider__header
+                  .double-slider__title
+                    h2.double-slider__title-text Что обо мне говорят
+                  .double-slider__buttons
+                    button.double-slider__button.double-slider__button_left влево
+                    button.double-slider__button.double-slider__button_right вправо
+                .double-slider__content
+                  ul.double-slider__list
+                    each yell in yellsList
+                      li.double-slider__item
+                        +icon('quote', 'double-slider__quote')
+                        .yell
+                          .yell__text #{yell.text}
+                          .yell__user
+                            .avatar.yell__avatar
+                              +image(`${yell.avatar}`,"avatar__img")
+                            .yell__user-desc
+                              .yell__username #{yell.user}
+                              .yell__user-occupation #{yell.occupation}
+        section.feedback
+          .container.feedback__container
+          .feedback__section-title
+            .section-title
+              h2.section-title__text Связаться со мной
+          .feedback__content
+            form(id="feedback-form").form.feedback__form
+              ul.form__list
+                - for(var i = 0; i < feedbackInputs.length-1; i++) 
+                  li.input
+                    +icon(`${feedbackInputs[i].icon}`,"input__icon")
+                    .input__label #{feedbackInputs[i].tooltip}
+                    input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
+              .input.input_textarea
+                +icon(`${lastInput.icon}`,"input__icon")
+                .input__label #{lastInput.tooltip}
+                textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
+              button(type="submit" form="feedback-form").form__button Отправить
+        .triangles.closing-section__triangles
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+            polygon(points="0,0 1000,0 1000,100")
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
+            polygon(points="0,0 0,100 1000,0")
+
+
+
 //- +image('content/user.jpg', 'user-pic')
 //- +icon('link', 'link-class')
 //- .icon-bg
