@@ -152,6 +152,31 @@ include ./mixins.pug
     }
   }
 
+// feedback
+-
+  var feedbackInputs = [
+     {
+      tooltip:'Введите ваше имя',
+      placeholder:'Ковальчук Дмитрий',
+      icon: 'user',
+      name: 'username',
+    },
+     {
+      tooltip:'Введите ваш email',
+      placeholder:'loftschool@study.com',
+      icon: 'envelope',
+      name: 'email',
+    },
+    {
+      tooltip:'Сообщение к письму',
+      placeholder:'Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса.',
+      icon: 'message',
+      name: 'message',
+    }
+  ]
+
+  var lastInput = feedbackInputs[feedbackInputs.length-1];
+
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -299,13 +324,32 @@ html(lang="en")
                             .yell__user-desc
                               .yell__username #{yell.user}
                               .yell__user-occupation #{yell.occupation}
-        section.contacts
+        section.feedback
+          .container.feedback__container
+          .feedback__section-title
+            .section-title
+              h2.section-title__text Связаться со мной
+          .feedback__content
+            form(id="feedback-form").form.feedback__form
+              ul.form__list
+              - for(var i = 0; i < feedbackInputs.length-1; i++) 
+                li.input
+                  +icon(`${feedbackInputs[i].icon}`,"input__icon")
+                  .input__label #{feedbackInputs[i].tooltip}
+                  input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].tooltip}`).input__control
+              li.input
+                +icon(`${lastInput.icon}`,"input__icon")
+                .input__label #{lastInput.tooltip}
+                textarea(name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).input__control
+              button(type="submit" form="feedback-form").form__button
         .triangles.yells__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 0,100 1000,0")
-        
+
+
+
 //- +image('content/user.jpg', 'user-pic')
 //- +icon('link', 'link-class')
 //- .icon-bg
