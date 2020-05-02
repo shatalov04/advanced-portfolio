@@ -1,4 +1,15 @@
 include ./mixins.pug
+
+// content
+- var developerName = 'Максим Шаталов'
+- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
+- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
+- var footerQuote = 'Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете.'
+- var footerQuoteAuthor = 'Martin Golding'
+- var siteTitle = 'Личный сайт разработчика'
+
+- var skillsTitle = 'Чем я могу быть вам полезен'
+
 // nav
 -
   var navItems = [
@@ -48,12 +59,8 @@ include ./mixins.pug
   }
 
 // developer
-- var developerName = 'Максим Шаталов'
-- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
-- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
 
 // skills
-- var skillsTitle = 'Чем я могу быть вам полезен'
 
 -
   var skillsList={
@@ -155,17 +162,17 @@ include ./mixins.pug
 // feedback
 -
   var feedbackInputs = [
-     {
+    {
       tooltip:'Введите ваше имя',
       placeholder:'Ковальчук Дмитрий',
       icon: 'user',
       name: 'username',
     },
-     {
-      tooltip:'Введите ваш email',
-      placeholder:'loftschool@study.com',
-      icon: 'envelope',
-      name: 'email',
+      {
+        tooltip:'Введите ваш email',
+        placeholder:'loftschool@study.com',
+        icon: 'envelope',
+        name: 'email',
     },
     {
       tooltip:'Сообщение к письму',
@@ -176,6 +183,8 @@ include ./mixins.pug
   ]
 
   var lastInput = feedbackInputs[feedbackInputs.length-1];
+
+// footer
 
 <!DOCTYPE html>
 html(lang="en")
@@ -206,7 +215,7 @@ html(lang="en")
                         +icon(`${icon.icon}`,'socials__icon')
             .developer__content
               .dev-info
-                .dev-info__desc Личный сайт разработчика
+                .dev-info__desc #{siteTitle}
                 h1.dev-info__title #{developerName}
             .developer__button
               .scroll-button Скролл
@@ -326,30 +335,55 @@ html(lang="en")
                               .yell__user-occupation #{yell.occupation}
         section.feedback
           .container.feedback__container
-          .feedback__section-title
-            .section-title
-              h2.section-title__text Связаться со мной
-          .feedback__content
-            form(id="feedback-form").form.feedback__form
-              ul.form__list
-                - for(var i = 0; i < feedbackInputs.length-1; i++) 
-                  li.input
-                    +icon(`${feedbackInputs[i].icon}`,"input__icon")
-                    .input__label #{feedbackInputs[i].tooltip}
-                    input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
-              .input.input_textarea
-                +icon(`${lastInput.icon}`,"input__icon")
-                .input__label #{lastInput.tooltip}
-                textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
-              button(type="submit" form="feedback-form").form__button Отправить
+            .feedback__section-title
+              .section-title
+                h2.section-title__text Связаться со мной
+            .feedback__content
+              form(id="feedback-form").form.feedback__form
+                ul.form__list
+                  - for(var i = 0; i < feedbackInputs.length-1; i++) 
+                    li.input
+                      +icon(`${feedbackInputs[i].icon}`,"input__icon")
+                      .input__label #{feedbackInputs[i].tooltip}
+                      input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
+                .input.input_textarea
+                  +icon(`${lastInput.icon}`,"input__icon")
+                  .input__label #{lastInput.tooltip}
+                  textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
+                button(type="submit" form="feedback-form").form__button отправить
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 0,100 1000,0")
+      footer.footer 
+        .container.footer__container
+          .footer__left
+            .footer__copyright &copy 2020
+            .footer__initials #{developerName}
+            .footer__title #{siteTitle}
+          .footer__right
+            .footer__menu
+              nav.nav
+                ul.nav__list.nav__list_footer
+                  each item in navItems
+                    li.nav__item
+                      a(href="#").nav__link.nav__link_footer #{item}
+            .footer__content
+              .footer__socials
+                .footer__desc #{jobContent}
+                ul.socials
+                  each icon in icons
+                    li.socials__item
+                      a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                        +icon(`${icon.icon}`,'socials__icon socials__icon_footer')
+              .footer__quote
+                .footer__quote-text #{footerQuote}
+                .footer__quote-user #{footerQuoteAuthor}
 
 
-
-//- +image('content/user.jpg', 'user-pic')
-//- +icon('link', 'link-class')
-//- .icon-bg
+                - var developerName = 'Максим Шаталов'
+- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
+- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
+- var footerQuote = 'Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете.'
+- var footerQuoteAuthor = 'Martin Golding'
