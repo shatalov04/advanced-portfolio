@@ -357,12 +357,22 @@ html(lang="en")
                   +icon(`${lastInput.icon}`,"input__icon")
                   .input__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
                   textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control.input__control_textarea.text.text_bold
-                button(type="submit" form="feedback-form").form__button.text.text_bold отправить
+                button(type="submit" form="feedback-form").dialog-button.form__button.text.text_bold отправить
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 0,100 1000,0")
+      section.temp
+        .popup
+          .popup__message.text.text_bold Письмо отправлено
+          button.dialog-button.popup__button.text.text_bold закрыть
+        .tooltip.tooltip_ok Сообщение отправлено
+          +icon('remove', 'tooltip__button')
+        .tooltip.tooltip_warning Сервер перегружен
+          +icon('remove', 'tooltip__button')
+        .tooltip.tooltip_error Сообщение не отправлено
+          +icon('remove', 'tooltip__button')
       footer.footer 
         .container.footer__container
           .footer__left
