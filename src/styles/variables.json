@@ -8,6 +8,7 @@
   "text-color15-white": "#45484f",
   "text-color30-white": "#67696f",
   "main-color": "#5500f2",
+  "accent-color": "#dc9322",
   "footer-color": "#1f232d",
   "links-color": "#4b6fd7",
   "tag-bg-color": "#e7ecf3",
@@ -16,5 +17,5 @@
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "margin-safe": "15px",
-  "transDelay": "0.3s"
+  "delay": "0.3s"
 }

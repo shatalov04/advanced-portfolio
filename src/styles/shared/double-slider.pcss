@@ -14,12 +14,38 @@
 }
 
 .double-slider__buttons {
+  display: flex;
 }
 .double-slider__button {
+  display: flex;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid $text-color;
+  background: transparent;
+  color: $text-color;
+  transition: $delay;
+  &_left {
+  }
+  &_right {
+  }
+  &:hover {
+    background: $text-color;
+    color: white;
+  }
 }
-.double-slider__button_left {
-}
-.double-slider__button_right {
+.double-slider__button-img {
+  width: 8px;
+  height: 10px;
+  fill: currentColor;
+  &_left {
+    transform: rotate(180deg);
+  }
+  &_right {
+  }
 }
 .double-slider__content {
 }

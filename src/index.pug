@@ -88,8 +88,8 @@ include ./mixins.pug
 
 // works
 -
-  var worksList = {
-    work1: {
+  var worksList = [
+    {
       preview:'Превью работы 1',
       title:'Сайт школы образования',
       description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
@@ -99,7 +99,7 @@ include ./mixins.pug
       previewImage: 'content/preview-1.jpg',
       tags:['html','css','js'],
     },
-    work2: {
+     {
       preview:'Превью работы 2',
       title:'Система проектирования',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
@@ -109,7 +109,7 @@ include ./mixins.pug
       previewImage: 'content/preview-2.jpg',
       tags:['C#','WPF','WCF'],
     },
-    work3: {
+     {
       preview:'Превью работы 3',
       title:'Система аналитики',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
@@ -119,7 +119,7 @@ include ./mixins.pug
       previewImage: 'content/preview-3.jpg',
       tags:['ASP.Net Core','React','SPA'],
     },
-    work4: {
+    {
       preview:'Превью работы 4',
       title:'Сайт-портфолио',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
@@ -129,7 +129,7 @@ include ./mixins.pug
       previewImage: 'content/preview-4.jpg',
       tags:['Vue','Webpack','SPA'],
     },
-    work5: {
+     {
       preview:'Превью работы 5',
       title:'Сайт-портфолио',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
@@ -139,9 +139,9 @@ include ./mixins.pug
       previewImage: 'content/preview-5.jpg',
       tags:['Vue','Webpack','SPA'],
     }
-  }
+  ]
 
-  var activeWork = worksList.work2
+  var activeWork = worksList[1]
 
 // yells
 -
@@ -265,7 +265,7 @@ html(lang="en")
                               stroke-alignment="inner").skill__circle.skill__circle_inner
                               circle(cx="20" cy="20" r="16")
                             svg(
-                              stroke-dasharray="65 100" 
+                              stroke-dasharray=`${value}`+" 100" 
                               viewBox="0 0 40 40" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_outer
@@ -294,12 +294,16 @@ html(lang="en")
                   //- .work__text #{activeWork.description}
                   .previews.work__previews
                     ul.previews__list
-                      each preview in worksList
+                      each preview, index in worksList
                         li.previews__item 
-                          +image(`${preview.previewImage}`, 'previews__img')
+                          - 
+                            var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
+                          +image(`${preview.previewImage}`, previewClass)
                   .work__buttons
-                    button.work__button.work__button_up вверх
-                    button.work__button.work__button_down вниз
+                    button.work__button.work__button_up
+                      +icon("arrow-down", 'work__button-img work__button-img_up')
+                    button.work__button.work__button_down
+                      +icon("arrow-down", 'work__button-img work__button-img_down')
               .work__desc
                 .tags.work__tags
                   ul.tags__list
@@ -319,8 +323,10 @@ html(lang="en")
                   .double-slider__title
                     h2.double-slider__title-text.title-text Что обо мне говорят
                   .double-slider__buttons
-                    button.double-slider__button.double-slider__button_left влево
-                    button.double-slider__button.double-slider__button_right вправо
+                    button.double-slider__button.double-slider__button_left 
+                     +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
+                    button.double-slider__button.double-slider__button_right 
+                     +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
                 .double-slider__content
                   ul.double-slider__list
                     each yell in yellsList
@@ -376,7 +382,7 @@ html(lang="en")
                 ul.socials
                   each icon in icons
                     li.socials__item
-                      a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                      a.socials__link.socials__link_footer(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon socials__icon_footer')
               .footer__quote
                 .footer__quote-text.text.text_30-white #{footerQuote}

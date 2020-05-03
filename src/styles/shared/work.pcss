@@ -31,10 +31,31 @@
 .work__button_down {
 }
 .work__button {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
+  width: 50px;
+  height: 50px;
+  background: $text-color;
+  color: white;
+  transition: $delay;
+  &_up {
+  }
+  &:hover {
+    background: $main-color;
+  }
 }
-.work__button_up {
+.work__button-img {
+  width: 8px;
+  height: 10px;
+  fill: currentColor;
+  &_up {
+    transform: rotate(-90deg);
+  }
+  &_down {
+    transform: rotate(90deg);
+  }
 }
 .work__previews {
   position: absolute;
