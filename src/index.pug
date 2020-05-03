@@ -219,7 +219,8 @@ html(lang="en")
                 .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
                 h1.dev-info__title.title-text.title-text_main #{developerName}
             .developer__button
-              .scroll-button.text.text_semi-bold Скролл
+              button.scroll-button.text.text_bold Скролл
+                +icon('scroll', 'scroll-button')
         section.about
           .container.about__container
             .about__info
@@ -241,8 +242,7 @@ html(lang="en")
       section.skills
         .container.skills__container
           .skills__backpack
-            .skills__backpack-wrapper
-              +image("content/backpack.png","skills__backpack-img")
+            +image("content/backpack.png","skills__backpack-img")
           .skills__content
             .skills__section-title
               .section-title
@@ -260,20 +260,20 @@ html(lang="en")
                           .skill
                             .skill__title.text.text_bold.text_50 #{key}
                             svg(
-                              viewBox="0 0 40 40" 
+                              viewBox="0 0 36 36" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_inner
-                              circle(cx="20" cy="20" r="16")
+                              circle(cx="18" cy="18" r="16")
                             svg(
                               stroke-dasharray=`${value}`+" 100" 
-                              viewBox="0 0 40 40" 
+                              viewBox="0 0 36 36" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_outer
                               defs
                                 linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
                                   stop(offset="0%" stop-color="#9300e7") 
                                   stop(offset="100%" stop-color="#4900ed") 
-                              circle(cx="20" cy="20" r="16" stroke="url(#gradient)")
+                              circle(cx="18" cy="18" r="16" stroke="url(#gradient)")
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
@@ -368,7 +368,7 @@ html(lang="en")
           .footer__left
             .footer__copyright.text.text_copyright.text_15-white &copy 2020
             .footer__initials.text.text_bold #{developerName}
-            .footer__title.text.text_15-white #{siteTitle}
+            .footer__title.text.text_30-white #{siteTitle}
           .footer__right
             .footer__menu
               nav.nav
@@ -377,13 +377,13 @@ html(lang="en")
                     li.nav__item
                       a(href="#").nav__link.nav__link_footer #{item}
             .footer__content
-              .footer__socials.text.text_30-white
+              .footer__socials.text.text_semi-bold.text_30-white
                 .footer__desc #{footerContent}
-                ul.socials
+                ul.socials.socials_footer
                   each icon in icons
                     li.socials__item
                       a.socials__link.socials__link_footer(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon socials__icon_footer')
               .footer__quote
-                .footer__quote-text.text.text_30-white #{footerQuote}
+                .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
