@@ -8,16 +8,31 @@
   }
 }
 .socials__link {
-}
-.socials__icon {
-  width: 30px;
-  height: 30px;
-  display: block;
-  fill: currentColor;
-
+  display: flex;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  transition: $delay;
   &:hover {
-    fill: $links-color;
+    color: $main-color;
   }
   &_footer {
+    border: 1px solid currentColor;
+    &:hover {
+      color: $accent-color;
+      border: 1px solid $accent-color;
+    }
+  }
+}
+.socials__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: currentColor;
+  &_footer {
+    width: 28px;
+    height: 28px;
   }
 }
