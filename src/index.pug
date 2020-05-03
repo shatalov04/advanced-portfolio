@@ -177,7 +177,7 @@ include ./mixins.pug
     },
     {
       tooltip:'Сообщение к письму',
-      placeholder:'Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса.',
+      placeholder:'Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса.',
       icon: 'message',
       name: 'message',
     }
@@ -201,7 +201,7 @@ html(lang="en")
           .container.developer__container
             header.header.developer__header
               .header__logo
-                .initials МШ
+                .initials.title-text МШ
               .header__menu
                 nav.nav
                   ul.nav__list
@@ -216,10 +216,10 @@ html(lang="en")
                         +icon(`${icon.icon}`,'socials__icon')
             .developer__content
               .dev-info
-                .dev-info__desc #{siteTitle}
-                h1.dev-info__title #{developerName}
+                .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
+                h1.dev-info__title.title-text.title-text_main #{developerName}
             .developer__button
-              .scroll-button Скролл
+              .scroll-button.text.text_semi-bold Скролл
         section.about
           .container.about__container
             .about__info
@@ -229,14 +229,14 @@ html(lang="en")
                 ul.user__list
                   each item in userList
                     li.user__item
-                      .user__property #{item.name}
-                      .user__value #{item.value}
+                      .user__property.text.text_semi-bold.text_30 #{item.name}
+                      .user__value.text.text_semi-bold #{item.value}
             .about__desc
-              .about__welcome Привет, меня зовут
-              h2.about__title #{developerName}      
-              .about__text
+              .about__welcome.text.text_semi-bold.text_50 Привет, меня зовут
+              h2.about__title.text.title-text #{developerName}      
+              .about__text.text.text_semi-bold.text_50
                 p #{jobDescription}   
-              .about__ps 
+              .about__ps.text.text_50.text_italic
                 p #{jobContent}  
       section.skills
         .container.skills__container
@@ -246,19 +246,19 @@ html(lang="en")
           .skills__content
             .skills__section-title
               .section-title
-                h2.section-title__text #{skillsTitle}
-                .section-title__desc  
+                h2.section-title__text.title-text.title-text_small #{skillsTitle}
+                .section-title__desc.text.text_semi-bold.text_50 
                   p #{jobContent}      
             .skills__widget
               ul.skills__list
                 each skillGroup, key in skillsList
                   li.skill-group
-                    h3.skill-group__title #{key}
+                    h3.skill-group__title.title-text.title-text_sub #{key}
                     ul.skill-group__list
                       each value, key in skillGroup
                         li.skill-group__item
                           .skill
-                            .skill__title #{key}
+                            .skill__title.text.text_bold.text_50 #{key}
                             svg(
                               viewBox="0 0 40 40" 
                               preserveAspectRatio="none" 
@@ -283,7 +283,7 @@ html(lang="en")
         .container.works__container
           .works__section-title
             .section-title
-              h2.section-title__text Мои работы
+              h2.section-title__text.title-text Мои работы
           .works__content
             .work
               .work__slider 
@@ -304,9 +304,9 @@ html(lang="en")
                 .tags.work__tags
                   ul.tags__list
                     each tag in activeWork.tags
-                      li.tags__item #{tag}
-                .section-title__text.work__title #{activeWork.title}
-                .work__text.text.text_70-600 #{activeWork.description}
+                      li.tags__item.text.text_semi-bold.text_70 #{tag}
+                .section-title__text.work__title.title-text.title-text_small #{activeWork.title}
+                .work__text.text.text_semi-bold.text_70 #{activeWork.description}
                 .work__link
                   a.link(href= `${activeWork.link}`) Посмотреть сайт
                     +icon('link', 'link__img')
@@ -317,7 +317,7 @@ html(lang="en")
               .double-slider
                 .double-slider__header
                   .double-slider__title
-                    h2.double-slider__title-text Что обо мне говорят
+                    h2.double-slider__title-text.title-text Что обо мне говорят
                   .double-slider__buttons
                     button.double-slider__button.double-slider__button_left влево
                     button.double-slider__button.double-slider__button_right вправо
@@ -327,31 +327,31 @@ html(lang="en")
                       li.double-slider__item
                         +icon('quote', 'double-slider__quote')
                         .yell
-                          .yell__text #{yell.text}
+                          .yell__text.text.text_semi-bold.text_50 #{yell.text}
                           .yell__user
                             .avatar.yell__avatar
                               +image(`${yell.avatar}`,"avatar__img")
                             .yell__user-desc
-                              .yell__username #{yell.user}
-                              .yell__user-occupation #{yell.occupation}
+                              .yell__username.text.text_bold #{yell.user}
+                              .yell__user-occupation.text.text_semi-bold.text_30 #{yell.occupation}
         section.feedback
           .container.feedback__container
             .feedback__section-title
               .section-title
-                h2.section-title__text Связаться со мной
+                h2.section-title__text.title-text Связаться со мной
             .feedback__content
               form(id="feedback-form").form.feedback__form
                 ul.form__list
                   - for(var i = 0; i < feedbackInputs.length-1; i++) 
                     li.input
                       +icon(`${feedbackInputs[i].icon}`,"input__icon")
-                      .input__label #{feedbackInputs[i].tooltip}
-                      input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
+                      .input__label.text.text_semi-bold.text_30 #{feedbackInputs[i].tooltip}
+                      input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control.text.text_bold
                 .input.input_textarea
                   +icon(`${lastInput.icon}`,"input__icon")
-                  .input__label #{lastInput.tooltip}
-                  textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
-                button(type="submit" form="feedback-form").form__button отправить
+                  .input__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
+                  textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control.input__control_textarea.text.text_bold
+                button(type="submit" form="feedback-form").form__button.text.text_bold отправить
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
@@ -360,9 +360,9 @@ html(lang="en")
       footer.footer 
         .container.footer__container
           .footer__left
-            .footer__copyright &copy 2020
-            .footer__initials #{developerName}
-            .footer__title #{siteTitle}
+            .footer__copyright.text.text_copyright.text_15-white &copy 2020
+            .footer__initials.text.text_bold #{developerName}
+            .footer__title.text.text_15-white #{siteTitle}
           .footer__right
             .footer__menu
               nav.nav
@@ -371,7 +371,7 @@ html(lang="en")
                     li.nav__item
                       a(href="#").nav__link.nav__link_footer #{item}
             .footer__content
-              .footer__socials
+              .footer__socials.text.text_30-white
                 .footer__desc #{footerContent}
                 ul.socials
                   each icon in icons
@@ -379,5 +379,5 @@ html(lang="en")
                       a.socials__link(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon socials__icon_footer')
               .footer__quote
-                .footer__quote-text #{footerQuote}
-                .footer__quote-user #{footerQuoteAuthor}
+                .footer__quote-text.text.text_30-white #{footerQuote}
+                .footer__quote-user.text.text_italic #{footerQuoteAuthor}
