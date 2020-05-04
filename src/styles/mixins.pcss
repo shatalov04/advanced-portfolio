@@ -10,14 +10,20 @@
   }
 }
 
-@mixin tablets() {
-  @media screen and (max-width: $bp-tablets) {
+@mixin laptop() {
+  @media screen and (max-width: $bp-laptop) {
     @content;
   }
 }
 
-@mixin phones() {
-  @media screen and (max-width: $bp-phones) {
+@mixin tablet() {
+  @media screen and (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin phone() {
+  @media screen and (max-width: $bp-phone) {
     @content;
   }
 }

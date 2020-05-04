@@ -42,7 +42,7 @@
 }
 
 .text_super {
-  line-height: 1.5;
+  line-height: 1;
   font-weight: 800;
   font-size: 400px;
   color: $super-text-color;
@@ -67,4 +67,8 @@
   font-size: 72px;
   font-weight: 800;
   line-height: 0.83;
+
+  @include phone {
+    font-size: 60px;
+  }
 }

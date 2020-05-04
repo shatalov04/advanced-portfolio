@@ -349,14 +349,14 @@ html(lang="en")
               form(id="feedback-form").form.feedback__form
                 ul.form__list
                   - for(var i = 0; i < feedbackInputs.length-1; i++) 
-                    - var inputClass = i !== 1 ? 'input' : 'input input_active input_error';
+                    - var inputClass = i !== 1 ? 'input form__item' : 'input input_active input_error form__item';
                       li(class=`${inputClass}`)
                         +icon(`${feedbackInputs[i].icon}`,"input__icon")
                         .input__label.text.text_semi-bold.text_30 #{feedbackInputs[i].tooltip}
                         input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].tooltip}`).input__control.text.text_bold
                         .context-tooltip.input__tooltip
                           .context-tooltip__message ошибка
-                .input.input_active.input_textarea
+                .input.input_active.input_textarea.form__textarea
                   +icon(`${lastInput.icon}`,"input__icon")
                   .input__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
                   textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).input__control.input__control_textarea.text.text_bold

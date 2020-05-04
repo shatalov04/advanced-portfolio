@@ -3,9 +3,20 @@
   padding-top: 100px;
   height: 400px;
   color: white;
+
+  @include desktop {
+    padding-top: 80px;
+  }
+  @include laptop {
+    height: auto;
+    padding-bottom: 70px;
+  }
 }
 .footer__container {
   display: flex;
+  @include phone {
+    flex-direction: column;
+  }
 }
 .footer__left {
   flex: 3;
@@ -14,35 +25,90 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-start;
+
+  @include desktop {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 20px;
+  }
+  @include phone {
+    margin-bottom: 30px;
+  }
 }
 .footer__copyright {
   width: 50%;
   margin-right: 40px;
+  white-space: nowrap;
+  @include desktop {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 .footer__initials {
   width: calc(50%-40px);
   text-transform: uppercase;
+  @include desktop {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  @include phone {
+    width: 100%;
+    margin-bottom: 0;
+  }
 }
 .footer__title {
   width: calc(50%-40px);
   margin-top: -62px;
+
+  @include desktop {
+    margin-top: 0;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  @include phone {
+    width: 100%;
+  }
 }
 .footer__right {
   flex: 8;
+  @include desktop {
+    flex: 9;
+  }
 }
 .footer__menu {
   margin-top: -33px;
   margin-bottom: 20px;
+  @include phone {
+    margin-bottom: 50px;
+  }
 }
 .footer__content {
   display: flex;
+
+  @include tablet {
+    flex-direction: column;
+  }
 }
 .footer__socials {
   flex: 3;
   margin-right: 150px;
+
+  @include desktop {
+    margin-right: 50px;
+  }
+  @include tablet {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
 }
 .footer__desc {
   margin-bottom: 20px;
+  @include desktop {
+    margin-bottom: 30px;
+  }
+  @include phone {
+    margin-bottom: 20px;
+  }
 }
 .footer__quote {
   flex: 4;

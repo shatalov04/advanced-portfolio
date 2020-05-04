@@ -2,7 +2,7 @@ html {
   @include desktop {
     font-size: 15px;
   }
-  @include tablets {
+  @include tablet {
     font-size: 14px;
   }
 }
@@ -24,16 +24,6 @@ body {
   overflow: hidden;
   min-height: 100%;
   position: relative;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 1480px;
-  width: 95%;
-
-  @include phones {
-    width: 85%;
-  }
 }
 
 .fullscreen-section {
@@ -89,4 +79,24 @@ img {
   display: block;
   max-width: 100%;
   max-height: 100%;
+}
+
+/* prettier-ignore */
+.container {
+  margin: 0 auto;
+  max-width: 1480Px;
+  width: 95%;
+
+  @include desktop {
+    max-width: 1080Px;
+  }
+
+  @include tablet {
+    max-width: 688Px;
+    width: 90%;
+  }
+
+  @include phone {
+    width: 85%;
+  }
 }

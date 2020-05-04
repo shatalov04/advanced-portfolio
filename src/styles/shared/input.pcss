@@ -1,14 +1,10 @@
 .input {
   position: relative;
-  width: 50%;
   margin-right: 55px;
   border-bottom: 1px solid $text-color;
   padding-bottom: 15px;
   &:last-child {
     margin-right: 0;
-  }
-  &_textarea {
-    width: 100%;
   }
   .input__label {
     display: none;
@@ -83,6 +79,10 @@
     resize: vertical;
     min-height: 65px;
     line-height: 30px;
+
+    @include phone {
+      min-height: 25vh;
+    }
   }
 }
 
