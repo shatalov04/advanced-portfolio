@@ -99,25 +99,25 @@ include ./mixins.pug
       previewImage: 'content/preview-1.jpg',
       tags:['html','css','js'],
     },
-     {
-      preview:'Превью работы 2',
-      title:'Система проектирования',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-2.jpg',
-      previewImage: 'content/preview-2.jpg',
-      tags:['C#','WPF','WCF'],
+      {
+        preview:'Превью работы 2',
+        title:'Система проектирования',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-2.jpg',
+        previewImage: 'content/preview-2.jpg',
+        tags:['C#','WPF','WCF'],
     },
-     {
-      preview:'Превью работы 3',
-      title:'Система аналитики',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-3.jpg',
-      previewImage: 'content/preview-3.jpg',
-      tags:['ASP.Net Core','React','SPA'],
+      {
+        preview:'Превью работы 3',
+        title:'Система аналитики',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-3.jpg',
+        previewImage: 'content/preview-3.jpg',
+        tags:['ASP.Net Core','React','SPA'],
     },
     {
       preview:'Превью работы 4',
@@ -129,15 +129,15 @@ include ./mixins.pug
       previewImage: 'content/preview-4.jpg',
       tags:['Vue','Webpack','SPA'],
     },
-     {
-      preview:'Превью работы 5',
-      title:'Сайт-портфолио',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-5.jpg',
-      previewImage: 'content/preview-5.jpg',
-      tags:['Vue','Webpack','SPA'],
+      {
+        preview:'Превью работы 5',
+        title:'Сайт-портфолио',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-5.jpg',
+        previewImage: 'content/preview-5.jpg',
+        tags:['Vue','Webpack','SPA'],
     }
   ]
 
@@ -324,9 +324,9 @@ html(lang="en")
                     h2.double-slider__title-text.title-text Что обо мне говорят
                   .double-slider__buttons
                     button.double-slider__button.double-slider__button_left 
-                     +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
+                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
                     button.double-slider__button.double-slider__button_right 
-                     +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
+                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
                 .double-slider__content
                   ul.double-slider__list
                     each yell in yellsList
@@ -361,7 +361,7 @@ html(lang="en")
                   .input__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
                   textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).input__control.input__control_textarea.text.text_bold
                   .context-tooltip.input__tooltip
-                      .context-tooltip__message ошибка
+                    .context-tooltip__message ошибка
                 button(type="submit" form="feedback-form").dialog-button.form__button.text.text_bold отправить
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
