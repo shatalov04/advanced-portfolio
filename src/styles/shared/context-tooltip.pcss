@@ -1,0 +1,20 @@
+.context-tooltip {
+  margin-left: 45px;
+  background: currentColor;
+  position: relative;
+  text-align: center;
+  &:after {
+    content: "";
+    background: currentColor;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 9px) rotate(45deg);
+  }
+}
+.context-tooltip__message {
+  padding: 10px 15px;
+  color: white;
+}

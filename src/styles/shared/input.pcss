@@ -2,7 +2,7 @@
   position: relative;
   width: 50%;
   margin-right: 55px;
-  border-bottom: 1px solid #464d62;
+  border-bottom: 1px solid $text-color;
   padding-bottom: 15px;
   &:last-child {
     margin-right: 0;
@@ -10,6 +10,48 @@
   &_textarea {
     width: 100%;
   }
+  .input__label {
+    display: none;
+  }
+
+  &_active {
+    border-bottom: 1px solid $main-color;
+    .input__label {
+      display: block;
+    }
+    .input__icon {
+      fill: $main-color;
+    }
+  }
+  &_error {
+    border-bottom: 1px solid $error-color;
+    .input__icon {
+      fill: $error-color;
+    }
+    .input__tooltip {
+      display: block;
+    }
+  }
+  /* &:before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: svg-load(
+      "envelope.svg",
+      fill=$text-color,
+      width=100%,
+      height=100%
+    );
+    &:hover {
+      background: svg-load(
+        "envelope.svg",
+        fill=#55ddcc,
+        width=100%,
+        height=100%
+      );
+    }
+  } */
 }
 
 .input__icon {
@@ -24,11 +66,13 @@
 }
 
 .input__label {
-  margin-left: 45px;
-  margin-bottom: 16px;
+  position: absolute;
+  left: 0;
+  transform: translate(45px, 0);
 }
 .input__control {
   border: 0;
+  padding-top: 46px;
   margin-left: 45px;
   width: calc(100%-50px);
   background: transparent;
@@ -40,4 +84,11 @@
     min-height: 65px;
     line-height: 30px;
   }
+}
+
+.input__tooltip {
+  position: absolute;
+  top: 100%;
+  display: none;
+  color: $error-color;
 }
