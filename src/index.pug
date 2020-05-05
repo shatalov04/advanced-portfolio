@@ -214,6 +214,23 @@ html(lang="en")
                     li.socials__item
                       a.socials__link(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon')
+              .hamburger.header__hamburger
+                +icon('hamburger','hamburger__icon')
+              aside.side-panel.header__side-panel
+                .side-panel__menu.text.text_bold
+                  nav.nav
+                    ul.nav__list.side-panel__nav-list
+                      each item in navItems
+                        li.nav__item
+                          a(href="#").nav__link.nav__link_no-padding #{item}
+                .side-panel__socials
+                  ul.socials
+                    each icon in icons
+                      li.socials__item
+                        a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                          +icon(`${icon.icon}`,'socials__icon')
+                .side-panel__icon
+                  +icon('remove', 'side-panel__button')
             .developer__content
               .dev-info
                 .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
@@ -290,20 +307,18 @@ html(lang="en")
                 .work__index.text.text_super= 2
                 .work__view
                   +image(`${activeWork.image}`, 'work__img')
-                  //- h3.work__title #{activeWork.preview}
-                  //- .work__text #{activeWork.description}
-                  .previews.work__previews
-                    ul.previews__list
-                      each preview, index in worksList
-                        li.previews__item 
-                          - 
-                            var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
-                          +image(`${preview.previewImage}`, previewClass)
                   .work__buttons
                     button.work__button.work__button_up
                       +icon("arrow-down", 'work__button-img work__button-img_up')
                     button.work__button.work__button_down
                       +icon("arrow-down", 'work__button-img work__button-img_down')
+                  .previews.work__previews
+                        ul.previews__list
+                          each preview, index in worksList
+                            li.previews__item 
+                              - 
+                                var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
+                              +image(`${preview.previewImage}`, previewClass)
               .work__desc
                 .tags.work__tags
                   ul.tags__list
