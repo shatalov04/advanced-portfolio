@@ -5,10 +5,54 @@
 }
 .header__logo {
   margin-right: $margin-safe;
+  @include tablet {
+    flex: 15;
+  }
 }
 .header__menu {
   margin: 0 $margin-safe;
+
+  @include tablet {
+    display: none;
+  }
 }
 .header__socials {
   margin-left: $margin-safe;
+
+  @include phone {
+    display: none;
+  }
+}
+
+.header__hamburger {
+  display: none;
+  width: 50px;
+  height: 50px;
+  margin-left: 70px;
+  @include tablet {
+    display: flex;
+  }
+}
+
+/*prettier-ignore*/
+.header__side-panel {
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  right:  0;
+  width: 320Px;
+  background: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
+  transform: translate(100%, 0);
+  transition: $delay;
+
+  @include tablet{
+      transform: translate(0, 0);
+  }
+  @include phone{
+    width:100vw ;
+  }
 }

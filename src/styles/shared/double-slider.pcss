@@ -5,20 +5,60 @@
 .double-slider__header {
   display: flex;
   align-items: center;
+  margin-bottom: 90px;
+
+  @include phone {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 .double-slider__title {
-  margin-right: 125px;
+  margin-right: 95px;
+
+  @include phone {
+    margin-right: 0px;
+    margin-bottom: 25px;
+  }
 }
 .double-slider__title-text {
 }
 
 .double-slider__buttons {
+  display: flex;
 }
 .double-slider__button {
+  display: flex;
+  margin-right: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid $text-color;
+  background: transparent;
+  color: $text-color;
+  transition: $delay;
+  &_left {
+  }
+  &_right {
+  }
+  &:hover {
+    background: $text-color;
+    color: white;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
 }
-.double-slider__button_left {
-}
-.double-slider__button_right {
+.double-slider__button-img {
+  width: 8px;
+  height: 10px;
+  fill: currentColor;
+  &_left {
+    transform: rotate(180deg);
+  }
+  &_right {
+  }
 }
 .double-slider__content {
 }
@@ -31,10 +71,28 @@
   &:last-child {
     margin-right: 0;
   }
+
+  @include tablet {
+    width: 50%;
+  }
+  @include phone {
+    width: 100%;
+    &:last-child {
+      display: none;
+    }
+  }
 }
 .double-slider__quote {
   width: 75px;
   height: 63px;
   fill: $tag-bg-color;
   margin-right: 20px;
+
+  @include tablet {
+    width: 30px;
+    height: 26px;
+  }
+  @include phone {
+    display: none;
+  }
 }

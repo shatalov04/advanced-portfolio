@@ -1,4 +1,16 @@
 include ./mixins.pug
+
+// content
+- var developerName = 'Максим Шаталов'
+- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
+- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
+- var footerContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool!'
+- var footerQuote = 'Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете.'
+- var footerQuoteAuthor = 'Martin Golding'
+- var siteTitle = 'Личный сайт разработчика'
+
+- var skillsTitle = 'Чем я могу быть вам полезен'
+
 // nav
 -
   var navItems = [
@@ -48,12 +60,8 @@ include ./mixins.pug
   }
 
 // developer
-- var developerName = 'Максим Шаталов'
-- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
-- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
 
 // skills
-- var skillsTitle = 'Чем я могу быть вам полезен'
 
 -
   var skillsList={
@@ -80,8 +88,8 @@ include ./mixins.pug
 
 // works
 -
-  var worksList = {
-    work1: {
+  var worksList = [
+    {
       preview:'Превью работы 1',
       title:'Сайт школы образования',
       description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
@@ -91,27 +99,27 @@ include ./mixins.pug
       previewImage: 'content/preview-1.jpg',
       tags:['html','css','js'],
     },
-    work2: {
-      preview:'Превью работы 2',
-      title:'Система проектирования',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-2.jpg',
-      previewImage: 'content/preview-2.jpg',
-      tags:['C#','WPF','WCF'],
+      {
+        preview:'Превью работы 2',
+        title:'Система проектирования',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-2.jpg',
+        previewImage: 'content/preview-2.jpg',
+        tags:['C#','WPF','WCF'],
     },
-    work3: {
-      preview:'Превью работы 3',
-      title:'Система аналитики',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-3.jpg',
-      previewImage: 'content/preview-3.jpg',
-      tags:['ASP.Net Core','React','SPA'],
+      {
+        preview:'Превью работы 3',
+        title:'Система аналитики',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-3.jpg',
+        previewImage: 'content/preview-3.jpg',
+        tags:['ASP.Net Core','React','SPA'],
     },
-    work4: {
+    {
       preview:'Превью работы 4',
       title:'Сайт-портфолио',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
@@ -121,19 +129,19 @@ include ./mixins.pug
       previewImage: 'content/preview-4.jpg',
       tags:['Vue','Webpack','SPA'],
     },
-    work5: {
-      preview:'Превью работы 5',
-      title:'Сайт-портфолио',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-5.jpg',
-      previewImage: 'content/preview-5.jpg',
-      tags:['Vue','Webpack','SPA'],
+      {
+        preview:'Превью работы 5',
+        title:'Сайт-портфолио',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-5.jpg',
+        previewImage: 'content/preview-5.jpg',
+        tags:['Vue','Webpack','SPA'],
     }
-  }
+  ]
 
-  var activeWork = worksList.work2
+  var activeWork = worksList[1]
 
 // yells
 -
@@ -155,27 +163,29 @@ include ./mixins.pug
 // feedback
 -
   var feedbackInputs = [
-     {
+    {
       tooltip:'Введите ваше имя',
       placeholder:'Ковальчук Дмитрий',
       icon: 'user',
       name: 'username',
     },
-     {
-      tooltip:'Введите ваш email',
-      placeholder:'loftschool@study.com',
-      icon: 'envelope',
-      name: 'email',
+      {
+        tooltip:'Введите ваш email',
+        placeholder:'loftschool@study.com',
+        icon: 'envelope',
+        name: 'email',
     },
     {
       tooltip:'Сообщение к письму',
-      placeholder:'Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса.',
+      placeholder:'Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса.',
       icon: 'message',
       name: 'message',
     }
   ]
 
   var lastInput = feedbackInputs[feedbackInputs.length-1];
+
+// footer
 
 <!DOCTYPE html>
 html(lang="en")
@@ -191,7 +201,7 @@ html(lang="en")
           .container.developer__container
             header.header.developer__header
               .header__logo
-                .initials МШ
+                .initials.title-text МШ
               .header__menu
                 nav.nav
                   ul.nav__list
@@ -204,12 +214,30 @@ html(lang="en")
                     li.socials__item
                       a.socials__link(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon')
+              .hamburger.header__hamburger
+                +icon('hamburger','hamburger__icon')
+              aside.side-panel.header__side-panel
+                .side-panel__menu.text.text_bold
+                  nav.nav
+                    ul.nav__list.side-panel__nav-list
+                      each item in navItems
+                        li.nav__item
+                          a(href="#").nav__link.nav__link_no-padding #{item}
+                .side-panel__socials
+                  ul.socials
+                    each icon in icons
+                      li.socials__item
+                        a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                          +icon(`${icon.icon}`,'socials__icon')
+                .side-panel__icon
+                  +icon('remove', 'side-panel__button')
             .developer__content
               .dev-info
-                .dev-info__desc Личный сайт разработчика
-                h1.dev-info__title #{developerName}
+                .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
+                h1.dev-info__title.title-text.title-text_main #{developerName}
             .developer__button
-              .scroll-button Скролл
+              .scroll-button.text.text_bold Скролл
+                +icon('scroll', 'scroll-button__img')
         section.about
           .container.about__container
             .about__info
@@ -219,51 +247,50 @@ html(lang="en")
                 ul.user__list
                   each item in userList
                     li.user__item
-                      .user__property #{item.name}
-                      .user__value #{item.value}
+                      .user__property.text.text_semi-bold.text_30 #{item.name}
+                      .user__value.text.text_semi-bold #{item.value}
             .about__desc
-              .about__welcome Привет, меня зовут
-              h2.about__title #{developerName}      
-              .about__text
+              .about__welcome.text.text_semi-bold.text_50 Привет, меня зовут
+              h2.about__title.text.title-text #{developerName}      
+              .about__text.text.text_semi-bold.text_50
                 p #{jobDescription}   
-              .about__ps 
+              .about__ps.text.text_50.text_italic
                 p #{jobContent}  
       section.skills
         .container.skills__container
           .skills__backpack
-            .skills__backpack-wrapper
-              +image("content/backpack.png","skills__backpack-img")
+            +image("content/backpack.png","skills__backpack-img")
           .skills__content
             .skills__section-title
               .section-title
-                h2.section-title__text #{skillsTitle}
-                .section-title__desc  
+                h2.section-title__text.title-text.title-text_small #{skillsTitle}
+                .section-title__desc.text.text_semi-bold.text_50 
                   p #{jobContent}      
             .skills__widget
               ul.skills__list
                 each skillGroup, key in skillsList
                   li.skill-group
-                    h3.skill-group__title #{key}
+                    h3.skill-group__title.title-text.title-text_sub #{key}
                     ul.skill-group__list
                       each value, key in skillGroup
                         li.skill-group__item
                           .skill
-                            .skill__title #{key}
+                            .skill__title.text.text_bold.text_50 #{key}
                             svg(
-                              viewBox="0 0 40 40" 
+                              viewBox="0 0 36 36" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_inner
-                              circle(cx="20" cy="20" r="16")
+                              circle(cx="18" cy="18" r="16")
                             svg(
-                              stroke-dasharray="65 100" 
-                              viewBox="0 0 40 40" 
+                              stroke-dasharray=`${value}`+" 100" 
+                              viewBox="0 0 36 36" 
                               preserveAspectRatio="none" 
                               stroke-alignment="inner").skill__circle.skill__circle_outer
                               defs
                                 linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
                                   stop(offset="0%" stop-color="#9300e7") 
                                   stop(offset="100%" stop-color="#4900ed") 
-                              circle(cx="20" cy="20" r="16" stroke="url(#gradient)")
+                              circle(cx="18" cy="18" r="16" stroke="url(#gradient)")
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
@@ -273,30 +300,32 @@ html(lang="en")
         .container.works__container
           .works__section-title
             .section-title
-              h2.section-title__text Мои работы
+              h2.section-title__text.title-text Мои работы
           .works__content
             .work
               .work__slider 
                 .work__index.text.text_super= 2
                 .work__view
                   +image(`${activeWork.image}`, 'work__img')
-                  //- h3.work__title #{activeWork.preview}
-                  //- .work__text #{activeWork.description}
-                  .previews.work__previews
-                    ul.previews__list
-                      each preview in worksList
-                        li.previews__item 
-                          +image(`${preview.previewImage}`, 'previews__img')
                   .work__buttons
-                    button.work__button.work__button_up вверх
-                    button.work__button.work__button_down вниз
+                    button.work__button.work__button_up
+                      +icon("arrow-down", 'work__button-img work__button-img_up')
+                    button.work__button.work__button_down
+                      +icon("arrow-down", 'work__button-img work__button-img_down')
+                  .previews.work__previews
+                        ul.previews__list
+                          each preview, index in worksList
+                            li.previews__item 
+                              - 
+                                var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
+                              +image(`${preview.previewImage}`, previewClass)
               .work__desc
                 .tags.work__tags
                   ul.tags__list
                     each tag in activeWork.tags
-                      li.tags__item #{tag}
-                .section-title__text.work__title #{activeWork.title}
-                .work__text.text.text_70-600 #{activeWork.description}
+                      li.tags__item.text.text_semi-bold.text_70 #{tag}
+                .section-title__text.work__title.title-text.title-text_small #{activeWork.title}
+                .work__text.text.text_semi-bold.text_70 #{activeWork.description}
                 .work__link
                   a.link(href= `${activeWork.link}`) Посмотреть сайт
                     +icon('link', 'link__img')
@@ -307,49 +336,84 @@ html(lang="en")
               .double-slider
                 .double-slider__header
                   .double-slider__title
-                    h2.double-slider__title-text Что обо мне говорят
+                    h2.double-slider__title-text.title-text Что обо мне говорят
                   .double-slider__buttons
-                    button.double-slider__button.double-slider__button_left влево
-                    button.double-slider__button.double-slider__button_right вправо
+                    button.double-slider__button.double-slider__button_left 
+                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
+                    button.double-slider__button.double-slider__button_right 
+                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
                 .double-slider__content
                   ul.double-slider__list
                     each yell in yellsList
                       li.double-slider__item
                         +icon('quote', 'double-slider__quote')
                         .yell
-                          .yell__text #{yell.text}
+                          .yell__text.text.text_semi-bold.text_50 #{yell.text}
                           .yell__user
                             .avatar.yell__avatar
                               +image(`${yell.avatar}`,"avatar__img")
                             .yell__user-desc
-                              .yell__username #{yell.user}
-                              .yell__user-occupation #{yell.occupation}
+                              .yell__username.text.text_bold #{yell.user}
+                              .yell__user-occupation.text.text_semi-bold.text_30 #{yell.occupation}
         section.feedback
           .container.feedback__container
-          .feedback__section-title
-            .section-title
-              h2.section-title__text Связаться со мной
-          .feedback__content
-            form(id="feedback-form").form.feedback__form
-              ul.form__list
-                - for(var i = 0; i < feedbackInputs.length-1; i++) 
-                  li.input
-                    +icon(`${feedbackInputs[i].icon}`,"input__icon")
-                    .input__label #{feedbackInputs[i].tooltip}
-                    input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].placeholder}`).input__control
-              .input.input_textarea
-                +icon(`${lastInput.icon}`,"input__icon")
-                .input__label #{lastInput.tooltip}
-                textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.placeholder}`).input__control
-              button(type="submit" form="feedback-form").form__button Отправить
+            .feedback__section-title
+              .section-title
+                h2.section-title__text.title-text Связаться со мной
+            .feedback__content
+              form(id="feedback-form").form.feedback__form
+                ul.form__list
+                  - for(var i = 0; i < feedbackInputs.length-1; i++) 
+                    - var inputClass = i !== 1 ? 'input form__item' : 'input input_active input_error form__item';
+                      li(class=`${inputClass}`)
+                        +icon(`${feedbackInputs[i].icon}`,"input__icon")
+                        .input__label.text.text_semi-bold.text_30 #{feedbackInputs[i].tooltip}
+                        input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].tooltip}`).input__control.text.text_bold
+                        .context-tooltip.input__tooltip
+                          .context-tooltip__message ошибка
+                .input.input_active.input_textarea.form__textarea
+                  +icon(`${lastInput.icon}`,"input__icon")
+                  .input__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
+                  textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).input__control.input__control_textarea.text.text_bold
+                  .context-tooltip.input__tooltip
+                    .context-tooltip__message ошибка
+                button(type="submit" form="feedback-form").dialog-button.form__button.text.text_bold отправить
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 0,100 1000,0")
-
-
-
-//- +image('content/user.jpg', 'user-pic')
-//- +icon('link', 'link-class')
-//- .icon-bg
+      section.temp
+        .popup
+          .popup__message.text.text_bold Письмо отправлено
+          button.dialog-button.popup__button.text.text_bold закрыть
+        .tooltip.tooltip_ok Сообщение отправлено
+          +icon('remove', 'tooltip__button')
+        .tooltip.tooltip_warning Сервер перегружен
+          +icon('remove', 'tooltip__button')
+        .tooltip.tooltip_error Сообщение не отправлено
+          +icon('remove', 'tooltip__button')
+      footer.footer 
+        .container.footer__container
+          .footer__left
+            .footer__copyright.text.text_copyright.text_15-white &copy 2020
+            .footer__initials.text.text_bold #{developerName}
+            .footer__title.text.text_30-white #{siteTitle}
+          .footer__right
+            .footer__menu
+              nav.nav
+                ul.nav__list.nav__list_footer
+                  each item in navItems
+                    li.nav__item
+                      a(href="#").nav__link.nav__link_footer #{item}
+            .footer__content
+              .footer__socials.text.text_semi-bold.text_30-white
+                .footer__desc #{footerContent}
+                ul.socials.socials_footer
+                  each icon in icons
+                    li.socials__item
+                      a.socials__link.socials__link_footer(href=`${icon.link}` target=`${icon.target}`)
+                        +icon(`${icon.icon}`,'socials__icon socials__icon_footer')
+              .footer__quote
+                .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
+                .footer__quote-user.text.text_italic #{footerQuoteAuthor}

@@ -1,14 +1,36 @@
 .feedback {
   padding-top: 180px;
   padding-bottom: 165px;
+  @include phone {
+    padding: 60px 0;
+    min-height: 100vh;
+  }
 }
 .feedback__container {
 }
 .feedback__section-title {
-  margin-bottom: 95px;
+  margin-bottom: 80px;
+
+  @include tablet {
+    text-align: center;
+  }
+  @include phone {
+    margin-bottom: 40px;
+  }
 }
 
 .feedback__content {
 }
 .feedback__form {
+  width: 60vw;
+  min-width: 825px;
+
+  @include desktop {
+    width: 75vw;
+    min-width: 680px;
+  }
+  @include tablet {
+    width: 100%;
+    min-width: 100%;
+  }
 }

@@ -1,22 +1,42 @@
 .work {
   display: flex;
+
+  @include laptop {
+    flex-direction: column;
+  }
 }
 .work__slider {
-  width: calc(75% - 30px);
-  margin-right: $margin-safe;
+  width: 75%;
+  margin-right: 0;
   position: relative;
+
+  @include laptop {
+    width: 100%;
+    margin-bottom: 75px;
+  }
 }
 .work__index {
   position: absolute;
-  z-index: -1;
+  /* z-index: -1; */
   left: 100%;
   transform: translateX(calc(-100% + 15px));
   text-align: right;
+
+  @include tablet {
+    transform: translateX(calc(-50%));
+  }
+  @include phone {
+    display: none;
+  }
 }
 .work__view {
-  width: calc(100%-125px);
+  width: calc(100%-103px);
   background: transparent;
   position: relative;
+
+  @include tablet {
+    width: 100%;
+  }
 }
 .work__img {
 }
@@ -27,14 +47,38 @@
   left: 100%;
   transform: translateX(-100%);
   display: flex;
+  @include phone {
+    transform: translate(-100%, -100%);
+  }
 }
 .work__button_down {
 }
 .work__button {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
+  width: 50px;
+  height: 50px;
+  background: $text-color;
+  color: white;
+  transition: $delay;
+  &_up {
+  }
+  &:hover {
+    background: $main-color;
+  }
 }
-.work__button_up {
+.work__button-img {
+  width: 8px;
+  height: 10px;
+  fill: currentColor;
+  &_up {
+    transform: rotate(-90deg);
+  }
+  &_down {
+    transform: rotate(90deg);
+  }
 }
 .work__previews {
   position: absolute;
@@ -42,18 +86,56 @@
   left: 100%;
   width: 15%;
   transform: translate(-100%, -100%);
+
+  @include phone {
+    display: none;
+  }
 }
 
 .work__desc {
-  width: calc(25% - 30px);
-  margin-left: $margin-safe;
+  padding-top: 7px;
+  margin-left: 0;
+  width: 25%;
+
+  @include laptop {
+    width: 100%;
+    text-align: center;
+  }
+  @include phone {
+    text-align: left;
+    margin-left: 30px;
+  }
 }
 .work__tags {
+  margin-bottom: 24px;
+
+  @include laptop {
+    display: inline-block;
+    margin: 0 auto;
+  }
 }
 .work__title {
+  @include phone {
+    max-width: 85%;
+  }
 }
 .work__text {
   margin-bottom: 60px;
+
+  @include laptop {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+  @include phone {
+    margin-left: 0;
+  }
 }
+
 .work__link {
+  @include laptop {
+    display: inline-block;
+    margin: 0 auto;
+  }
 }

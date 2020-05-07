@@ -2,38 +2,58 @@
   position: relative;
   height: 100vh;
   min-height: 650px;
-  padding-top: 200px;
+  padding-top: 195px;
+
+  @include tablet {
+    height: auto;
+    min-height: 60vh;
+    padding-top: 125px;
+    padding-bottom: 75px;
+  }
+  @include phone {
+    min-height: 100vh;
+    padding: 75px 0;
+  }
 }
 .about__container {
   display: flex;
   max-width: 980px;
+
+  @include desktop {
+    max-width: 1080px;
+  }
+  @include phone {
+    flex-direction: column;
+  }
 }
 .about__info {
-  flex: 3;
-  margin-right: $margin-safe;
+  flex: 2;
+  margin-right: 65px;
+
+  @include phone {
+    width: 100%;
+    margin-bottom: 50px;
+  }
 }
 
 .about__desc {
-  flex: 5;
+  flex: 3;
   display: flex;
   flex-direction: column;
-  margin-left: $margin-safe;
+
+  @include phone {
+    width: 100%;
+  }
 }
 .about__welcome {
-  font-weight: 600;
   margin-bottom: $margin-safe;
-  color: $text-color50;
 }
 .about__title {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: $margin-safe;
+  margin-bottom: 28px;
 }
 .about__text {
-  color: $text-color50;
-  font-weight: 600;
+  margin-bottom: 50px;
 }
 .about__ps {
   margin-top: auto;
-  color: $text-color50;
 }
