@@ -4,6 +4,18 @@
   width: 380px;
   height: 20vh;
   min-height: 220px;
+
+  @include desktop {
+    width: 30vw;
+    height: 25vh;
+  }
+  @include tablet {
+    width: 100%;
+    height: 25vh;
+  }
+  @include phone {
+    height: 20vh;
+  }
 }
 .yell__text {
 }

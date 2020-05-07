@@ -1,16 +1,3 @@
-.skill {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  @include tablets {
-    width: 1.15 * 150px;
-    height: 1.15 * 150px;
-  }
-}
 .skill__title {
   text-align: center;
   display: block;
@@ -40,4 +27,20 @@
   &_inner {
     stroke: $light-gray;
   } */
+}
+
+/* prettier-ignore */
+.skill {
+  width: 150Px;
+  height: 150Px;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 950px) {
+     width: 130Px;
+    height: 130Px;
+  }
 }

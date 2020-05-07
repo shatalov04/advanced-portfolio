@@ -17,8 +17,9 @@
   "tag-bg-color": "#e7ecf3",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
-  "bp-tablets": "768px",
-  "bp-phones": "480px",
+  "bp-tablet": "768px",
+  "bp-phone": "480px",
+  "bp-laptop": "1024px",
   "margin-safe": "15px",
   "delay": "0.3s"
 }

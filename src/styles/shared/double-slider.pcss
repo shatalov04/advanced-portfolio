@@ -6,9 +6,19 @@
   display: flex;
   align-items: center;
   margin-bottom: 90px;
+
+  @include phone {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 .double-slider__title {
   margin-right: 95px;
+
+  @include phone {
+    margin-right: 0px;
+    margin-bottom: 25px;
+  }
 }
 .double-slider__title-text {
 }
@@ -36,6 +46,9 @@
     background: $text-color;
     color: white;
   }
+  &:last-child {
+    margin-right: 0;
+  }
 }
 .double-slider__button-img {
   width: 8px;
@@ -50,7 +63,6 @@
 .double-slider__content {
 }
 .double-slider__list {
-  padding-left: 30px;
   display: flex;
 }
 .double-slider__item {
@@ -59,10 +71,28 @@
   &:last-child {
     margin-right: 0;
   }
+
+  @include tablet {
+    width: 50%;
+  }
+  @include phone {
+    width: 100%;
+    &:last-child {
+      display: none;
+    }
+  }
 }
 .double-slider__quote {
   width: 75px;
   height: 63px;
   fill: $tag-bg-color;
   margin-right: 20px;
+
+  @include tablet {
+    width: 30px;
+    height: 26px;
+  }
+  @include phone {
+    display: none;
+  }
 }
