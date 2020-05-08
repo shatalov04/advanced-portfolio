@@ -12,15 +12,6 @@ include ./mixins.pug
 - var skillsTitle = 'Чем я могу быть вам полезен'
 
 // nav
--
-  var navItems = [
-    'Главная',
-    'Обо мне',
-    'Навыки',
-    'Работы',
-    'Отзывы',
-    'Связаться',
-  ]
 
 // socials
 -
@@ -194,53 +185,33 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+    script(src="https://cdn.jsdelivr.net/npm/vue-scrollto")
     title Portfolio | main page
   body
-    .wrapper
-      .welcome-section
+    .wrapper#app
+      .welcome-section#main
         section.developer
           .container.developer__container
             header.header.developer__header
               .header__logo
                 .initials.title-text МШ
               .header__menu
-                nav.nav
-                  ul.nav__list
-                    each item in navItems
-                      li.nav__item
-                        a(href="#").nav__link #{item}
+                navigation(:sections=`sections`)
               .header__socials
                 ul.socials
                   each icon in icons
                     li.socials__item
                       a.socials__link(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon')
-              .header__side#side
-                .hamburger.header__hamburger(@click='handleOpen')
-                  +icon('hamburger','hamburger__icon')
-                aside.side-panel.header__side-panel(:class='activeClass')
-                  .side-panel__menu.text.text_bold
-                    nav.nav
-                      ul.nav__list.side-panel__nav-list
-                        each item in navItems
-                          li.nav__item
-                            a(href="#").nav__link.nav__link_no-padding #{item}
-                  .side-panel__socials
-                    ul.socials
-                      each icon in icons
-                        li.socials__item
-                          a.socials__link(href=`${icon.link}` target=`${icon.target}`)
-                            +icon(`${icon.icon}`,'socials__icon')
-                  .side-panel__icon(@click='handleClose')
-                    +icon('remove', 'side-panel__button')
+              side(:sections=`sections`)
             .developer__content
               .dev-info
                 .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
                 h1.dev-info__title.title-text.title-text_main #{developerName}
             .developer__button
-              .scroll-button.text.text_bold Скролл
+              .scroll-button.text.text_bold(v-scroll-to="{ el: `#${sections[1].id}`, duration: 2000, easing: [0.25, 1, 0.5, 1]}") Скролл
                 +icon('scroll', 'scroll-button__img')
-        section.about
+        section.about#about
           .container.about__container
             .about__info
               .user
@@ -258,7 +229,7 @@ html(lang="en")
                 p #{jobDescription}   
               .about__ps.text.text_50.text_italic
                 p #{jobContent}  
-      section.skills
+      section.skills#skills
         .container.skills__container
           .skills__backpack
             +image("content/backpack.png","skills__backpack-img")
@@ -298,7 +269,7 @@ html(lang="en")
               polygon(points="0,0 0,100 1000,100")
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,100 1000,0 1000,100")
-      section.works
+      section.works#works
         .container.works__container
           .works__section-title
             .section-title
@@ -315,12 +286,12 @@ html(lang="en")
                     button.work__button.work__button_down
                       +icon("arrow-down", 'work__button-img work__button-img_down')
                   .previews.work__previews
-                        ul.previews__list
-                          each preview, index in worksList
-                            li.previews__item 
-                              - 
-                                var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
-                              +image(`${preview.previewImage}`, previewClass)
+                    ul.previews__list
+                      each preview, index in worksList
+                        li.previews__item 
+                          - 
+                            var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
+                          +image(`${preview.previewImage}`, previewClass)
               .work__desc
                 .tags.work__tags
                   ul.tags__list
@@ -332,7 +303,7 @@ html(lang="en")
                   a.link(href= `${activeWork.link}`) Посмотреть сайт
                     +icon('link', 'link__img')
       .closing-section
-        section.yells
+        section.yells#yells
           .container.yells__container
             .yells__slider 
               .double-slider
@@ -357,7 +328,7 @@ html(lang="en")
                             .yell__user-desc
                               .yell__username.text.text_bold #{yell.user}
                               .yell__user-occupation.text.text_semi-bold.text_30 #{yell.occupation}
-        section.feedback
+        section.feedback#feedback
           .container.feedback__container
             .feedback__section-title
               .section-title
@@ -395,7 +366,7 @@ html(lang="en")
           +icon('remove', 'tooltip__button')
         .tooltip.tooltip_error Сообщение не отправлено
           +icon('remove', 'tooltip__button')
-      footer.footer 
+      footer.footer
         .container.footer__container
           .footer__left
             .footer__copyright.text.text_copyright.text_15-white &copy 2020
@@ -403,14 +374,10 @@ html(lang="en")
             .footer__title.text.text_30-white #{siteTitle}
           .footer__right
             .footer__menu
-              nav.nav
-                ul.nav__list.nav__list_footer
-                  each item in navItems
-                    li.nav__item
-                      a(href="#").nav__link.nav__link_footer #{item}
+              navigation(:sections=`sections`)
             .footer__content
               .footer__socials.text.text_semi-bold.text_30-white
-                .footer__desc #{footerContent}
+                .sfooter__desc #{footerContent}
                 ul.socials.socials_footer
                   each icon in icons
                     li.socials__item
@@ -419,3 +386,5 @@ html(lang="en")
               .footer__quote
                 .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
+    include templates/side.pug
+    include templates/nav.pug

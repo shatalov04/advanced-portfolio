@@ -2,11 +2,6 @@
 }
 .nav__list {
   display: flex;
-  &_footer {
-    @include tablet {
-      flex-wrap: wrap;
-    }
-  }
 }
 .nav__item {
   &:first-child {
@@ -54,21 +49,10 @@
       padding: 20px 30px 5px 0;
     }
 
-    &_no-padding {
-      padding: 0;
-      margin-bottom: 15px;
-    }
-
     &:hover {
       color: $main-color;
       color: $main-color;
       border-bottom: 3px solid $main-color;
-    }
-    &_footer {
-      &:hover {
-        color: $accent-color;
-        border-bottom: 3px solid transparent;
-      }
     }
   }
 }

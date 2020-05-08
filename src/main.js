@@ -3,12 +3,16 @@
 import './styles/main.pcss';
 
 import './scripts/skills';
-import './scripts/nav';
 import SidePanel from './scripts/side-panel';
+import Navigation from './scripts/nav';
+import Application from './scripts/app';
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line import/no-webpack-loader-syntax
   require('file-loader!./index.pug');
 }
 
-new Vue(SidePanel);
+Vue.component('side', SidePanel);
+Vue.component('navigation', Navigation);
+
+new Vue(Application);
