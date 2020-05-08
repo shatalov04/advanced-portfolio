@@ -1,0 +1,185 @@
+// content
+- var developerName = 'Максим Шаталов'
+- var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
+- var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
+- var footerContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool!'
+- var footerQuote = 'Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете.'
+- var footerQuoteAuthor = 'Martin Golding'
+- var siteTitle = 'Личный сайт разработчика'
+
+- var skillsTitle = 'Чем я могу быть вам полезен'
+
+// nav
+-
+  var navItems = {
+    main: 'Главная',
+    about: 'Обо мне',
+    skills: 'Навыки',
+    works: 'Работы',
+    yells: 'Отзывы',
+    feedback: 'Связаться'
+  }
+
+  var aboutLink = Object.keys(navItems)[1];
+// socials
+-
+  var icons = {
+    insta: {
+      link:'#',
+      target:'_blank',
+      icon:'insta'
+    },
+    vk: {
+      link:'http://vk.com/id224269077',
+      target:'_blank',
+      icon:'vk'
+    },
+    github: {
+      link:'https://github.com/furzeal',
+      target:'_blank',
+      icon:'github'
+    },
+  }
+
+// about
+-
+  var userList = {
+    location: {
+      name: 'Проживаю:',
+      value: 'Мытищи',
+    },
+    age: {
+      name: 'Возраст:',
+      value: '38 лет',
+    },
+    born: {
+      name: 'Родился:',
+      value: '26 февраля 1982',
+    },
+  }
+
+// developer
+
+// skills
+
+-
+  var skillsList={
+    Frontend:{
+      'HTML5':80,
+      'CSS3':50,
+      'JavaScript':60,
+      'WPf':70},
+    Backend:{
+      'C#':90,
+      'ASP.Net Core':40,
+      'SQL':50,
+      'EF Core':50,
+      'Node.js & npm':20,
+      'Mongo.db':40,
+    },
+    Workflow:{
+      'Git':70,
+      'Gulp':70,
+      'Webpack':30,
+      'Azure DevOps':70
+    }
+  }
+
+// works
+-
+  var worksList = [
+    {
+      preview:'Превью работы 1',
+      title:'Сайт школы образования',
+      description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
+      link:'#',
+      target:'_blank',
+      image: 'content/work-1.jpg',
+      previewImage: 'content/preview-1.jpg',
+      tags:['html','css','js'],
+    },
+      {
+        preview:'Превью работы 2',
+        title:'Система проектирования',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-2.jpg',
+        previewImage: 'content/preview-2.jpg',
+        tags:['C#','WPF','WCF'],
+    },
+      {
+        preview:'Превью работы 3',
+        title:'Система аналитики',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-3.jpg',
+        previewImage: 'content/preview-3.jpg',
+        tags:['ASP.Net Core','React','SPA'],
+    },
+    {
+      preview:'Превью работы 4',
+      title:'Сайт-портфолио',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+      link:'#',
+      target:'_blank',
+      image: 'content/work-4.jpg',
+      previewImage: 'content/preview-4.jpg',
+      tags:['Vue','Webpack','SPA'],
+    },
+      {
+        preview:'Превью работы 5',
+        title:'Сайт-портфолио',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
+        link:'#',
+        target:'_blank',
+        image: 'content/work-5.jpg',
+        previewImage: 'content/preview-5.jpg',
+        tags:['Vue','Webpack','SPA'],
+    }
+  ]
+
+  var activeWork = worksList[1]
+
+// yells
+-
+  var yellsList = {
+    yell1: {
+      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
+      user:'Ковальчук Дмитрий',
+      occupation:'Основатель Loftschool',
+      avatar: 'content/avatar-1.jpg',
+    },
+    yell2: {
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
+      user:'Владимир Сабанцев',
+      occupation:'Преподаватель',
+      avatar: 'content/avatar-2.jpg',
+    }
+  }
+
+// feedback
+-
+  var feedbackInputs = [
+    {
+      tooltip:'Введите ваше имя',
+      placeholder:'Ковальчук Дмитрий',
+      icon: 'user',
+      name: 'username',
+    },
+      {
+        tooltip:'Введите ваш email',
+        placeholder:'loftschool@study.com',
+        icon: 'envelope',
+        name: 'email',
+    },
+    {
+      tooltip:'Сообщение к письму',
+      placeholder:'Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса.',
+      icon: 'message',
+      name: 'message',
+    }
+  ]
+
+  var lastInput = feedbackInputs[feedbackInputs.length-1];

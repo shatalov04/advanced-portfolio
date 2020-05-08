@@ -78,43 +78,56 @@
 .footer__menu {
   margin-top: -33px;
   margin-bottom: 20px;
+
+  & .nav__list {
+    @include tablet {
+      flex-wrap: wrap;
+    }
+  }
+  & .nav__link {
+    &:hover {
+      color: $accent-color;
+      border-bottom: 3px solid transparent;
+    }
+  }
+
   @include phone {
     margin-bottom: 50px;
   }
-}
-.footer__content {
-  display: flex;
+  .footer__content {
+    display: flex;
 
-  @include tablet {
-    flex-direction: column;
+    @include tablet {
+      flex-direction: column;
+    }
   }
-}
-.footer__socials {
-  flex: 3;
-  margin-right: 150px;
+  .footer__socials {
+    flex: 3;
+    margin-right: 150px;
 
-  @include desktop {
-    margin-right: 50px;
+    @include desktop {
+      margin-right: 50px;
+    }
+    @include tablet {
+      margin-right: 0;
+      margin-bottom: 50px;
+    }
   }
-  @include tablet {
-    margin-right: 0;
-    margin-bottom: 50px;
-  }
-}
-.footer__desc {
-  margin-bottom: 20px;
-  @include desktop {
-    margin-bottom: 30px;
-  }
-  @include phone {
+  .footer__desc {
     margin-bottom: 20px;
+    @include desktop {
+      margin-bottom: 30px;
+    }
+    @include phone {
+      margin-bottom: 20px;
+    }
   }
-}
-.footer__quote {
-  flex: 4;
-}
-.footer__quote-text {
-  margin-bottom: 16px;
-}
-.footer__quote-user {
+  .footer__quote {
+    flex: 4;
+  }
+  .footer__quote-text {
+    margin-bottom: 16px;
+  }
+  .footer__quote-user {
+  }
 }

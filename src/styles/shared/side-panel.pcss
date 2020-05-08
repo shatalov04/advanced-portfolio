@@ -4,15 +4,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  transform: translate(100%, 0);
+  transition: $delay;
+
+  &_open {
+    transform: translate(0, 0);
+  }
 }
 .side-panel__menu {
+  & .nav__list {
+    flex-direction: column;
+  }
+  & .nav__link {
+    padding: 0;
+    margin-bottom: 15px;
+  }
 }
 .side-panel__socials {
   margin-left: -9px;
-}
-
-.side-panel__nav-list {
-  flex-direction: column;
 }
 
 .side-panel__icon {

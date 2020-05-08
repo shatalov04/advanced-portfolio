@@ -1,1 +1,3 @@
-console.log('this is skills module');
+export default {
+
+};

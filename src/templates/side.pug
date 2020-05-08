@@ -1,0 +1,15 @@
+script(type="text/x-template")#side-template
+    .header__side#side
+        .hamburger.header__hamburger(@click='handleOpen')
+            +icon('hamburger','hamburger__icon')
+        aside.side-panel.header__side-panel(:class='activeClass')
+            .side-panel__menu.text.text_bold
+                navigation(:sections=`sections` @clickEmmited='handleClose()')
+            .side-panel__socials
+                ul.socials
+                    each icon in icons
+                        li.socials__item
+                            a.socials__link(href=`${icon.link}` target=`${icon.target}`)
+                                +icon(`${icon.icon}`,'socials__icon')
+            .side-panel__icon(@click='handleClose')
+                +icon('remove', 'side-panel__button')
