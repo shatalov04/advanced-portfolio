@@ -190,6 +190,7 @@ html(lang="en")
   body
     .wrapper#app
       .welcome-section#main
+        parallax
         section.developer
           .container.developer__container
             header.header.developer__header
@@ -386,5 +387,6 @@ html(lang="en")
               .footer__quote
                 .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
+    include templates/parallax.pug
     include templates/side.pug
     include templates/nav.pug
