@@ -11,7 +11,6 @@ include ./mixins.pug
 
 - var skillsTitle = 'Чем я могу быть вам полезен'
 
-// nav
 
 // socials
 -
@@ -48,33 +47,6 @@ include ./mixins.pug
       name: 'Родился:',
       value: '26 февраля 1982',
     },
-  }
-
-// developer
-
-// skills
-
--
-  var skillsList={
-    Frontend:{
-      'HTML5':80,
-      'CSS3':50,
-      'JavaScript':60,
-      'WPf':70},
-    Backend:{
-      'C#':90,
-      'ASP.Net Core':40,
-      'SQL':50,
-      'EF Core':50,
-      'Node.js & npm':20,
-      'Mongo.db':40,
-    },
-    Workflow:{
-      'Git':70,
-      'Gulp':70,
-      'Webpack':30,
-      'Azure DevOps':70
-    }
   }
 
 // works
@@ -176,8 +148,6 @@ include ./mixins.pug
 
   var lastInput = feedbackInputs[feedbackInputs.length-1];
 
-// footer
-
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -240,31 +210,7 @@ html(lang="en")
                 h2.section-title__text.title-text.title-text_small #{skillsTitle}
                 .section-title__desc.text.text_semi-bold.text_50 
                   p #{jobContent}      
-            .skills__widget
-              ul.skills__list
-                each skillGroup, key in skillsList
-                  li.skill-group
-                    h3.skill-group__title.title-text.title-text_sub #{key}
-                    ul.skill-group__list
-                      each value, key in skillGroup
-                        li.skill-group__item
-                          .skill
-                            .skill__title.text.text_bold.text_50 #{key}
-                            svg(
-                              viewBox="0 0 36 36" 
-                              preserveAspectRatio="none" 
-                              stroke-alignment="inner").skill__circle.skill__circle_inner
-                              circle(cx="18" cy="18" r="16")
-                            svg(
-                              stroke-dasharray=`${value}`+" 100" 
-                              viewBox="0 0 36 36" 
-                              preserveAspectRatio="none" 
-                              stroke-alignment="inner").skill__circle.skill__circle_outer
-                              defs
-                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
-                                  stop(offset="0%" stop-color="#9300e7") 
-                                  stop(offset="100%" stop-color="#4900ed") 
-                              circle(cx="18" cy="18" r="16" stroke="url(#gradient)")
+            skills
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
@@ -387,6 +333,6 @@ html(lang="en")
               .footer__quote
                 .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
-    include templates/parallax.pug
+    include templates/templates.pug
     include templates/side.pug
     include templates/nav.pug
