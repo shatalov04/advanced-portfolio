@@ -29,11 +29,6 @@ export default {
     ],
   },
   methods: {
-    handleScroll(elementId, e) {
-      const element = document.querySelector(`#${elementId}`);
-      console.log('element :>> ', element);
-      const elementTop = element.clientTop;
-      console.log('elementTop :>> ', elementTop);
-    },
+
   },
 };
