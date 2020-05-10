@@ -1,6 +1,5 @@
 include ./mixins.pug
 
-// content
 - var developerName = 'Максим Шаталов'
 - var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
 - var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
@@ -12,7 +11,6 @@ include ./mixins.pug
 - var skillsTitle = 'Чем я могу быть вам полезен'
 
 
-// socials
 -
   var icons = {
     insta: {
@@ -32,7 +30,6 @@ include ./mixins.pug
     },
   }
 
-// about
 -
   var userList = {
     location: {
@@ -49,7 +46,6 @@ include ./mixins.pug
     },
   }
 
-// works
 -
   var worksList = [
     {
@@ -106,7 +102,6 @@ include ./mixins.pug
 
   var activeWork = worksList[1]
 
-// yells
 -
   var yellsList = {
     yell1: {
@@ -120,10 +115,39 @@ include ./mixins.pug
       user:'Владимир Сабанцев',
       occupation:'Преподаватель',
       avatar: 'content/avatar-2.jpg',
+    },
+    yell3: {
+      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
+      user:'Ковальчук Дмитрий',
+      occupation:'Основатель Loftschool',
+      avatar: 'content/avatar-1.jpg',
+    },
+    yell4: {
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
+      user:'Владимир Сабанцев',
+      occupation:'Преподаватель',
+      avatar: 'content/avatar-2.jpg',
+    },
+    yell5: {
+      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
+      user:'Ковальчук Дмитрий',
+      occupation:'Основатель Loftschool',
+      avatar: 'content/avatar-1.jpg',
+    },
+    yell6: {
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
+      user:'Владимир Сабанцев',
+      occupation:'Преподаватель',
+      avatar: 'content/avatar-2.jpg',
+    },
+    yell7: {
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
+      user:'Владимир Сабанцев',
+      occupation:'Преподаватель',
+      avatar: 'content/avatar-2.jpg',
     }
   }
 
-// feedback
 -
   var feedbackInputs = [
     {
@@ -154,8 +178,6 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
-    script(src="https://cdn.jsdelivr.net/npm/vue-scrollto")
     title Portfolio | main page
   body
     .wrapper#app
@@ -253,19 +275,27 @@ html(lang="en")
         section.yells#yells
           .container.yells__container
             .yells__slider 
-              .double-slider
+              .double-slider(@click='checkState' @touchend="checkState")
                 .double-slider__header
                   .double-slider__title
                     h2.double-slider__title-text.title-text Что обо мне говорят
                   .double-slider__buttons
-                    button.double-slider__button.double-slider__button_left 
+                    button(
+                      ref="sliderPrevious" 
+                      @click="handlePrevious()"
+                        :disabled='isPreviousDisabled'
+                      ).double-slider__button.double-slider__button_left 
                       +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
-                    button.double-slider__button.double-slider__button_right 
+                    button(
+                      ref="sliderNext" 
+                      @click="handleNext()"
+                      :disabled='isNextDisabled'
+                      ).double-slider__button.double-slider__button_right 
                       +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
                 .double-slider__content
-                  ul.double-slider__list
+                  flickity(ref="flickity" :options="flickityOptions").double-slider__list
                     each yell in yellsList
-                      li.double-slider__item
+                      .double-slider__item
                         +icon('quote', 'double-slider__quote')
                         .yell
                           .yell__text.text.text_semi-bold.text_50 #{yell.text}
@@ -334,5 +364,3 @@ html(lang="en")
                 .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
     include templates/templates.pug
-    include templates/side.pug
-    include templates/nav.pug
