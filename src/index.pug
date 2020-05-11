@@ -103,52 +103,6 @@ include ./mixins.pug
   var activeWork = worksList[1]
 
 -
-  var yellsList = {
-    yell1: {
-      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
-      user:'Ковальчук Дмитрий',
-      occupation:'Основатель Loftschool',
-      avatar: 'content/avatar-1.jpg',
-    },
-    yell2: {
-      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
-      user:'Владимир Сабанцев',
-      occupation:'Преподаватель',
-      avatar: 'content/avatar-2.jpg',
-    },
-    yell3: {
-      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
-      user:'Ковальчук Дмитрий',
-      occupation:'Основатель Loftschool',
-      avatar: 'content/avatar-1.jpg',
-    },
-    yell4: {
-      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
-      user:'Владимир Сабанцев',
-      occupation:'Преподаватель',
-      avatar: 'content/avatar-2.jpg',
-    },
-    yell5: {
-      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
-      user:'Ковальчук Дмитрий',
-      occupation:'Основатель Loftschool',
-      avatar: 'content/avatar-1.jpg',
-    },
-    yell6: {
-      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
-      user:'Владимир Сабанцев',
-      occupation:'Преподаватель',
-      avatar: 'content/avatar-2.jpg',
-    },
-    yell7: {
-      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
-      user:'Владимир Сабанцев',
-      occupation:'Преподаватель',
-      avatar: 'content/avatar-2.jpg',
-    }
-  }
-
--
   var feedbackInputs = [
     {
       tooltip:'Введите ваше имя',
@@ -274,37 +228,7 @@ html(lang="en")
       .closing-section
         section.yells#yells
           .container.yells__container
-            .yells__slider 
-              .double-slider(@click='checkState' @touchend="checkState")
-                .double-slider__header
-                  .double-slider__title
-                    h2.double-slider__title-text.title-text Что обо мне говорят
-                  .double-slider__buttons
-                    button(
-                      ref="sliderPrevious" 
-                      @click="handlePrevious()"
-                        :disabled='isPreviousDisabled'
-                      ).double-slider__button.double-slider__button_left 
-                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
-                    button(
-                      ref="sliderNext" 
-                      @click="handleNext()"
-                      :disabled='isNextDisabled'
-                      ).double-slider__button.double-slider__button_right 
-                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
-                .double-slider__content
-                  flickity(ref="flickity" :options="flickityOptions").double-slider__list
-                    each yell in yellsList
-                      .double-slider__item
-                        +icon('quote', 'double-slider__quote')
-                        .yell
-                          .yell__text.text.text_semi-bold.text_50 #{yell.text}
-                          .yell__user
-                            .avatar.yell__avatar
-                              +image(`${yell.avatar}`,"avatar__img")
-                            .yell__user-desc
-                              .yell__username.text.text_bold #{yell.user}
-                              .yell__user-occupation.text.text_semi-bold.text_30 #{yell.occupation}
+            yells
         section.feedback#feedback
           .container.feedback__container
             .feedback__section-title
