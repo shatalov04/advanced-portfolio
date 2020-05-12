@@ -1,5 +1,5 @@
 script(type="text/x-template")#parallax-template
-  section.parallax(refs="parallax" @scroll.passive="handleScroll()")
+  section.parallax(@scroll.passive="handleScroll()")
     .parallax__layer(data-speed='0.01')
       img(src=require('images/parallax/1.jpg')).parallax__image
     .parallax__layer(data-speed='0.15')

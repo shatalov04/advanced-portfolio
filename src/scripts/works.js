@@ -6,9 +6,6 @@
 const previews = {
   template: '#previews-template',
   props: ['selectedWork', 'previews'],
-  mounted() {
-    console.log('previews :>> ', this.previews);
-  },
 };
 const buttons = {
   template: '#buttons-template',
@@ -158,6 +155,10 @@ export default {
         default:
           break;
       }
+    },
+    handleSelect(index) {
+      this.selectedIndex = index;
+      this.checkState();
     },
     handleNext() {
       this.selectedIndex++;
