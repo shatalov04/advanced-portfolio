@@ -5,14 +5,21 @@
 .previews__item {
   cursor: pointer;
 }
+/*prettier-ignore*/
 .previews__img {
   width: 100%;
   transition: $delay;
+  margin: -4Px 0 -4Px 0;
+  border: 2px solid transparent;
+  &:last-child{
+  margin: -4Px 0 -2Px 0;
+  }
   &:hover {
-    outline: 2px solid $main-color;
-    transform: scale(1.1);
+    border: 2px solid $main-color;
+    transform: translateZ(50px) scale(1.1);
   }
   &.active {
-    outline: 2px solid $accent-color;
+    transform: translateZ(50px) scale(1.1);
+    border: 2px solid $accent-color;
   }
 }

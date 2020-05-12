@@ -156,6 +156,10 @@ export default {
           break;
       }
     },
+    handleSelect(index) {
+      this.selectedIndex = index;
+      this.checkState();
+    },
     handleNext() {
       this.selectedIndex++;
       this.checkState();

@@ -7,6 +7,7 @@ script(type="text/x-template")#works-template
         :isNextDisabled='isNextDisabled'
         :isPreviousDisabled='isPreviousDisabled'
         @slide="handleSlide"
+        @select="handleSelect"
         )
       workInfo(:selectedWork="selectedWork")
 
@@ -19,6 +20,7 @@ script(type="text/x-template")#work-slider-template
       :isNextDisabled='isNextDisabled'
       :isPreviousDisabled='isPreviousDisabled'
       @slide="$emit('slide', $event)"
+      @select="$emit('select', $event)"
       )
 
 script(type="text/x-template")#work-view-template
@@ -31,7 +33,8 @@ script(type="text/x-template")#work-view-template
       )
     previews(
       :selectedWork="selectedWork"
-      :previews="previews")
+      :previews="previews"
+      @select="$emit('select', $event)")
 
 script(type="text/x-template")#buttons-template
   .work__buttons
@@ -56,6 +59,7 @@ script(type="text/x-template")#previews-template
         img(
           :src="preview.image", class="previews__img"
           :class="{active: selectedWork.id === preview.id}"
+          @click.prevent="$emit('select', preview.index)"
 )
 
 script(type="text/x-template")#work-info-template
