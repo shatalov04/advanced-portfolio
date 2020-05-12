@@ -1,6 +1,11 @@
 .closing-section {
-  background: url(../images/content/closing-background.jpg) no-repeat top/cover;
+  background: white;
+  overflow: hidden;
   position: relative;
+  @include tablet {
+    background: url(../images/content/closing-background.jpg) no-repeat
+      top/cover;
+  }
 }
 .closing-section__triangles {
   position: absolute;

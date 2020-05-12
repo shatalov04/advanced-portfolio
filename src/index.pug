@@ -47,62 +47,6 @@ include ./mixins.pug
   }
 
 -
-  var worksList = [
-    {
-      preview:'Превью работы 1',
-      title:'Сайт школы образования',
-      description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-1.jpg',
-      previewImage: 'content/preview-1.jpg',
-      tags:['html','css','js'],
-    },
-      {
-        preview:'Превью работы 2',
-        title:'Система проектирования',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-2.jpg',
-        previewImage: 'content/preview-2.jpg',
-        tags:['C#','WPF','WCF'],
-    },
-      {
-        preview:'Превью работы 3',
-        title:'Система аналитики',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-3.jpg',
-        previewImage: 'content/preview-3.jpg',
-        tags:['ASP.Net Core','React','SPA'],
-    },
-    {
-      preview:'Превью работы 4',
-      title:'Сайт-портфолио',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-4.jpg',
-      previewImage: 'content/preview-4.jpg',
-      tags:['Vue','Webpack','SPA'],
-    },
-      {
-        preview:'Превью работы 5',
-        title:'Сайт-портфолио',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-5.jpg',
-        previewImage: 'content/preview-5.jpg',
-        tags:['Vue','Webpack','SPA'],
-    }
-  ]
-
-  var activeWork = worksList[1]
-
--
   var feedbackInputs = [
     {
       tooltip:'Введите ваше имя',
@@ -199,6 +143,7 @@ html(lang="en")
               h2.section-title__text.title-text Мои работы
           works(:previews-quantity=4)
       .closing-section
+        budda-parallax
         section.yells#yells
           .container.yells__container
             yells

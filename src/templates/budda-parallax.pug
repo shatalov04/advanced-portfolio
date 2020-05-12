@@ -1,0 +1,15 @@
+script(type="text/x-template")#budda-parallax-template
+  section.budda-parallax(ref="budda-parallax" @scroll.passive="handleScroll()")
+    .budda-parallax__layer(data-speed='0.05')
+      img(src=require('images/budda-parallax/1.jpg')).budda-parallax__image
+    .budda-parallax__layer(data-speed='0.12')
+      img(src=require('images/budda-parallax/2.png')).budda-parallax__image
+    .budda-parallax__layer(data-speed='0.23')
+      img(src=require('images/budda-parallax/3.png')).budda-parallax__image
+    .budda-parallax__layer(data-speed='0.33')
+      img(src=require('images/budda-parallax/4.png')).budda-parallax__image
+    .budda-parallax__layer(data-speed='0.36')
+      img(src=require('images/budda-parallax/4.png')).budda-parallax__image
+    .budda-parallax__layer(data-speed='0.4')
+      img(src=require('images/budda-parallax/4.png')).budda-parallax__image
+    .budda-parallax__footer

@@ -6,9 +6,6 @@
 const previews = {
   template: '#previews-template',
   props: ['selectedWork', 'previews'],
-  mounted() {
-    console.log('previews :>> ', this.previews);
-  },
 };
 const buttons = {
   template: '#buttons-template',
