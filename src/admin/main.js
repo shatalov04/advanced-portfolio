@@ -1,3 +1,5 @@
+import '../styles/main-admin.pcss';
+
 import Vue from 'vue';
 import App from './App.vue';
 
