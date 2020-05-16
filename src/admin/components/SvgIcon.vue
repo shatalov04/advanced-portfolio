@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      icon: { },
+      icon: {},
     };
   },
   created() {
@@ -36,18 +36,18 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .icon-wrapper{
-    max-width: 150px;
-    max-height: 150px;
-    display: block;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .icon{
-    width: 100%;
-    height: 100%;
-    display: block;
-    fill:currentColor;
-  }
+.icon-wrapper {
+  max-width: 150px;
+  max-height: 150px;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
 </style>

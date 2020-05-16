@@ -1,4 +1,12 @@
 {
+  "header-color": "#3e3e59",
+  "header-alt-color": "#454573",
+  "separator-color": "#ddd",
+  "admin-bg-color": "#f2f3f5",
+  "admin-loader-color": "#dee4ed",
+  "admin-ok-color": "#00d70a",
+  "admin-error-color": "#bf2929",
+  "admin-edit-color": "#a0a5b1",
   "text-color": "#414c63",
   "super-text-color": " #e6e6e6",
   "text-color30": "#babec5",
