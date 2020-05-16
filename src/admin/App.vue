@@ -19,6 +19,33 @@
                     a.nav__link(
                       href="#") {{item.title}}
                       //- @click='handleNavClick'
+    section.authorization#authorization
+      .authorization__container
+        .authorization__form
+          form.form
+            h1.form__title Авторизация
+            .form__properties
+              .form-property
+                label.form-property__label(for="login") Логин
+                SvgIcon(className="input__icon" name="user")
+                input.input.form-property__input(
+                  name="login"
+                  type="text"
+                  placeholder="Введите логин"
+                  required)
+              .form-property
+                label.form-property__label(for="password") Пароль
+                SvgIcon(className="input__icon" name="key")
+                input.input.form-property__input(
+                  name="password"
+                  type="password"
+                  placeholder="Введите пароль"
+                  required)
+            .form__buttons.form__buttons_center
+              button(type="submit").form__button.form__button_auth отправить
+            button.button.button_remove.authorization__remove-button(type="button")
+              SvgIcon(className="button__icon button__icon_remove" name="remove")
+
     section.about#about
       .container.about__container
         .about__title
@@ -36,7 +63,11 @@
                 .skill-group__header
                   .property-row.property-row_title
                     .property.property_title
-                      input.input.input_title(placeholder="Название новой группы" name="title")
+                      input.input.input_title(
+                        name="title"
+                        type="text"
+                        placeholder="Название новой группы"
+                        required)
                     .edit-control.active
                         SvgIcon(className="button__icon button__icon_edit" name="pencil")
                         SvgIcon(className="button__icon button__icon_apply" name="tick")
@@ -45,9 +76,17 @@
                 .skill-group__footer
                   .property-row.property-row_new
                     .property
-                      input.input.input_new(placeholder="Новый навык")
+                      input.input.input_new(
+                        name="title"
+                        type="text"
+                        placeholder="Новый навык"
+                        required)
                     .property.property_percentage
-                      input.input.input_percentage(value="100")
+                      input.input.input_percentage(
+                        name="title"
+                        type="text"
+                        value="100"
+                        required)
                     button.button.button_add(
                       type="button"
                     )
@@ -59,7 +98,12 @@
                 .skill-group__header
                   .property-row.property-row_title
                     .property.property_title
-                      input.input.input_title(placeholder="Название новой группы" name="title" value="Workflow")
+                      input.input.input_title(
+                        name="title"
+                        type="text"
+                        placeholder="Название новой группы"
+                        value="Workflow"
+                        required)
                     .edit-control.active
                         SvgIcon(className="button__icon button__icon_edit" name="pencil")
                         SvgIcon(className="button__icon button__icon_apply" name="tick")
@@ -68,7 +112,12 @@
                   ul.properties
                     li.property-row.properties__item
                       .property
-                        input.input(placeholder="Новый навык" value="Git")
+                        input.input(
+                        name="title"
+                        type="text"
+                        placeholder="Название навыка"
+                        value="Git"
+                        required)
                       .property.property_percentage
                         input.input.input_percentage(value="95")
                       .edit-control
@@ -180,7 +229,7 @@
         .works__content
           .works__form
             form.form
-              .form__title Редактирование работы
+              h2.form__title Редактирование работы
               .form__content
                 .form__loader
                   .loader
@@ -302,7 +351,7 @@
         .yells__content
           .yells__form
             form.form
-              .form__title Новый отзыв
+              h2.form__title Новый отзыв
               .form__content
                 .form__loader.yells__loader
                   .photo-loader
@@ -429,6 +478,11 @@ export default {
 //**********************************HEADER***************************************/
 :root {
   --bg-gradient: linear-gradient(90deg, $links-color 0%, $main-color 100%);
+  --bg-reversed-gradient: linear-gradient(
+    90deg,
+    $main-color 0%,
+    $links-color 100%
+  );
   --form-boxshadow: 4px 3px 10px rgba(0, 0, 0, 0.07);
 }
 //admin
@@ -505,7 +559,6 @@ export default {
 
 //nav
 .nav {
-  background: #eee;
 }
 .nav__list {
   height: 100%;
@@ -515,7 +568,7 @@ export default {
 .nav__item {
 }
 .nav__link {
-  padding: 23px;
+  padding: 24px;
   display: inline-block;
   white-space: nowrap;
   transition: $delay;
@@ -717,6 +770,17 @@ export default {
   }
 }
 
+.input__icon {
+  position: absolute;
+  right: 100%;
+  bottom: 0;
+  transform: translate(100%, -50%);
+  width: 30px;
+  height: 30px;
+  display: block;
+  color: $text-color30;
+}
+
 //edit-control
 .edit-control {
   display: flex;
@@ -814,7 +878,7 @@ export default {
   box-shadow: var(--form-boxshadow);
 }
 .form__title {
-  font-size: 18;
+  font-size: 18px;
   font-weight: 700;
   margin: 0 15px;
   padding: 30px 15px;
@@ -837,17 +901,22 @@ export default {
 }
 .form-property {
   margin-bottom: 20px;
+  position: relative;
 }
 .form-property__label {
   font-weight: 600;
   font-size: 15px;
-  color: $text-color50;
+  color: $text-color30;
 }
 
 .form__buttons {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  &_center {
+    margin-top: 40px;
+    justify-content: center;
+  }
 }
 .form__button {
   color: white;
@@ -857,6 +926,21 @@ export default {
   padding: 0 40px;
   background: $links-color;
   background: var(--bg-gradient);
+  &_auth {
+    background: $links-color;
+    background: var(--bg-gradient);
+
+    width: 80%;
+    height: 60px;
+    border-radius: 30px 5px 30px 5px;
+    text-transform: uppercase;
+    transition: $delay;
+    color: white;
+    &:hover {
+      opacity: 0.95;
+      background: var(--bg-reversed-gradient);
+    }
+  }
 }
 .form__button_secondary {
   color: $links-color;
@@ -971,10 +1055,10 @@ export default {
   }
 }
 
-//**********************************ABOUT***************************************/
-//**********************************ABOUT***************************************/
-//**********************************ABOUT***************************************/
-//**********************************ABOUT***************************************/
+//**********************************YELLS***************************************/
+//**********************************YELLS***************************************/
+//**********************************YELLS***************************************/
+//**********************************YELLS***************************************/
 
 //yells
 .yells {
@@ -1087,5 +1171,55 @@ export default {
 
 //control-bar
 .control-bar {
+}
+
+//**********************************AUTH***************************************/
+//**********************************AUTH***************************************/
+//**********************************AUTH***************************************/
+//**********************************AUTH***************************************/
+.authorization {
+  background: url(../images/content/welcome-background.jpg) no-repeat top/cover;
+}
+.authorization__container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $text-color;
+  opacity: 0.9;
+}
+.authorization__form {
+  position: relative;
+
+  width: 564px;
+  & .form {
+    padding: 20px 80px 40px;
+  }
+  & .form__properties {
+    width: 100%;
+    margin: 0;
+  }
+  & .form__title {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    border: 0;
+  }
+
+  & .input {
+    padding-left: 40px;
+    padding-bottom: 15px;
+  }
+  & .form-property__label {
+    padding-left: 40px;
+    padding-bottom: 15px;
+  }
+}
+.authorization__remove-button {
+  color: $text-color;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 </style>
