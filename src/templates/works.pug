@@ -1,0 +1,77 @@
+script(type="text/x-template")#works-template
+  .works__content
+    .work
+      workSlider(
+        :selectedWork="selectedWork"
+        :previews="previews"
+        :isNextDisabled='isNextDisabled'
+        :isPreviousDisabled='isPreviousDisabled'
+        @slide="handleSlide"
+        @select="handleSelect"
+        )
+      workInfo(:selectedWork="selectedWork")
+
+script(type="text/x-template")#work-slider-template
+  .work__slider 
+    .work__index.text.text_super {{selectedWork.id}}
+    workView(
+      :selectedWork="selectedWork"
+      :previews="previews"
+      :isNextDisabled='isNextDisabled'
+      :isPreviousDisabled='isPreviousDisabled'
+      @slide="$emit('slide', $event)"
+      @select="$emit('select', $event)"
+      )
+
+script(type="text/x-template")#work-view-template
+  .work__view 
+    img(:src="selectedWork.image").work__img
+    buttons(
+      :isNextDisabled='isNextDisabled'
+      :isPreviousDisabled='isPreviousDisabled'
+      @slide="$emit('slide', $event)"
+      )
+    previews(
+      :selectedWork="selectedWork"
+      :previews="previews"
+      @select="$emit('select', $event)")
+
+script(type="text/x-template")#buttons-template
+  .work__buttons
+    button(
+      @click.prevent="$emit('slide','next')"
+      :disabled='isNextDisabled'
+    ).work__button.work__button_up
+      +icon("arrow-down", 'work__button-img work__button-img_up')
+    button(
+      @click.prevent="$emit('slide','previous')"
+      :disabled='isPreviousDisabled'
+    ).work__button.work__button_down
+      +icon("arrow-down", 'work__button-img work__button-img_down')
+
+script(type="text/x-template")#previews-template
+  .previews.work__previews
+    ul.previews__list
+      li.previews__item(
+        v-for="preview in previews"
+        :key="preview.id"
+        ) 
+        img(
+          :src="preview.image", class="previews__img"
+          :class="{active: selectedWork.id === preview.id}"
+          @click.prevent="$emit('select', preview.index)"
+)
+
+script(type="text/x-template")#work-info-template
+  .work__desc
+    tags(:tags="selectedWork.tags")
+    .section-title__text.work__title.title-text.title-text_small {{selectedWork.title}}
+    .work__text.text.text_semi-bold.text_70 {{selectedWork.description}}
+    .work__link
+      a.link(:href="selectedWork.link") Посмотреть сайт
+        +icon('link', 'link__img')
+
+script(type="text/x-template")#tags-template
+  .tags.work__tags
+    ul.tags__list
+      li(v-for="tag in tags" :key="tag").tags__item.text.text_semi-bold.text_70 {{tag}}

@@ -23,6 +23,13 @@
     display: none;
   }
 }
+.header__side {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
 
 .header__hamburger {
   display: none;
@@ -37,7 +44,7 @@
 /*prettier-ignore*/
 .header__side-panel {
   z-index: 999;
-  position: absolute;
+  position: fixed;
   top: 0;
   right:  0;
   width: 320Px;
@@ -46,12 +53,7 @@
   display: flex;
   flex-direction: column;
   color: $text-color;
-  transform: translate(100%, 0);
-  transition: $delay;
-
-  @include tablet{
-      transform: translate(0, 0);
-  }
+ 
   @include phone{
     width:100vw ;
   }

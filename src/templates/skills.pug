@@ -1,0 +1,31 @@
+script(type="text/x-template")#skills-template
+  .skills__widget
+    ul.skills__list
+      li.skills__item(v-for='group in skills' :key='group.title')
+        skillGroup(:skillGroup='group')
+
+script(type="text/x-template")#skill-group-template
+  .skill-group
+    h3.skill-group__title.title-text.title-text_sub {{skillGroup.title}}
+    ul.skill-group__list
+      li.skill-group__item(v-for='skill in skillGroup.skills' :key='skill.id')
+        skill(:skill='skill')
+
+script(type="text/x-template")#skill-template
+  .skill
+    .skill__title.text.text_bold.text_50 {{skill.title}}
+    svg(
+      viewBox="0 0 36 36" 
+      preserveAspectRatio="none" 
+      stroke-alignment="inner").skill__circle.skill__circle_inner
+      circle(cx="18" cy="18" r="16")
+    svg(
+      :stroke-dasharray="percent"
+      viewBox="0 0 36 36" 
+      preserveAspectRatio="none" 
+      stroke-alignment="inner").skill__circle.skill__circle_outer
+      defs
+        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
+          stop(offset="0%" stop-color="#9300e7") 
+          stop(offset="100%" stop-color="#4900ed") 
+      circle(cx="18" cy="18" r="16" stroke="url(#gradient)")

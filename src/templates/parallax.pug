@@ -1,0 +1,17 @@
+script(type="text/x-template")#parallax-template
+  section.parallax(@scroll.passive="handleScroll()")
+    .parallax__layer(data-speed='0.01')
+      img(src=require('images/parallax/1.jpg')).parallax__image
+    .parallax__layer(data-speed='0.15')
+      img(src=require('images/parallax/2.png')).parallax__image
+    .parallax__layer(data-speed='0.20')
+      img(src=require('images/parallax/3.png')).parallax__image
+    .parallax__layer(data-speed='0.26')
+      img(src=require('images/parallax/4.png')).parallax__image
+    .parallax__layer(data-speed='0.35')
+      img(src=require('images/parallax/5.png')).parallax__image
+    .parallax__layer(data-speed='0.4')
+      img(src=require('images/parallax/6.png')).parallax__image
+    .parallax__layer(data-speed='0.45')
+      img(src=require('images/parallax/7.png')).parallax__image
+    .parallax__footer

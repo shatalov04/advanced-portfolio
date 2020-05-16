@@ -1,0 +1,104 @@
+$bg-color: white;
+$bp-desktop-large: 1400px;
+
+.budda-parallax {
+  position: absolute;
+  top: 0;
+  height: 110%;
+  width: 110vw;
+
+  @include tablet {
+    display: none;
+  }
+}
+.budda-parallax__layer {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 160vh;
+  will-change: transform;
+
+  &:nth-child(1) {
+    .budda-parallax__image {
+      top: -5vh;
+      left: 0;
+      width: 100%;
+      height: 110%;
+      object: cover;
+    }
+  }
+  &:nth-child(2) {
+    .budda-parallax__image {
+      left: 0;
+      width: 100%;
+      bottom: 15vh;
+    }
+  }
+  &:nth-child(3) {
+    .budda-parallax__image {
+      width: 580px;
+      top: 65vh;
+      left: 50%;
+      margin-left: 1%;
+
+      @media (max-width: $bp-desktop-large)  {
+        left: 100%;
+        transform: translateX(-130%)
+      }
+
+      @include desktop {
+         transform: translateX(-115%)
+      }
+      @include laptop {
+         transform: translateX(-70%)
+      }
+    }
+  }
+  &:nth-child(4) {
+    .budda-parallax__image {
+      top: 80vh;
+      left: -10vw;
+      width: 160vw;
+  @include desktop {
+        top: 100vh;
+      }
+    }
+  }
+  &:nth-child(5) {
+    .budda-parallax__image {
+      top: 110vh;
+      left: 50%;
+      width: 160vw;
+      margin-left: -25%;
+         @include desktop {
+        top: 120vh;
+           margin-left: -10%;
+      }
+    }
+  }
+  &:nth-child(6) {
+    .budda-parallax__image {
+      left: 0;
+      top: 150vh;
+      width: 110vw;
+    }
+  }
+}
+.budda-parallax__image {
+  position: absolute;
+}
+.budda-parallax__footer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 55%;
+  transform: translateY(-100%);
+  background: rgb($bg-color);
+  background: linear-gradient(
+    0deg,
+    rgba($bg-color, 1) 80%,
+    rgba($bg-color, 0) 100%
+  );
+}

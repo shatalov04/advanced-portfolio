@@ -49,6 +49,16 @@
   &:last-child {
     margin-right: 0;
   }
+
+  &:disabled {
+    color: $text-color30;
+    border: 1px solid $text-color30;
+    cursor: auto;
+    &:hover {
+      background: transparent;
+      color: $text-color30;
+    }
+  }
 }
 .double-slider__button-img {
   width: 8px;
@@ -63,18 +73,23 @@
 .double-slider__content {
 }
 .double-slider__list {
-  display: flex;
+  display: block;
+  width: 66%;
+  @include desktop {
+    width: 75%;
+  }
+  @include laptop {
+    width: 100%;
+  }
 }
 .double-slider__item {
   display: flex;
   margin-right: 30px;
+  width: 48%;
   &:last-child {
     margin-right: 0;
   }
 
-  @include tablet {
-    width: 50%;
-  }
   @include phone {
     width: 100%;
     &:last-child {
@@ -84,7 +99,7 @@
 }
 .double-slider__quote {
   width: 75px;
-  height: 63px;
+  height: 100%;
   fill: $tag-bg-color;
   margin-right: 20px;
 

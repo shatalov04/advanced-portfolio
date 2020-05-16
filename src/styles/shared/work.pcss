@@ -17,7 +17,6 @@
 }
 .work__index {
   position: absolute;
-  /* z-index: -1; */
   left: 100%;
   transform: translateX(calc(-100% + 15px));
   text-align: right;
@@ -68,6 +67,15 @@
   &:hover {
     background: $main-color;
   }
+  &:disabled {
+    color: $text-color70;
+    background: $text-color30;
+    cursor: auto;
+    &:hover {
+      background: $text-color30;
+      color: $text-color70;
+    }
+  }
 }
 .work__button-img {
   width: 8px;
@@ -84,7 +92,7 @@
   position: absolute;
   top: 100%;
   left: 100%;
-  width: 15%;
+  width: 20%;
   transform: translate(-100%, -100%);
 
   @include phone {

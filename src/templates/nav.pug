@@ -1,0 +1,5 @@
+script(type="text/x-template")#nav-template
+  nav.nav
+    ul.nav__list
+      li.nav__item(v-for="item in sections" :key="item.id")
+        a(href="#" v-scroll-to="{ el: `#${item.id}`, duration: 2000, easing: [0.25, 1, 0.5, 1]}" @click='handleClick').nav__link {{item.desc}}  

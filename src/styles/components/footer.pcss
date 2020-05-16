@@ -1,6 +1,6 @@
 .footer {
   background: $footer-color;
-  padding-top: 100px;
+  padding-top: 94px;
   height: 400px;
   color: white;
 
@@ -78,6 +78,19 @@
 .footer__menu {
   margin-top: -33px;
   margin-bottom: 20px;
+
+  & .nav__list {
+    @include tablet {
+      flex-wrap: wrap;
+    }
+  }
+  & .nav__link {
+    &:hover {
+      color: $accent-color;
+      border-bottom: 3px solid transparent;
+    }
+  }
+
   @include phone {
     margin-bottom: 50px;
   }

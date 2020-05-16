@@ -1,6 +1,5 @@
 include ./mixins.pug
 
-// content
 - var developerName = 'Максим Шаталов'
 - var jobDescription = 'Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.'
 - var jobContent = 'Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!'
@@ -11,18 +10,7 @@ include ./mixins.pug
 
 - var skillsTitle = 'Чем я могу быть вам полезен'
 
-// nav
--
-  var navItems = [
-    'Главная',
-    'Обо мне',
-    'Навыки',
-    'Работы',
-    'Отзывы',
-    'Связаться',
-  ]
 
-// socials
 -
   var icons = {
     insta: {
@@ -42,7 +30,6 @@ include ./mixins.pug
     },
   }
 
-// about
 -
   var userList = {
     location: {
@@ -59,108 +46,6 @@ include ./mixins.pug
     },
   }
 
-// developer
-
-// skills
-
--
-  var skillsList={
-    Frontend:{
-      'HTML5':80,
-      'CSS3':50,
-      'JavaScript':60,
-      'WPf':70},
-    Backend:{
-      'C#':90,
-      'ASP.Net Core':40,
-      'SQL':50,
-      'EF Core':50,
-      'Node.js & npm':20,
-      'Mongo.db':40,
-    },
-    Workflow:{
-      'Git':70,
-      'Gulp':70,
-      'Webpack':30,
-      'Azure DevOps':70
-    }
-  }
-
-// works
--
-  var worksList = [
-    {
-      preview:'Превью работы 1',
-      title:'Сайт школы образования',
-      description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-1.jpg',
-      previewImage: 'content/preview-1.jpg',
-      tags:['html','css','js'],
-    },
-      {
-        preview:'Превью работы 2',
-        title:'Система проектирования',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sed sapiente adipisci voluptatum, atque, dolore facilis temporibus praesentium esse, facere fugiat libero odio.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-2.jpg',
-        previewImage: 'content/preview-2.jpg',
-        tags:['C#','WPF','WCF'],
-    },
-      {
-        preview:'Превью работы 3',
-        title:'Система аналитики',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-3.jpg',
-        previewImage: 'content/preview-3.jpg',
-        tags:['ASP.Net Core','React','SPA'],
-    },
-    {
-      preview:'Превью работы 4',
-      title:'Сайт-портфолио',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-      link:'#',
-      target:'_blank',
-      image: 'content/work-4.jpg',
-      previewImage: 'content/preview-4.jpg',
-      tags:['Vue','Webpack','SPA'],
-    },
-      {
-        preview:'Превью работы 5',
-        title:'Сайт-портфолио',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corporis voluptates esse, amet repellendus sint consectetur exercitationem aliquid perferendis omnis commodi aspernatur dolorum qui, neque vitae sed repellat quibusdam adipisci.',
-        link:'#',
-        target:'_blank',
-        image: 'content/work-5.jpg',
-        previewImage: 'content/preview-5.jpg',
-        tags:['Vue','Webpack','SPA'],
-    }
-  ]
-
-  var activeWork = worksList[1]
-
-// yells
--
-  var yellsList = {
-    yell1: {
-      text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!',
-      user:'Ковальчук Дмитрий',
-      occupation:'Основатель Loftschool',
-      avatar: 'content/avatar-1.jpg',
-    },
-    yell2: {
-      text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах',
-      user:'Владимир Сабанцев',
-      occupation:'Преподаватель',
-      avatar: 'content/avatar-2.jpg',
-    }
-  }
-
-// feedback
 -
   var feedbackInputs = [
     {
@@ -185,8 +70,6 @@ include ./mixins.pug
 
   var lastInput = feedbackInputs[feedbackInputs.length-1];
 
-// footer
-
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -195,50 +78,31 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-    .wrapper
-      .welcome-section
+    .wrapper#app
+      .welcome-section#main
+        parallax
         section.developer
           .container.developer__container
             header.header.developer__header
               .header__logo
                 .initials.title-text МШ
               .header__menu
-                nav.nav
-                  ul.nav__list
-                    each item in navItems
-                      li.nav__item
-                        a(href="#").nav__link #{item}
+                navigation(:sections=`sections`)
               .header__socials
                 ul.socials
                   each icon in icons
                     li.socials__item
                       a.socials__link(href=`${icon.link}` target=`${icon.target}`)
                         +icon(`${icon.icon}`,'socials__icon')
-              .hamburger.header__hamburger
-                +icon('hamburger','hamburger__icon')
-              aside.side-panel.header__side-panel
-                .side-panel__menu.text.text_bold
-                  nav.nav
-                    ul.nav__list.side-panel__nav-list
-                      each item in navItems
-                        li.nav__item
-                          a(href="#").nav__link.nav__link_no-padding #{item}
-                .side-panel__socials
-                  ul.socials
-                    each icon in icons
-                      li.socials__item
-                        a.socials__link(href=`${icon.link}` target=`${icon.target}`)
-                          +icon(`${icon.icon}`,'socials__icon')
-                .side-panel__icon
-                  +icon('remove', 'side-panel__button')
+              side(:sections=`sections`)
             .developer__content
               .dev-info
                 .dev-info__desc.text.text_semi-bold.text_30 #{siteTitle}
                 h1.dev-info__title.title-text.title-text_main #{developerName}
             .developer__button
-              .scroll-button.text.text_bold Скролл
+              .scroll-button.text.text_bold(v-scroll-to="{ el: `#${sections[1].id}`, duration: 2000, easing: [0.25, 1, 0.5, 1]}") Скролл
                 +icon('scroll', 'scroll-button__img')
-        section.about
+        section.about#about
           .container.about__container
             .about__info
               .user
@@ -256,7 +120,7 @@ html(lang="en")
                 p #{jobDescription}   
               .about__ps.text.text_50.text_italic
                 p #{jobContent}  
-      section.skills
+      section.skills#skills
         .container.skills__container
           .skills__backpack
             +image("content/backpack.png","skills__backpack-img")
@@ -266,96 +130,24 @@ html(lang="en")
                 h2.section-title__text.title-text.title-text_small #{skillsTitle}
                 .section-title__desc.text.text_semi-bold.text_50 
                   p #{jobContent}      
-            .skills__widget
-              ul.skills__list
-                each skillGroup, key in skillsList
-                  li.skill-group
-                    h3.skill-group__title.title-text.title-text_sub #{key}
-                    ul.skill-group__list
-                      each value, key in skillGroup
-                        li.skill-group__item
-                          .skill
-                            .skill__title.text.text_bold.text_50 #{key}
-                            svg(
-                              viewBox="0 0 36 36" 
-                              preserveAspectRatio="none" 
-                              stroke-alignment="inner").skill__circle.skill__circle_inner
-                              circle(cx="18" cy="18" r="16")
-                            svg(
-                              stroke-dasharray=`${value}`+" 100" 
-                              viewBox="0 0 36 36" 
-                              preserveAspectRatio="none" 
-                              stroke-alignment="inner").skill__circle.skill__circle_outer
-                              defs
-                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="100%")
-                                  stop(offset="0%" stop-color="#9300e7") 
-                                  stop(offset="100%" stop-color="#4900ed") 
-                              circle(cx="18" cy="18" r="16" stroke="url(#gradient)")
+            skills
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,100 1000,0 1000,100")
-      section.works
+      section.works#works
         .container.works__container
           .works__section-title
             .section-title
               h2.section-title__text.title-text Мои работы
-          .works__content
-            .work
-              .work__slider 
-                .work__index.text.text_super= 2
-                .work__view
-                  +image(`${activeWork.image}`, 'work__img')
-                  .work__buttons
-                    button.work__button.work__button_up
-                      +icon("arrow-down", 'work__button-img work__button-img_up')
-                    button.work__button.work__button_down
-                      +icon("arrow-down", 'work__button-img work__button-img_down')
-                  .previews.work__previews
-                        ul.previews__list
-                          each preview, index in worksList
-                            li.previews__item 
-                              - 
-                                var previewClass = index !== 1 ? 'previews__img' : 'previews__img previews__img_active';
-                              +image(`${preview.previewImage}`, previewClass)
-              .work__desc
-                .tags.work__tags
-                  ul.tags__list
-                    each tag in activeWork.tags
-                      li.tags__item.text.text_semi-bold.text_70 #{tag}
-                .section-title__text.work__title.title-text.title-text_small #{activeWork.title}
-                .work__text.text.text_semi-bold.text_70 #{activeWork.description}
-                .work__link
-                  a.link(href= `${activeWork.link}`) Посмотреть сайт
-                    +icon('link', 'link__img')
+          works(:previews-quantity=4)
       .closing-section
-        section.yells
+        budda-parallax
+        section.yells#yells
           .container.yells__container
-            .yells__slider 
-              .double-slider
-                .double-slider__header
-                  .double-slider__title
-                    h2.double-slider__title-text.title-text Что обо мне говорят
-                  .double-slider__buttons
-                    button.double-slider__button.double-slider__button_left 
-                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_left')
-                    button.double-slider__button.double-slider__button_right 
-                      +icon("arrow-down", 'double-slider__button-img double-slider__button-img_right')
-                .double-slider__content
-                  ul.double-slider__list
-                    each yell in yellsList
-                      li.double-slider__item
-                        +icon('quote', 'double-slider__quote')
-                        .yell
-                          .yell__text.text.text_semi-bold.text_50 #{yell.text}
-                          .yell__user
-                            .avatar.yell__avatar
-                              +image(`${yell.avatar}`,"avatar__img")
-                            .yell__user-desc
-                              .yell__username.text.text_bold #{yell.user}
-                              .yell__user-occupation.text.text_semi-bold.text_30 #{yell.occupation}
-        section.feedback
+            yells
+        section.feedback#feedback
           .container.feedback__container
             .feedback__section-title
               .section-title
@@ -393,7 +185,7 @@ html(lang="en")
           +icon('remove', 'tooltip__button')
         .tooltip.tooltip_error Сообщение не отправлено
           +icon('remove', 'tooltip__button')
-      footer.footer 
+      footer.footer
         .container.footer__container
           .footer__left
             .footer__copyright.text.text_copyright.text_15-white &copy 2020
@@ -401,11 +193,7 @@ html(lang="en")
             .footer__title.text.text_30-white #{siteTitle}
           .footer__right
             .footer__menu
-              nav.nav
-                ul.nav__list.nav__list_footer
-                  each item in navItems
-                    li.nav__item
-                      a(href="#").nav__link.nav__link_footer #{item}
+              navigation(:sections=`sections`)
             .footer__content
               .footer__socials.text.text_semi-bold.text_30-white
                 .footer__desc #{footerContent}
@@ -417,3 +205,4 @@ html(lang="en")
               .footer__quote
                 .footer__quote-text.text.text_semi-bold.text_30-white #{footerQuote}
                 .footer__quote-user.text.text_italic #{footerQuoteAuthor}
+    include templates/templates.pug
