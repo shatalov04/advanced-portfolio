@@ -18,12 +18,12 @@ export default {
     moveLayers(element, scrollValue) {
       const layers = element.children;
 
-      Array.from(layers).forEach((l) => {
-        const ratio = l.dataset.speed / 8;
+      Array.from(layers).forEach((layer) => {
+        const ratio = layer.dataset.speed / 8;
         const strafe = scrollValue * ratio;
 
         // eslint-disable-next-line no-param-reassign
-        l.style.transform = `translateY(-${strafe}%)`;
+        layer.style.transform = `translateY(-${strafe}%)`;
       });
     },
   },
