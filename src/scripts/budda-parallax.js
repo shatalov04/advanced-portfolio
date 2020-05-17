@@ -1,8 +1,7 @@
 export default {
   template: '#budda-parallax-template',
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     handleScroll() {
@@ -11,7 +10,7 @@ export default {
       const scrollValue = window.pageYOffset;
       const top = parallax.offsetParent.offsetTop - height / 3;
 
-      console.log('scrollValue - top :>> ', scrollValue - top);
+      // console.log('scrollValue - top :>> ', scrollValue - top);
       if (scrollValue - top > 0) {
         this.moveLayers(parallax, scrollValue - top);
       }
@@ -20,7 +19,7 @@ export default {
     moveLayers(element, scrollValue) {
       const layers = element.children;
 
-      console.log('inside move :>> ', 'inside move');
+      // console.log('inside move :>> ', 'inside move');
 
       Array.from(layers).forEach((layer) => {
         const ratio = layer.dataset.speed / 8;
@@ -39,5 +38,4 @@ export default {
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
-
 };

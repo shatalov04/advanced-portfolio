@@ -1,0 +1,44 @@
+script(type="text/x-template")#feedback-form-template
+  form(
+    @submit.prevent="handleSubmit"
+    @input="handleInput")
+    .form__list
+      property.form__item(
+        icon="user",
+        label="Введите ваше имя"
+        :isActive = "isUsernameActive"
+        @input="$emit('input', $event)")
+        input.property-input.text.text_bold(
+          v-model="username"
+          name="username"
+          placeholder="Введите ваше имя"
+          @focus="handleFocus('username')"
+          @blur="handleBlur('username')")
+      property.form__item(
+        icon="envelope",
+        label="Введите ваш email"
+        :isActive = "isEmailActive"
+        @input="$emit('input', $event)"
+        @changedFocus="$emit('changedFocus', $event)"
+      )
+        input.property-input.text.text_bold(
+          v-model="email"
+          placeholder="Введите ваш email"
+          @focus="handleFocus('email')"
+          @blur="handleBlur('email')")
+        //- property-input.property-input.text.text_bold(
+        //-   v-model="email"
+        //-   placeholder="Введите ваш email"
+        //-   @focus="handleFocus('email')"
+        //-   @blur="handleBlur('email')")
+    property.property_textarea.form__textarea(
+      icon="message",
+      label="Сообщение к письму"
+      :isActive = "isMessageActive"
+      @input="$emit('input', $event)")
+      textarea.property-input.property-input_textarea.text.text_bold(
+        v-model="message"
+        placeholder="Сообщение к письму"
+        @focus="handleFocus('message')"
+        @blur="handleBlur('message')")
+    button(type="submit" form="feedback-form").dialog-button.form__button.text.text_bold отправить

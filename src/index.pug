@@ -68,7 +68,6 @@ include ./mixins.pug
     }
   ]
 
-  var lastInput = feedbackInputs[feedbackInputs.length-1];
 
 <!DOCTYPE html>
 html(lang="en")
@@ -153,23 +152,8 @@ html(lang="en")
               .section-title
                 h2.section-title__text.title-text Связаться со мной
             .feedback__content
-              form(id="feedback-form").form.feedback__form
-                ul.form__list
-                  - for(var i = 0; i < feedbackInputs.length-1; i++) 
-                    - var inputClass = i !== 1 ? 'property form__item' : 'property property_active property_error form__item';
-                      li(class=`${inputClass}`)
-                        +icon(`${feedbackInputs[i].icon}`,"property__icon")
-                        .property__label.text.text_semi-bold.text_30 #{feedbackInputs[i].tooltip}
-                        input(type="text", name=`${feedbackInputs[i].name}`, placeholder=`${feedbackInputs[i].tooltip}`).property__input.text.text_bold
-                        .context-tooltip.property__tooltip
-                          .context-tooltip__message ошибка
-                .property.property_active.property_textarea.form__textarea
-                  +icon(`${lastInput.icon}`,"property__icon")
-                  .property__label.text.text_semi-bold.text_30 #{lastInput.tooltip}
-                  textarea(rows="3" name=`${lastInput.name}`, placeholder=`${lastInput.tooltip}`).property__input.property__input_textarea.text.text_bold
-                  .context-tooltip.property__tooltip
-                    .context-tooltip__message ошибка
-                button(type="submit" form="feedback-form").dialog-button.form__button.text.text_bold отправить
+              feedback-form.form.feedback__form#feedback-form(
+              )
         .triangles.closing-section__triangles
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
             polygon(points="0,0 1000,0 1000,100")

@@ -7,22 +7,18 @@
     margin-right: 0;
   }
   .property__label {
-    display: none;
   }
 
-  &_active {
+  &.active {
     border-bottom: 1px solid $main-color;
-    .property__label {
-      display: block;
-    }
     .property__icon {
-      fill: $main-color;
+      color: $main-color;
     }
   }
-  &_error {
+  &.error {
     border-bottom: 1px solid $error-color;
     .property__icon {
-      fill: $error-color;
+      color: $error-color;
     }
     .property__tooltip {
       display: block;
@@ -38,7 +34,7 @@
   width: 30px;
   height: 30px;
   display: block;
-  fill: $text-color30;
+  color: $text-color30;
 }
 
 .property__label {
@@ -46,7 +42,7 @@
   left: 0;
   transform: translate(45px, 0);
 }
-.property__input {
+.property-input {
   border: 0;
   padding-top: 46px;
   margin-left: 45px;

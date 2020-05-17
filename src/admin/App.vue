@@ -27,7 +27,7 @@
             .form__properties
               .form-property
                 label.form-property__label(for="login") Логин
-                SvgIcon(className="input__icon" name="user")
+                Icon.input__icon( name="user")
                 input.input.form-property__input(
                   name="login"
                   type="text"
@@ -35,7 +35,7 @@
                   required)
               .form-property
                 label.form-property__label(for="password") Пароль
-                SvgIcon(className="input__icon" name="key")
+                Icon.input__icon(name="key")
                 input.input.form-property__input(
                   name="password"
                   type="password"
@@ -44,7 +44,7 @@
             .form__buttons.form__buttons_center
               button(type="submit").form__button.form__button_auth отправить
             button.button.button_remove.authorization__remove-button(type="button")
-              SvgIcon(className="button__icon button__icon_remove" name="remove")
+              Icon.button__icon.button__icon_remove(name="remove")
 
     section.about#about
       .container.about__container
@@ -54,7 +54,7 @@
           button.button.button_add.about__button(
             type="button"
           )
-            SvgIcon(className="button__icon button__icon_plus" name="plus")
+            Icon.button__icon.button__icon_plus( name="plus")
             .button__caption.about__button-caption Добавить группу
         .about__content
           ul.section-list.about__list
@@ -69,9 +69,9 @@
                         placeholder="Название новой группы"
                         required)
                     .edit-control.active
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                 .skill-group__content
                 .skill-group__footer
                   .property-row.property-row_new
@@ -90,8 +90,7 @@
                     button.button.button_add(
                       type="button"
                     )
-                      SvgIcon(
-                        className="button__icon button__icon_plus skill-group__add-icon"
+                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
                         name="plus")
             li.section-list__item.about__item
               .skill-group
@@ -105,9 +104,9 @@
                         value="Workflow"
                         required)
                     .edit-control.active
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                 .skill-group__content
                   ul.properties
                     li.property-row.properties__item
@@ -121,40 +120,40 @@
                       .property.property_percentage
                         input.input.input_percentage(value="95")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                     li.property-row.properties__item
                       .property
                         input.input(placeholder="Новый навык" value="Teminal")
                       .property.property_percentage
                         input.input.input_percentage(value="90")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                     li.property-row.properties__item
                       .property
                         input.input(placeholder="Новый навык" value="Webpack")
                       .property.property_percentage
                         input.input.input_percentage(value="50")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                     li.property-row.properties__item
                         .property
                           input.input(placeholder="Новый навык" value="Gulp")
                         .property.property_percentage
                           input.input.input_percentage(value="65")
                         .edit-control
-                          SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                          SvgIcon(className="button__icon button__icon_trash" name="trash")
-                          SvgIcon(className="button__icon button__icon_apply" name="tick")
-                          SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_trash(name="trash")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
                 .skill-group__footer
                   .property-row.property-row_new
                     .property
@@ -164,8 +163,7 @@
                     button.button.button_add(
                       type="button"
                     )
-                      SvgIcon(
-                        className="button__icon button__icon_plus skill-group__add-icon"
+                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
                         name="plus")
             li.section-list__item.about__item
               .skill-group
@@ -174,9 +172,9 @@
                     .property.property_title
                       input.input.input_title(placeholder="Название новой группы" name="title" value="Frontend")
                     .edit-control.active
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                      Icon.button__icon.button__icon_edit(name="pencil")
+                      Icon.button__icon.button__icon_apply(name="tick")
+                      Icon.button__icon.button__icon_cancel(name="remove")
                 .skill-group__content
                   ul.properties
                     li.property-row.properties__item
@@ -185,30 +183,30 @@
                       .property.property_percentage
                         input.input.input_percentage(value="95")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                     li.property-row.properties__item
                       .property
                         input.input(placeholder="Новый навык" value="CSS3")
                       .property.property_percentage
                         input.input.input_percentage(value="90")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                     li.property-row.properties__item
                       .property
                         input.input(placeholder="Новый навык" value="Javascript")
                       .property.property_percentage
                         input.input.input_percentage(value="50")
                       .edit-control
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
-                        SvgIcon(className="button__icon button__icon_trash" name="trash")
-                        SvgIcon(className="button__icon button__icon_apply" name="tick")
-                        SvgIcon(className="button__icon button__icon_cancel" name="remove")
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                        Icon.button__icon.button__icon_trash(name="trash")
+                        Icon.button__icon.button__icon_apply(name="tick")
+                        Icon.button__icon.button__icon_cancel(name="remove")
                 .skill-group__footer
                   .property-row.property-row_new
                     .property
@@ -218,8 +216,7 @@
                     button.button.button_add(
                       type="button"
                     )
-                      SvgIcon(
-                        className="button__icon button__icon_plus skill-group__add-icon"
+                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
                         name="plus")
 
     section.works#works
@@ -262,13 +259,11 @@
                     ul.tags-editor__list
                       li.tags-editor__item
                         .tags-editor__text HTML5
-                        SvgIcon(
-                          className="button__icon button__icon_remove tags-editor__remove-icon"
+                        Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
                           name="remove")
                       li.tags-editor__item
                         .tags-editor__text Vue
-                        SvgIcon(
-                          className="button__icon button__icon_remove tags-editor__remove-icon"
+                        Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
                           name="remove")
                   .form__buttons
                     button(type="button").form__button.form__button_secondary Отмена
@@ -278,7 +273,7 @@
             li.section-list__item.works__item
               .works__new
                 button.button.button_add.works__add-button(type="button")
-                  SvgIcon(className="button__icon button__icon_plus" name="plus")
+                  Icon.button__icon.button__icon_plus(name="plus")
                   .button__caption Добавить работу
             li.section-list__item.works__item
               .work
@@ -297,10 +292,10 @@
                   .control-bar
                     button.button.button_edit.control-bar__button(type="button")
                       .button__caption Редактировать
-                      SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                      Icon.button__icon.button__icon_edit(name="pencil")
                     button.button.button_remove.control-bar__button(type="button")
                       .button__caption Удалить
-                      SvgIcon(className="button__icon button__icon_remove" name="remove")
+                      Icon.button__icon.button__icon_remove(name="remove")
             li.section-list__item.works__item
               .work
                 .work__header
@@ -318,10 +313,10 @@
                   .control-bar
                     button.button.button_edit.control-bar__button(type="button")
                       .button__caption Редактировать
-                      SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                      Icon.button__icon.button__icon_edit(name="pencil")
                     button.button.button_remove.control-bar__button(type="button")
                       .button__caption Удалить
-                      SvgIcon(className="button__icon button__icon_remove" name="remove")
+                      Icon.button__icon.button__icon_remove(name="remove")
               li.section-list__item.works__item
                 .work
                   .work__header
@@ -339,10 +334,10 @@
                     .control-bar
                       button.button.button_edit.control-bar__button(type="button")
                         .button__caption Редактировать
-                        SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                        Icon.button__icon.button__icon_edit(name="pencil")
                       button.button.button_remove.control-bar__button(type="button")
                         .button__caption Удалить
-                        SvgIcon(className="button__icon button__icon_remove" name="remove")
+                        Icon.button__icon.button__icon_remove(name="remove")
 
     section.yells#yells
       .container.yells__container
@@ -356,7 +351,7 @@
                 .form__loader.yells__loader
                   .photo-loader
                     button.button.button_user.yells__user-button(type="button")
-                      SvgIcon(className="button__icon button__icon_man-user" name="man-user")
+                      Icon.button__icon.button__icon_man-user(name="man-user")
                       .button__caption Добавить фото
                 .form__properties
                   .form-property
@@ -382,7 +377,7 @@
             li.section-list__item.yells__item
               .yells__new
                 button.button.button_add.yells__add-button(type="button")
-                  SvgIcon(className="button__icon button__icon_plus" name="plus")
+                  Icon.button__icon.button__icon_plus(name="plus")
                   .button__caption Добавить отзыв
             li.section-list__item.yells__item
               .yell
@@ -399,10 +394,10 @@
                   .control-bar
                     button.button.button_edit.control-bar__button(type="button")
                       .button__caption Редактировать
-                      SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                      Icon.button__icon.button__icon_edit(name="pencil")
                     button.button.button_remove.control-bar__button(type="button")
                       .button__caption Удалить
-                      SvgIcon(className="button__icon button__icon_remove" name="remove")
+                      Icon.button__icon.button__icon_remove(name="remove")
             li.section-list__item.yells__item
               .yell
                 .yell__header
@@ -418,10 +413,10 @@
                   .control-bar
                     button.button.button_edit.control-bar__button(type="button")
                       .button__caption Редактировать
-                      SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                      Icon.button__icon.button__icon_edit(name="pencil")
                     button.button.button_remove.control-bar__button(type="button")
                       .button__caption Удалить
-                      SvgIcon(className="button__icon button__icon_remove" name="remove")
+                      Icon.button__icon.button__icon_remove(name="remove")
             li.section-list__item.yells__item
               .yell
                 .yell__header
@@ -437,15 +432,15 @@
                   .control-bar
                     button.button.button_edit.control-bar__button(type="button")
                       .button__caption Редактировать
-                      SvgIcon(className="button__icon button__icon_edit" name="pencil")
+                      Icon.button__icon.button__icon_edit(name="pencil")
                     button.button.button_remove.control-bar__button(type="button")
                       .button__caption Удалить
-                      SvgIcon(className="button__icon button__icon_remove" name="remove")
+                      Icon.button__icon.button__icon_remove(name="remove")
 
 </template>
 
 <script>
-import SvgIcon from './components/SvgIcon.vue';
+import Icon from './components/Icon.vue';
 
 export default {
   data() {
@@ -466,7 +461,7 @@ export default {
       ],
     };
   },
-  components: { SvgIcon },
+  components: { Icon },
   created() {},
 };
 </script>

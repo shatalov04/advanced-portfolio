@@ -1,8 +1,7 @@
 export default {
   template: '#parallax-template',
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     handleScroll() {
@@ -35,5 +34,4 @@ export default {
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
-
 };

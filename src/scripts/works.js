@@ -2,7 +2,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 
-
 const previews = {
   template: '#previews-template',
   props: ['selectedWork', 'previews'],
@@ -41,7 +40,6 @@ const workInfo = {
     tags,
   },
 };
-
 
 export default {
   template: '#works-template',
@@ -109,7 +107,9 @@ export default {
       }
 
       if (selectedIndex > lastIndex - filterQuantity + 1) {
-        return [...Array(filterQuantity).keys()].map((i) => lastIndex - i).reverse();
+        return [...Array(filterQuantity).keys()]
+          .map((i) => lastIndex - i)
+          .reverse();
       }
 
       let minIndex = 0;

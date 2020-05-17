@@ -1,0 +1,19 @@
+script(type="text/x-template")#property-template
+  .property(:class="className" @changedFocus="handleFocused")
+    Icon.property__icon(
+      v-if="hasIcon"
+      :name="icon")
+    label.property__label.text.text_semi-bold.text_30(
+      v-show="isActive"
+    ) {{label}}
+    slot
+    .context-tooltip.property__tooltip
+      .context-tooltip__message {{errorMessage}}
+
+script(type="text/x-template")#property-input-template
+  input.property-input(
+    type="text",
+    :value=value,
+    :name=name,
+    :placeholder="placeholder",
+)
