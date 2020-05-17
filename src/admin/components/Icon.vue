@@ -1,6 +1,6 @@
 <template lang="pug">
-  .icon-wrapper(:class="className")
-    svg( :viewBox="viewBox" preserveAspectRatio="none").icon
+  .icon-wrapper
+    svg(:viewBox="viewBox" preserveAspectRatio="none").icon
       use(:xlink:href="src")
 </template>
 
@@ -18,10 +18,6 @@ export default {
     name: {
       type: String,
       required: true,
-    },
-    className: {
-      type: String,
-      default: '',
     },
   },
   computed: {

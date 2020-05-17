@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "tooltip": "Введите ваше имя",
+    "placeholder": "Ковальчук Дмитрий",
+    "icon": "user",
+    "name": "username"
+  },
+  {
+    "id": 2,
+    "tooltip": "Введите ваш email",
+    "placeholder": "loftschool@study.com",
+    "icon": "envelope",
+    "name": "email"
+  },
+  {
+    "id": 3,
+    "tooltip": "Сообщение к письму",
+    "placeholder": "Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса.",
+    "icon": "message",
+    "name": "message"
+  }
+]
