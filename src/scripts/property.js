@@ -3,13 +3,9 @@ import Icon from '../admin/components/Icon.vue';
 export default {
   template: '#property-template',
   data() {
-    return {
-      errorMessage: 'ошибка',
-      iconModule: '',
-      hasError: false,
-    };
+    return {};
   },
-  props: ['icon', 'label', 'isActive'],
+  props: ['icon', 'label', 'isActive', 'isEmpty', 'errorMessage', 'hasError'],
   computed: {
     className() {
       if (this.hasError) {
@@ -36,7 +32,5 @@ export default {
       this.isActive = false;
     },
   },
-  created() {
-    this.$root.$on('child-event', this.reactOnChildEvent);
-  },
+  created() {},
 };

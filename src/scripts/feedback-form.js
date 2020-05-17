@@ -43,6 +43,7 @@ export default {
       this.$validate().then((success) => {
         if (success) {
           alert('Валидация прошла успешно!');
+          this.validation.reset();
         }
       });
     },

@@ -4,7 +4,7 @@ script(type="text/x-template")#property-template
       v-if="hasIcon"
       :name="icon")
     label.property__label.text.text_semi-bold.text_30(
-      v-show="isActive"
+      v-show="!isEmpty"
     ) {{label}}
     slot
     .context-tooltip.property__tooltip

@@ -7,6 +7,9 @@ script(type="text/x-template")#feedback-form-template
         icon="user",
         label="Введите ваше имя"
         :isActive = "isUsernameActive"
+        :isEmpty = "username.length === 0"
+        :hasError="validation.hasError('username')"
+        :errorMessage="validation.firstError('username')"
         @input="$emit('input', $event)")
         input.property-input.text.text_bold(
           v-model="username"
@@ -18,6 +21,9 @@ script(type="text/x-template")#feedback-form-template
         icon="envelope",
         label="Введите ваш email"
         :isActive = "isEmailActive"
+        :isEmpty = "email.length === 0"
+        :hasError="validation.hasError('email')"
+        :errorMessage="validation.firstError('email')"
         @input="$emit('input', $event)"
         @changedFocus="$emit('changedFocus', $event)"
       )
@@ -35,6 +41,9 @@ script(type="text/x-template")#feedback-form-template
       icon="message",
       label="Сообщение к письму"
       :isActive = "isMessageActive"
+      :isEmpty = "message.length === 0"
+      :hasError="validation.hasError('message')"
+      :errorMessage="validation.firstError('message')"
       @input="$emit('input', $event)")
       textarea.property-input.property-input_textarea.text.text_bold(
         v-model="message"
