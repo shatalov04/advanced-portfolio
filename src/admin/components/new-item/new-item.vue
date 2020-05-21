@@ -1,9 +1,10 @@
 <template lang="pug">
   .new-item-component
-    button.button(type="button")
+    button.button(
+      type="button" 
+      @click="")
       Icon.button__icon(name="plus")
       .button__caption {{caption}}
-
 </template>
 
 <script>
@@ -14,39 +15,12 @@ export default {
     return {};
   },
   props: {
-    icon: {
-      type: String,
-      required: true,
-    },
-    modificator: {
-      type: String,
-      default: '',
-    },
     caption: {
       type: String,
       default: '',
     },
-    isCaptionBefore: {
-      type: Boolean,
-      default: false,
-    },
-    isCirle: {
-      type: Boolean,
-      default: false,
-    },
   },
   components: { Icon },
-  computed: {
-    hasCaption() {
-      return this.caption !== undefined && this.caption !== '';
-    },
-    hasBeforeCaption() {
-      return this.isCaptionBefore && this.hasCaption;
-    },
-    hasAfterCaption() {
-      return !this.isCaptionBefore && this.hasCaption;
-    },
-  },
 };
 </script>
 
