@@ -36,19 +36,21 @@
                   required)
             .form__buttons.form__buttons_center
               button(type="submit").form__button.form__button_auth отправить
-            button.button.button_remove.authorization__remove-button(type="button")
-              Icon.button__icon.button__icon_remove(name="remove")
+            IconedButton.authorization__remove-button(
+              icon="remove"
+              modificator="close"
+              )
     main.maincontent
       section.about#about
         .container.about__container
           .about__title
             .section-title
               h1.section-title__text.about__title-text Блок "Обо мне"
-            button.button.button_add.about__button(
-              type="button"
-            )
-              Icon.button__icon.button__icon_plus( name="plus")
-              .button__caption.about__button-caption Добавить группу
+            IconedButton.add(
+              icon="plus"
+              modificator="plus white"
+              caption="Добавить группу"
+              )
           .about__content
             ul.section-list.about__list
               li.section-list__item.about__item
@@ -176,10 +178,22 @@
                         .property.property_percentage
                           input.input.input_percentage(value="95")
                         .edit-control
-                          Icon.button__icon.button__icon_edit(name="pencil")
-                          Icon.button__icon.button__icon_trash(name="trash")
-                          Icon.button__icon.button__icon_apply(name="tick")
-                          Icon.button__icon.button__icon_cancel(name="remove")
+                          IconedButton(
+                            icon="pencil"
+                          )
+                          IconedButton(
+                            icon="trash"
+                            modificator="close"
+                          )
+                          IconedButton(
+                            icon="tick"
+                            modificator="apply"
+                          )
+                          IconedButton(
+                            icon="remove"
+                            modificator="cancel"
+                          )
+
                       li.property-row.properties__item
                         .property
                           input.input(placeholder="Новый навык" value="CSS3")
@@ -252,12 +266,16 @@
                       ul.tags-editor__list
                         li.tags-editor__item
                           .tags-editor__text HTML5
-                          Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
-                            name="remove")
+                          IconedButton(
+                            icon="remove"
+                            modificator="close"
+                          )
                         li.tags-editor__item
                           .tags-editor__text Vue
-                          Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
-                            name="remove")
+                          IconedButton(
+                            icon="remove"
+                            modificator="close"
+                          )
                     .form__buttons
                       button(type="button").form__button.form__button_secondary Отмена
                       button(type="submit").form__button сохранить
@@ -283,12 +301,18 @@
                     a.work__link(href="https://loftschool.ru" target="_blank") https://loftschool.ru
                   .work__bar
                     .control-bar
-                      button.button.button_edit.control-bar__button(type="button")
-                        .button__caption Редактировать
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                      button.button.button_remove.control-bar__button(type="button")
-                        .button__caption Удалить
-                        Icon.button__icon.button__icon_remove(name="remove")
+                      IconedButton(
+                        icon="pencil"
+                        modificator="blue-icon"
+                        caption="Редактировать"
+                        isCaptionBefore="true"
+                      )
+                      IconedButton(
+                        icon="remove"
+                        modificator="cancel"
+                        caption="Удалить"
+                        isCaptionBefore="true"
+                      )
               li.section-list__item.works__item
                 .work
                   .work__header
@@ -434,6 +458,7 @@ import Icon from './components/Icon.vue';
 import User from './components/user';
 import Headline from './components/headline';
 import Tabs from './components/tabs';
+import IconedButton from './components/iconed-button';
 
 export default {
   components: {
@@ -441,6 +466,7 @@ export default {
     User,
     Headline,
     Tabs,
+    IconedButton,
   },
 };
 </script>
@@ -499,6 +525,7 @@ export default {
 }
 .about__content {
 }
+
 .about__title {
   padding: 60px 0;
   display: flex;
@@ -507,14 +534,7 @@ export default {
 .about__title-text {
   margin-right: 60px;
 }
-.about__button {
-  color: white;
-}
-.about__button-caption {
-  color: $main-color;
-  font-weight: 600;
-  margin-left: 15px;
-}
+
 .about__list {
   margin-right: -20px;
 }
@@ -535,51 +555,6 @@ export default {
   font-weight: 700;
 }
 
-//button
-.button {
-  display: flex;
-  align-items: center;
-  background: transparent;
-
-  &_add {
-    & .icon-wrapper {
-      overflow: hidden;
-      border-radius: 50%;
-    }
-  }
-}
-
-.button__icon {
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-
-  &_plus {
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-    background: $links-color;
-    background: var(--bg-gradient);
-  }
-  &_edit {
-    color: $admin-edit-color;
-  }
-  &_trash {
-    color: $admin-edit-color;
-  }
-  &_apply {
-    color: $admin-ok-color;
-  }
-  &_cancel {
-    color: $admin-error-color;
-  }
-  &_remove {
-    color: $admin-edit-color;
-  }
-}
-.button__caption {
-}
 //section-list
 .section-list {
   display: flex;
@@ -881,11 +856,13 @@ export default {
 }
 .tags-editor__item {
   display: flex;
-  margin-right: 20px;
+  align-items: center;
+  margin-right: 15px;
+  background: $tag-bg-color;
+  border-radius: 20px;
+  padding-left: 15px;
 }
 .tags-editor__text {
-}
-.tags-editor__remove-icon {
 }
 
 //tags
