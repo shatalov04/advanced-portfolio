@@ -168,22 +168,6 @@ export default {
       color: $main-color;
     }
   }
-
-  /* &_edit {
-    color: $admin-edit-color;
-  }
-  &_trash {
-    color: $admin-edit-color;
-  }
-  &_apply {
-    color: $admin-ok-color;
-  }
-  &_cancel {
-    color: $admin-error-color;
-  }
-  &_remove {
-    color: $admin-edit-color;
-  } */
 }
 .iconed-button__caption {
   font-weight: 600;

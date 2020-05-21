@@ -282,10 +282,7 @@
 
             ul.section-list.works__list
               li.section-list__item.works__item
-                .works__new
-                  button.button.button_add.works__add-button(type="button")
-                    Icon.button__icon.button__icon_plus(name="plus")
-                    .button__caption Добавить работу
+                NewItem(caption="Добавить работу")
               li.section-list__item.works__item
                 .work
                   .work__header
@@ -392,10 +389,7 @@
 
           ul.section-list.yells__list
             li.section-list__item.yells__item
-              .yells__new
-                button.button.button_add.yells__add-button(type="button")
-                  Icon.button__icon.button__icon_plus(name="plus")
-                  .button__caption Добавить отзыв
+              NewItem(caption="Добавить отзыв")
             li.section-list__item.yells__item
               .yell
                 .yell__header
@@ -459,6 +453,7 @@ import User from './components/user';
 import Headline from './components/headline';
 import Tabs from './components/tabs';
 import IconedButton from './components/iconed-button';
+import NewItem from './components/new-item';
 
 export default {
   components: {
@@ -467,6 +462,7 @@ export default {
     Headline,
     Tabs,
     IconedButton,
+    NewItem,
   },
 };
 </script>
@@ -706,32 +702,7 @@ export default {
 }
 .works__content {
 }
-.works__new {
-  height: 100%;
-  width: 100%;
-  background: $links-color;
-  background: var(--bg-gradient);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  & .button__icon_plus {
-    width: 150px;
-    height: 150px;
-    padding: 64px;
-    border: 2px solid white;
-    color: white;
-    background: transparent;
-    margin-bottom: 20px;
-  }
-  & .button__caption {
-    width: 50%;
-    font-weight: 600;
-    color: white;
-    line-height: 30px;
-  }
-}
 .works__form {
 }
 
@@ -746,10 +717,6 @@ export default {
   background: white;
   box-shadow: var(--form-boxshadow);
 }
-.works__add-button {
-  flex-direction: column;
-}
-
 //form
 .form {
   background: white;
