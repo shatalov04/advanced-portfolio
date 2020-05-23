@@ -4,21 +4,15 @@
         header.header
           .header__bar
             .container.admin__container
-              .bar
-                .user.bar__user
-                  .avatar.user__avatar
-                    img.avatar__img(src="../images/content/avatar.jpg")
-                  .user__name Максим Шаталов
-                .bar__title Панель администрирования
-                a(href="#").bar__link Выйти
+              Headline
+                User.header__user(
+                  name="Максим Шаталов"
+                  image="content/avatar.jpg"
+                )
           .header__nav
             .container.admin__container
-              nav.nav.admin__nav
-                ul.nav__list
-                  li.nav__item(v-for="item in sections" :key="item.id")
-                    a.nav__link(
-                      href="#") {{item.title}}
-                      //- @click='handleNavClick'
+              Tabs.admin__nav
+    About
     section.authorization#authorization
       .authorization__container
         .authorization__form
@@ -43,280 +37,274 @@
                   required)
             .form__buttons.form__buttons_center
               button(type="submit").form__button.form__button_auth отправить
-            button.button.button_remove.authorization__remove-button(type="button")
-              Icon.button__icon.button__icon_remove(name="remove")
+            IconedButton.authorization__remove-button(
+              icon="remove"
+              modificator="close"
+              )
+    main.maincontent
 
-    section.about#about
-      .container.about__container
-        .about__title
-          .section-title
-            h1.section-title__text.about__title-text Блок "{{sections[0].title}}"
-          button.button.button_add.about__button(
-            type="button"
-          )
-            Icon.button__icon.button__icon_plus( name="plus")
-            .button__caption.about__button-caption Добавить группу
-        .about__content
-          ul.section-list.about__list
-            li.section-list__item.about__item
-              .skill-group.skill-group_new
-                .skill-group__header
-                  .property-row.property-row_title
-                    .property.property_title
-                      input.input.input_title(
-                        name="title"
-                        type="text"
+      section.about#about
+        .container.about__container
+          .about__title
+            .section-title
+              h1.section-title__text.about__title-text Блок "Обо мне"
+            IconedButton.add(
+              icon="plus"
+              modificator="plus white"
+              caption="Добавить группу"
+              )
+          .about__content
+            ul.section-list.about__list
+              li.section-list__item.about__item
+                .skill-group.skill-group_new
+                  .skill-group__header
+                    .property-row.property-row_title
+                      TitleEditor(
                         placeholder="Название новой группы"
-                        required)
-                    .edit-control.active
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                .skill-group__content
-                .skill-group__footer
-                  .property-row.property-row_new
-                    .property
-                      input.input.input_new(
-                        name="title"
-                        type="text"
-                        placeholder="Новый навык"
-                        required)
-                    .property.property_percentage
-                      input.input.input_percentage(
-                        name="title"
-                        type="text"
-                        value="100"
-                        required)
-                    button.button.button_add(
-                      type="button"
-                    )
-                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
-                        name="plus")
-            li.section-list__item.about__item
-              .skill-group
-                .skill-group__header
-                  .property-row.property-row_title
-                    .property.property_title
-                      input.input.input_title(
-                        name="title"
-                        type="text"
-                        placeholder="Название новой группы"
-                        value="Workflow"
-                        required)
-                    .edit-control.active
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                .skill-group__content
-                  ul.properties
-                    li.property-row.properties__item
+                      )
+                  .skill-group__content
+                  .skill-group__footer
+                    .property-row.property-row_new
                       .property
-                        input.input(
-                        name="title"
-                        type="text"
-                        placeholder="Название навыка"
-                        value="Git"
-                        required)
+                        input.input.input_new(
+                          name="title"
+                          type="text"
+                          placeholder="Новый навык"
+                          required)
                       .property.property_percentage
-                        input.input.input_percentage(value="95")
-                      .edit-control
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                    li.property-row.properties__item
-                      .property
-                        input.input(placeholder="Новый навык" value="Teminal")
-                      .property.property_percentage
-                        input.input.input_percentage(value="90")
-                      .edit-control
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                    li.property-row.properties__item
-                      .property
-                        input.input(placeholder="Новый навык" value="Webpack")
-                      .property.property_percentage
-                        input.input.input_percentage(value="50")
-                      .edit-control
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                    li.property-row.properties__item
+                        input.input.input_percentage(
+                          name="title"
+                          type="text"
+                          value="100"
+                          required)
+                      button.button.button_add(
+                        type="button"
+                      )
+                        Icon.button__icon.button__icon_plus.skill-group__add-icon(
+                          name="plus")
+              li.section-list__item.about__item
+                .skill-group
+                  .skill-group__header
+                    .property-row.property-row_title
+                      .property.property_title
+                        input.input.input_title(
+                          name="title"
+                          type="text"
+                          placeholder="Название новой группы"
+                          value="Workflow"
+                          required)
+                      .edit-control.active
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
+                  .skill-group__content
+                    ul.properties
+                      li.property-row.properties__item
                         .property
-                          input.input(placeholder="Новый навык" value="Gulp")
+                          input.input(
+                          name="title"
+                          type="text"
+                          placeholder="Название навыка"
+                          value="Git"
+                          required)
                         .property.property_percentage
-                          input.input.input_percentage(value="65")
+                          input.input.input_percentage(value="95")
                         .edit-control
                           Icon.button__icon.button__icon_edit(name="pencil")
                           Icon.button__icon.button__icon_trash(name="trash")
                           Icon.button__icon.button__icon_apply(name="tick")
                           Icon.button__icon.button__icon_cancel(name="remove")
-                .skill-group__footer
-                  .property-row.property-row_new
-                    .property
-                        input.input.input_new(placeholder="Новый навык")
-                    .property.property_percentage
-                        input.input.input_percentage(value="100")
-                    button.button.button_add(
-                      type="button"
-                    )
-                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
-                        name="plus")
-            li.section-list__item.about__item
-              .skill-group
-                .skill-group__header
-                  .property-row.property-row_title
-                    .property.property_title
-                      input.input.input_title(placeholder="Название новой группы" name="title" value="Frontend")
-                    .edit-control.active
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                      Icon.button__icon.button__icon_apply(name="tick")
-                      Icon.button__icon.button__icon_cancel(name="remove")
-                .skill-group__content
-                  ul.properties
-                    li.property-row.properties__item
+                      li.property-row.properties__item
+                        .property
+                          input.input(placeholder="Новый навык" value="Teminal")
+                        .property.property_percentage
+                          input.input.input_percentage(value="90")
+                        .edit-control
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_trash(name="trash")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
+                      li.property-row.properties__item
+                        .property
+                          input.input(placeholder="Новый навык" value="Webpack")
+                        .property.property_percentage
+                          input.input.input_percentage(value="50")
+                        .edit-control
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_trash(name="trash")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
+                      li.property-row.properties__item
+                          .property
+                            input.input(placeholder="Новый навык" value="Gulp")
+                          .property.property_percentage
+                            input.input.input_percentage(value="65")
+                          .edit-control
+                            Icon.button__icon.button__icon_edit(name="pencil")
+                            Icon.button__icon.button__icon_trash(name="trash")
+                            Icon.button__icon.button__icon_apply(name="tick")
+                            Icon.button__icon.button__icon_cancel(name="remove")
+                  .skill-group__footer
+                    .property-row.property-row_new
                       .property
-                        input.input(placeholder="Новый навык" value="HTML5")
+                          input.input.input_new(placeholder="Новый навык")
                       .property.property_percentage
-                        input.input.input_percentage(value="95")
-                      .edit-control
+                          input.input.input_percentage(value="100")
+                      button.button.button_add(
+                        type="button"
+                      )
+                        Icon.button__icon.button__icon_plus.skill-group__add-icon(
+                          name="plus")
+              li.section-list__item.about__item
+                .skill-group
+                  .skill-group__header
+                    .property-row.property-row_title
+                      .property.property_title
+                        input.input.input_title(placeholder="Название новой группы" name="title" value="Frontend")
+                      .edit-control.active
                         Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
                         Icon.button__icon.button__icon_apply(name="tick")
                         Icon.button__icon.button__icon_cancel(name="remove")
-                    li.property-row.properties__item
-                      .property
-                        input.input(placeholder="Новый навык" value="CSS3")
-                      .property.property_percentage
-                        input.input.input_percentage(value="90")
-                      .edit-control
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                    li.property-row.properties__item
-                      .property
-                        input.input(placeholder="Новый навык" value="Javascript")
-                      .property.property_percentage
-                        input.input.input_percentage(value="50")
-                      .edit-control
-                        Icon.button__icon.button__icon_edit(name="pencil")
-                        Icon.button__icon.button__icon_trash(name="trash")
-                        Icon.button__icon.button__icon_apply(name="tick")
-                        Icon.button__icon.button__icon_cancel(name="remove")
-                .skill-group__footer
-                  .property-row.property-row_new
-                    .property
-                        input.input.input_new(placeholder="Новый навык")
-                    .property.property_percentage
-                        input.input.input_percentage(value="100")
-                    button.button.button_add(
-                      type="button"
-                    )
-                      Icon.button__icon.button__icon_plus.skill-group__add-icon(
-                        name="plus")
+                  .skill-group__content
+                    ul.properties
+                      li.property-row.properties__item
+                        .property
+                          input.input(placeholder="Новый навык" value="HTML5")
+                        .property.property_percentage
+                          input.input.input_percentage(value="95")
+                        .edit-control
+                          IconedButton(
+                            icon="pencil"
+                          )
+                          IconedButton(
+                            icon="trash"
+                            modificator="close"
+                          )
+                          IconedButton(
+                            icon="tick"
+                            modificator="apply"
+                          )
+                          IconedButton(
+                            icon="remove"
+                            modificator="cancel"
+                          )
 
-    section.works#works
-      .container.works__container
-        .section-title.works__title
-          h1.section-title__text Блок "{{sections[1].title}}"
-        .works__content
-          .works__form
-            form.form
-              h2.form__title Редактирование работы
-              .form__content
-                .form__loader
-                  .loader
-                    .loader__caption Перетащите или загрузите изображение
-                    button(
-                      type="button"
-                    ).loader__button.form__button загрузить
-                .form__properties
-                  .form-property
-                    .form-property__label Название
-                    input.input.form-property__input(
-                      name="name"
-                      placeholder="Введите название работы")
-                  .form-property
-                    .form-property__label Ссылка
-                    input.input.form-property__input(
-                      name="link"
-                      placeholder="Введите ссылку на работу")
-                  .form-property
-                    .form-property__label Описание
-                    textarea.input.input_textarea.form-property__input(
-                      name="description"
-                      placeholder="Введите описание работы")
-                  .tags-editor
+                      li.property-row.properties__item
+                        .property
+                          input.input(placeholder="Новый навык" value="CSS3")
+                        .property.property_percentage
+                          input.input.input_percentage(value="90")
+                        .edit-control
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_trash(name="trash")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
+                      li.property-row.properties__item
+                        .property
+                          input.input(placeholder="Новый навык" value="Javascript")
+                        .property.property_percentage
+                          input.input.input_percentage(value="50")
+                        .edit-control
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                          Icon.button__icon.button__icon_trash(name="trash")
+                          Icon.button__icon.button__icon_apply(name="tick")
+                          Icon.button__icon.button__icon_cancel(name="remove")
+                  .skill-group__footer
+                    .property-row.property-row_new
+                      .property
+                          input.input.input_new(placeholder="Новый навык")
+                      .property.property_percentage
+                          input.input.input_percentage(value="100")
+                      button.button.button_add(
+                        type="button"
+                      )
+                        Icon.button__icon.button__icon_plus.skill-group__add-icon(
+                          name="plus")
+
+      section.works#works
+        .container.works__container
+          .section-title.works__title
+            h1.section-title__text Блок "Работы"
+          .works__content
+            .works__form
+              form.form
+                h2.form__title Редактирование работы
+                .form__content
+                  .form__loader
+                    .loader
+                      .loader__caption Перетащите или загрузите изображение
+                      button(
+                        type="button"
+                      ).loader__button.form__button загрузить
+                  .form__properties
                     .form-property
-                      .form-property__label Добавление тегов
-                      input.input(
-                        name="tags"
-                        placeholder="Введите теги через запятую")
-                    ul.tags-editor__list
-                      li.tags-editor__item
-                        .tags-editor__text HTML5
-                        Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
-                          name="remove")
-                      li.tags-editor__item
-                        .tags-editor__text Vue
-                        Icon.button__icon.button__icon_remove.tags-editor__remove-icon(
-                          name="remove")
-                  .form__buttons
-                    button(type="button").form__button.form__button_secondary Отмена
-                    button(type="submit").form__button сохранить
+                      .form-property__label Название
+                      input.input.form-property__input(
+                        name="name"
+                        placeholder="Введите название работы")
+                    .form-property
+                      .form-property__label Ссылка
+                      input.input.form-property__input(
+                        name="link"
+                        placeholder="Введите ссылку на работу")
+                    .form-property
+                      .form-property__label Описание
+                      textarea.input.input_textarea.form-property__input(
+                        name="description"
+                        placeholder="Введите описание работы")
+                    .tags-editor
+                      .form-property
+                        .form-property__label Добавление тегов
+                        input.input(
+                          name="tags"
+                          placeholder="Введите теги через запятую")
+                      ul.tags-editor__list
+                        li.tags-editor__item
+                          .tags-editor__text HTML5
+                          IconedButton(
+                            icon="remove"
+                            modificator="close"
+                          )
+                        li.tags-editor__item
+                          .tags-editor__text Vue
+                          IconedButton(
+                            icon="remove"
+                            modificator="close"
+                          )
+                    .form__buttons
+                      button(type="button").form__button.form__button_secondary Отмена
+                      button(type="submit").form__button сохранить
 
-          ul.section-list.works__list
-            li.section-list__item.works__item
-              .works__new
-                button.button.button_add.works__add-button(type="button")
-                  Icon.button__icon.button__icon_plus(name="plus")
-                  .button__caption Добавить работу
-            li.section-list__item.works__item
-              .work
-                .work__header
-                  img.work__image(src="../images/content/work-1.jpg")
-                  .tags.work__tags
-                    ul.tags__list
-                      li.tags__item HTML5
-                      li.tags__item CSS3
-                      li.tags__item Javascript
-                .work__info
-                  h2.work__title Сайт школы образования
-                  .work__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                  a.work__link(href="https://loftschool.ru" target="_blank") https://loftschool.ru
-                .work__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
-            li.section-list__item.works__item
-              .work
-                .work__header
-                  img.work__image(src="../images/content/work-2.jpg")
-                  .tags.work__tags
-                    ul.tags__list
-                      li.tags__item HTML5
-                      li.tags__item CSS3
-                      li.tags__item Javascript
-                .work__info
-                  h2.work__title Сайт школы образования
-                  .work__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                  a.work__link(href="https://loftschool.ru" target="_blank") https://loftschool.ru
-                .work__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
+            ul.section-list.works__list
+              li.section-list__item.works__item
+                NewItem(caption="Добавить работу")
+              li.section-list__item.works__item
+                .work
+                  .work__header
+                    img.work__image(src="../images/content/work-1.jpg")
+                    .tags.work__tags
+                      ul.tags__list
+                        li.tags__item HTML5
+                        li.tags__item CSS3
+                        li.tags__item Javascript
+                  .work__info
+                    h2.work__title Сайт школы образования
+                    .work__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                    a.work__link(href="https://loftschool.ru" target="_blank") https://loftschool.ru
+                  .work__bar
+                    .control-bar
+                      IconedButton(
+                        icon="pencil"
+                        modificator="blue-icon"
+                        caption="Редактировать"
+                        isCaptionBefore=true
+                      )
+                      IconedButton(
+                        icon="remove"
+                        modificator="cancel"
+                        caption="Удалить"
+                        isCaptionBefore=true
+                      )
               li.section-list__item.works__item
                 .work
                   .work__header
@@ -338,131 +326,143 @@
                       button.button.button_remove.control-bar__button(type="button")
                         .button__caption Удалить
                         Icon.button__icon.button__icon_remove(name="remove")
+                li.section-list__item.works__item
+                  .work
+                    .work__header
+                      img.work__image(src="../images/content/work-2.jpg")
+                      .tags.work__tags
+                        ul.tags__list
+                          li.tags__item HTML5
+                          li.tags__item CSS3
+                          li.tags__item Javascript
+                    .work__info
+                      h2.work__title Сайт школы образования
+                      .work__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                      a.work__link(href="https://loftschool.ru" target="_blank") https://loftschool.ru
+                    .work__bar
+                      .control-bar
+                        button.button.button_edit.control-bar__button(type="button")
+                          .button__caption Редактировать
+                          Icon.button__icon.button__icon_edit(name="pencil")
+                        button.button.button_remove.control-bar__button(type="button")
+                          .button__caption Удалить
+                          Icon.button__icon.button__icon_remove(name="remove")
 
-    section.yells#yells
-      .container.yells__container
-        .section-title.yells__title
-          h1.section-title__text Блок "{{sections[2].title}}"
-        .yells__content
-          .yells__form
-            form.form
-              h2.form__title Новый отзыв
-              .form__content
-                .form__loader.yells__loader
-                  .photo-loader
-                    button.button.button_user.yells__user-button(type="button")
-                      Icon.button__icon.button__icon_man-user(name="man-user")
-                      .button__caption Добавить фото
-                .form__properties
-                  .form-property
-                    .form-property__label Имя автора
-                    input.input.form-property__input(
-                      name="name"
-                      placeholder="Введите имя")
-                  .form-property
-                    .form-property__label Титул автора
-                    input.input.form-property__input(
-                      name="occupation"
-                      placeholder="Введите титул")
-                  .form-property
-                    .form-property__label Отзыв
-                    textarea.input.input_textarea.form-property__input(
-                      name="yell"
-                      placeholder="Введите отзыв")
-                  .form__buttons
-                    button(type="button").form__button.form__button_secondary Отмена
-                    button(type="submit").form__button сохранить
+      section.yells#yells
+        .container.yells__container
+          .section-title.yells__title
+            h1.section-title__text Блок "Отзывы"
+          .yells__content
+            .yells__form
+              form.form
+                h2.form__title Новый отзыв
+                .form__content
+                  .form__loader.yells__loader
+                    .photo-loader
+                      button.button.button_user.yells__user-button(type="button")
+                        Icon.button__icon.button__icon_man-user(name="man-user")
+                        .button__caption Добавить фото
+                  .form__properties
+                    .form-property
+                      .form-property__label Имя автора
+                      input.input.form-property__input(
+                        name="name"
+                        placeholder="Введите имя")
+                    .form-property
+                      .form-property__label Титул автора
+                      input.input.form-property__input(
+                        name="occupation"
+                        placeholder="Введите титул")
+                    .form-property
+                      .form-property__label Отзыв
+                      textarea.input.input_textarea.form-property__input(
+                        name="yell"
+                        placeholder="Введите отзыв")
+                    .form__buttons
+                      button(type="button").form__button.form__button_secondary Отмена
+                      button(type="submit").form__button сохранить
 
-          ul.section-list.yells__list
-            li.section-list__item.yells__item
-              .yells__new
-                button.button.button_add.yells__add-button(type="button")
-                  Icon.button__icon.button__icon_plus(name="plus")
-                  .button__caption Добавить отзыв
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  .user.yell__user
-                    .avatar.user__avatar
-                      img.avatar__img(src="../images/content/avatar-1.jpg")
-                    .user__desc
-                      .user__name Владимир Сабанцев
-                      .user__caption Преподаватель
-                .yell__info
-                  .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  .user.yell__user
-                    .avatar.user__avatar
-                      img.avatar__img(src="../images/content/avatar-1.jpg")
-                    .user__desc
-                      .user__name Ковальчук Дмитрий
-                      .user__caption Основатель Loftschool
-                .yell__info
-                  .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  .user.yell__user
-                    .avatar.user__avatar
-                      img.avatar__img(src="../images/content/avatar-1.jpg")
-                    .user__desc
-                      .user__name Владимир Сабанцев
-                      .user__caption Преподаватель
-                .yell__info
-                  .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
+            ul.section-list.yells__list
+              li.section-list__item.yells__item
+                NewItem(caption="Добавить отзыв")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                      name="Владимир Сабанцев"
+                      image="content/avatar-2.jpg"
+                      occupation="Преподаватель"
+                    )
+                  .yell__info
+                    .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                        name="Ковальчук Дмитрий"
+                        image="content/avatar-1.jpg"
+                        occupation="Основатель Loftschool"
+                      )
+                  .yell__info
+                    .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                      name="Владимир Сабанцев"
+                      image="content/avatar-2.jpg"
+                      occupation="Преподаватель"
+                    )
+                  .yell__info
+                    .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
 
 </template>
 
 <script>
 import Icon from './components/Icon.vue';
+import User from './components/user';
+import Headline from './components/headline';
+import Tabs from './components/tabs';
+import IconedButton from './components/iconed-button';
+import NewItem from './components/new-item';
+import TitleEditor from './components/title-editor';
+import About from './pages/about';
 
 export default {
-  data() {
-    return {
-      sections: [
-        {
-          id: 'about',
-          title: 'Обо мне',
-        },
-        {
-          id: 'works',
-          title: 'Главная',
-        },
-        {
-          id: 'yells',
-          title: 'Отзывы',
-        },
-      ],
-    };
+  components: {
+    Icon,
+    User,
+    Headline,
+    Tabs,
+    IconedButton,
+    NewItem,
+    TitleEditor,
+    About,
   },
-  components: { Icon },
-  created() {},
 };
 </script>
 
@@ -504,77 +504,6 @@ export default {
 .header__nav {
 }
 
-//bar
-.bar {
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-.bar__user {
-  margin-right: 20px;
-}
-.bar__title {
-  opacity: 0.7;
-}
-.bar__link {
-  opacity: 0.7;
-  margin-left: auto;
-  text-decoration: underline;
-}
-
-//user
-.user {
-  display: flex;
-  align-items: center;
-}
-.user__avatar {
-  width: 46px;
-  margin-right: 20px;
-}
-.user__desc {
-  display: flex;
-  flex-direction: column;
-}
-.user__name {
-  font-size: 18px;
-  font-weight: 600;
-  padding-bottom: 2px;
-}
-.user__caption {
-}
-//avatar
-.avatar {
-  overflow: hidden;
-  border-radius: 50%;
-}
-.avatar__img {
-  display: block;
-  min-width: 100%;
-}
-
-//nav
-.nav {
-}
-.nav__list {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-.nav__item {
-}
-.nav__link {
-  padding: 24px;
-  display: inline-block;
-  white-space: nowrap;
-  transition: $delay;
-  border-bottom: 3px solid transparent;
-  font-weight: 500;
-  &:hover {
-    color: $main-color;
-    border-bottom: 3px solid $main-color;
-  }
-}
-
 //**********************************ABOUT***************************************/
 //**********************************ABOUT***************************************/
 //**********************************ABOUT***************************************/
@@ -591,6 +520,7 @@ export default {
 }
 .about__content {
 }
+
 .about__title {
   padding: 60px 0;
   display: flex;
@@ -599,14 +529,7 @@ export default {
 .about__title-text {
   margin-right: 60px;
 }
-.about__button {
-  color: white;
-}
-.about__button-caption {
-  color: $main-color;
-  font-weight: 600;
-  margin-left: 15px;
-}
+
 .about__list {
   margin-right: -20px;
 }
@@ -627,51 +550,6 @@ export default {
   font-weight: 700;
 }
 
-//button
-.button {
-  display: flex;
-  align-items: center;
-  background: transparent;
-
-  &_add {
-    & .icon-wrapper {
-      overflow: hidden;
-      border-radius: 50%;
-    }
-  }
-}
-
-.button__icon {
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-
-  &_plus {
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-    background: $links-color;
-    background: var(--bg-gradient);
-  }
-  &_edit {
-    color: $admin-edit-color;
-  }
-  &_trash {
-    color: $admin-edit-color;
-  }
-  &_apply {
-    color: $admin-ok-color;
-  }
-  &_cancel {
-    color: $admin-error-color;
-  }
-  &_remove {
-    color: $admin-edit-color;
-  }
-}
-.button__caption {
-}
 //section-list
 .section-list {
   display: flex;
@@ -776,7 +654,7 @@ export default {
   color: $text-color30;
 }
 
-//edit-control
+//edit-control TODO
 .edit-control {
   display: flex;
   justify-content: flex-end;
@@ -823,32 +701,7 @@ export default {
 }
 .works__content {
 }
-.works__new {
-  height: 100%;
-  width: 100%;
-  background: $links-color;
-  background: var(--bg-gradient);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  & .button__icon_plus {
-    width: 150px;
-    height: 150px;
-    padding: 64px;
-    border: 2px solid white;
-    color: white;
-    background: transparent;
-    margin-bottom: 20px;
-  }
-  & .button__caption {
-    width: 50%;
-    font-weight: 600;
-    color: white;
-    line-height: 30px;
-  }
-}
 .works__form {
 }
 
@@ -863,10 +716,6 @@ export default {
   background: white;
   box-shadow: var(--form-boxshadow);
 }
-.works__add-button {
-  flex-direction: column;
-}
-
 //form
 .form {
   background: white;
@@ -973,11 +822,13 @@ export default {
 }
 .tags-editor__item {
   display: flex;
-  margin-right: 20px;
+  align-items: center;
+  margin-right: 15px;
+  background: $tag-bg-color;
+  border-radius: 20px;
+  padding-left: 15px;
 }
 .tags-editor__text {
-}
-.tags-editor__remove-icon {
 }
 
 //tags
