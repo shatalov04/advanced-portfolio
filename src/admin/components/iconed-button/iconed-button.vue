@@ -1,6 +1,6 @@
 <template lang="pug">
   button.iconed-button-component(
-    type="button"
+    :type="type"
     v-on="$listeners"
     :class="modificator"
   )
@@ -22,6 +22,10 @@ export default {
     return {};
   },
   props: {
+    type: {
+      type: String,
+      default: 'button',
+    },
     icon: {
       type: String,
       required: true,

@@ -2,13 +2,14 @@
 section.authorization#authorization
   .authorization__container
     .authorization__form
-      form.form
+      form.form(@submit.prevent="loginUser")
         h1.form__title Авторизация
         .form__properties
           .form-property
             label.form-property__label(for="login") Логин
             Icon.input__icon( name="user")
             input.input.form-property__input(
+              v-model="user.name"
               name="login"
               type="text"
               placeholder="Введите логин"
@@ -17,6 +18,7 @@ section.authorization#authorization
             label.form-property__label(for="password") Пароль
             Icon.input__icon(name="key")
             input.input.form-property__input(
+              v-model="user.password"
               name="password"
               type="password"
               placeholder="Введите пароль"
@@ -34,17 +36,42 @@ import { mapState, mapMutations } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
+import $axios from '../../requests';
 
 export default {
-  components: {
-    Icon,
-    IconedButton,
+  data() {
+    return {
+      user: {
+        name: '',
+        password: '',
+      },
+    };
   },
   computed: {
     ...mapState({}),
   },
+  components: {
+    Icon,
+    IconedButton,
+  },
   methods: {
     ...mapMutations(),
+    async loginUser() {
+      try {
+        const {
+          data: { token },
+        } = await $axios.post('/login', this.user);
+
+        localStorage.setItem('token', token);
+        $axios.defaults.headers.Authorization = `Bearer ${token}`;
+
+        this.$router.replace('/');
+      } catch (error) {
+        const errorData = error.response.data;
+
+        console.error(errorData.error || errorData.message);
+      }
+    },
   },
 };
 </script>

@@ -66,7 +66,7 @@ section.about#about
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
@@ -84,18 +84,21 @@ export default {
     Category,
   },
   computed: {
-    ...mapState({
-      categories: (state) => state.categories.categories,
+    ...mapState('categories', {
+      categories: (state) => state.categories,
     }),
   },
   methods: {
-    ...mapMutations(['addCategory']),
+    ...mapActions('categories', ['addEmptyCategory', 'fetchCategories']),
+    ...mapMutations('categories', ['ADD_EMPTY_CATEGORY']),
     addNewCategory() {
-      categoryId += 1;
-      const newCategory = { id: categoryId, title: '' };
-
-      this.addCategory({ ...newCategory });
+      categoryId -= 1;
+      const newCategory = { id: categoryId, category: '' };
+      this.addEmptyCategory(newCategory);
     },
+  },
+  created() {
+    this.fetchCategories();
   },
 };
 </script>

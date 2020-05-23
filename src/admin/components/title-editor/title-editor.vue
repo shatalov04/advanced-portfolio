@@ -1,5 +1,7 @@
 <template lang="pug">
-  .title-editor-component()
+  form.title-editor-component(
+    @submit.prevent="handleApply"
+  )
     .content
       input.input.input_title(
         v-show="isActive"
@@ -26,9 +28,9 @@
       )
       IconedButton(
         v-show="isActive"
+        type="submit"
         icon="tick"
         modificator="apply"
-        @click="handleApply"
       )
       IconedButton(
         v-show="isActive"

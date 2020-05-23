@@ -3,7 +3,7 @@
     .category__header
       .property-row.property-row_title
         TitleEditor(
-          :initialTitle="category.title"
+          :initialTitle="category.category"
           placeholder="Название новой группы"
           @changeTitle="handleChangeTitle"
           @deleteCategory="handleDeleteCategory"
@@ -29,15 +29,13 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import IconedButton from '../iconed-button';
 import TitleEditor from '../title-editor';
 
 export default {
   data() {
-    return {
-      category: {},
-    };
+    return {};
   },
   props: {
     categoryId: {
@@ -47,20 +45,48 @@ export default {
   },
   components: { TitleEditor, IconedButton },
   computed: {
-    ...mapGetters(['getCategory']),
+    ...mapGetters('categories', ['getCategory']),
+    category() {
+      return this.getCategory(this.categoryId);
+    },
   },
   methods: {
-    ...mapMutations(['changeCategory', 'deleteCategory']),
+    ...mapActions('categories', [
+      'addCategory',
+      'updateCategory',
+      'deleteCategory',
+    ]),
+
     handleChangeTitle(title) {
-      this.category.title = title;
-      this.changeCategory(this.category);
+      this.category.category = title;
+      if (this.category.id < 0) {
+        this.addNewCategory();
+      } else {
+        this.updateCurrentCategory();
+      }
     },
-    handleDeleteCategory() {
-      this.deleteCategory(this.category);
+    async addNewCategory() {
+      try {
+        console.log('this.category :>> ', this.category);
+        await this.addCategory(this.category);
+      } catch (error) {
+        console.error(error.message);
+      }
     },
-  },
-  created() {
-    this.category = this.getCategory(this.categoryId);
+    async updateCurrentCategory() {
+      try {
+        await this.updateCategory(this.category);
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
+    async handleDeleteCategory() {
+      try {
+        await this.deleteCategory(this.category.id);
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
   },
 };
 </script>

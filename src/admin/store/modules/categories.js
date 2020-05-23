@@ -1,30 +1,78 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 
+const baseRoute = '/categories';
+
 const categories = {
+  namespaced: true,
   state: {
     categories: [],
   },
   mutations: {
-    addCategory(state, category) {
+    SET_CATEGORIES(state, data) {
+      state.categories = data;
+    },
+    ADD_CATEGORY(state, category) {
       state.categories.unshift(category);
     },
-    changeCategory(state, category) {
-      const index = state.categories.findIndex(
-        (item) => item.id === category.id
-      );
+    UPDATE_CATEGORY(state, category, initialId) {
+      const index = state.categories.findIndex((item) => item.id === initialId);
 
       if (index !== -1) {
         Vue.set(state.categories, index, category);
       }
     },
-    deleteCategory(state, category) {
-      state.categories = state.categories.filter(
-        (item) => item.id !== category.id
-      );
+    DELETE_CATEGORY(state, id) {
+      state.categories = state.categories.filter((item) => item.id !== id);
     },
   },
-  actions: {},
+  actions: {
+    async fetchCategories({ commit }) {
+      try {
+        const { data } = await this.$axios.get(baseRoute);
+        commit('SET_CATEGORIES', data);
+      } catch (error) {
+        const errorData = error.response.data;
+        console.error(errorData.error || errorData.message);
+      }
+    },
+    addEmptyCategory({ commit }, newCategory) {
+      commit('ADD_CATEGORY', newCategory);
+    },
+    async addCategory({ commit }, payload) {
+      try {
+        console.log('payload.category :>> ', payload.category);
+        const { data } = await this.$axios.post(baseRoute, {
+          title: payload.category,
+        });
+        commit('DELETE_CATEGORY', payload.id);
+        commit('ADD_CATEGORY', data);
+      } catch (error) {
+        const errorData = error.response.data;
+        console.error(errorData.error || errorData.message);
+      }
+    },
+    async updateCategory({ commit }, payload) {
+      try {
+        const { data } = await this.$axios.post(`${baseRoute}/${payload.id}`, {
+          title: payload.category,
+        });
+        commit('UPDATE_CATEGORY', data);
+      } catch (error) {
+        const errorData = error.response.data;
+        console.error(errorData.error || errorData.message);
+      }
+    },
+    async deleteCategory({ commit }, id) {
+      try {
+        await this.$axios.delete(`${baseRoute}/${id}`);
+        commit('DELETE_CATEGORY', id);
+      } catch (error) {
+        const errorData = error.response.data;
+        console.error(errorData.error || errorData.message);
+      }
+    },
+  },
   getters: {
     getCategory: (state) => (id) =>
       state.categories.find((item) => item.id === id),

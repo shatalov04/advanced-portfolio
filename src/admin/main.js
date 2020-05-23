@@ -5,6 +5,9 @@ import App from './App.vue';
 
 import store from './store';
 import router from './router';
+import $axios from './requests';
+
+store.$axios = $axios;
 
 // eslint-disable-next-line no-new
 new Vue({
