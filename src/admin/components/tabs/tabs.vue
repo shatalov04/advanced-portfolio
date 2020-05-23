@@ -7,8 +7,9 @@
         :class="{'active' : activeTabId === tab.id}"
         @click="handleChange(tab)"
         )
-        button.tabs__button(
-          type="button") {{tab.title}}
+        router-link.tabs__button(
+          :data-text="tab.title"
+          :to="tab.href") {{tab.title}}
 </template>
 
 <script>
@@ -16,14 +17,17 @@ const tabs = [
   {
     id: 0,
     title: 'Обо мне',
+    href: '/',
   },
   {
     id: 1,
     title: 'Работы',
+    href: '/works',
   },
   {
     id: 2,
     title: 'Отзывы',
+    href: '/yells',
   },
 ];
 
@@ -70,7 +74,8 @@ export default {
   }
 }
 .tabs__button {
-  padding: 32px;
+  padding: 26px;
+  display: block;
   transition: $delay;
   font-weight: 600;
   color: inherit;

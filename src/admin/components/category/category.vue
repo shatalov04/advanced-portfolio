@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../styles/property-input.pcss';
+
 .category {
   height: 100%;
   display: flex;

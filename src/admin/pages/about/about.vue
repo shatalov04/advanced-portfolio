@@ -101,7 +101,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-//about
+@import '../../styles/section.pcss';
+
 .about {
   background: $admin-bg-color;
   padding-bottom: 50px;
@@ -133,21 +134,5 @@ export default {
   margin-bottom: 20px;
   background: white;
   box-shadow: var(--form-boxshadow);
-}
-
-//section-title
-.section-title {
-}
-.section-title__text {
-  font-size: 21px;
-  font-weight: 700;
-}
-
-//section-list
-.section-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.section-list__item {
 }
 </style>

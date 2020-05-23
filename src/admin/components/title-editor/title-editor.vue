@@ -103,6 +103,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../styles/property-input.pcss';
+
 .title-editor-component {
   display: flex;
   align-items: center;
