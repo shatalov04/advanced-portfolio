@@ -12,6 +12,7 @@
           .header__nav
             .container.admin__container
               Tabs.admin__nav
+    About
     section.authorization#authorization
       .authorization__container
         .authorization__form
@@ -41,6 +42,7 @@
               modificator="close"
               )
     main.maincontent
+
       section.about#about
         .container.about__container
           .about__title
@@ -57,16 +59,9 @@
                 .skill-group.skill-group_new
                   .skill-group__header
                     .property-row.property-row_title
-                      .property.property_title
-                        input.input.input_title(
-                          name="title"
-                          type="text"
-                          placeholder="Название новой группы"
-                          required)
-                      .edit-control.active
-                          Icon.button__icon.button__icon_edit(name="pencil")
-                          Icon.button__icon.button__icon_apply(name="tick")
-                          Icon.button__icon.button__icon_cancel(name="remove")
+                      TitleEditor(
+                        placeholder="Название новой группы"
+                      )
                   .skill-group__content
                   .skill-group__footer
                     .property-row.property-row_new
@@ -302,13 +297,13 @@
                         icon="pencil"
                         modificator="blue-icon"
                         caption="Редактировать"
-                        isCaptionBefore="true"
+                        isCaptionBefore=true
                       )
                       IconedButton(
                         icon="remove"
                         modificator="cancel"
                         caption="Удалить"
-                        isCaptionBefore="true"
+                        isCaptionBefore=true
                       )
               li.section-list__item.works__item
                 .work
@@ -354,96 +349,96 @@
                           Icon.button__icon.button__icon_remove(name="remove")
 
       section.yells#yells
-      .container.yells__container
-        .section-title.yells__title
-          h1.section-title__text Блок "Отзывы"
-        .yells__content
-          .yells__form
-            form.form
-              h2.form__title Новый отзыв
-              .form__content
-                .form__loader.yells__loader
-                  .photo-loader
-                    button.button.button_user.yells__user-button(type="button")
-                      Icon.button__icon.button__icon_man-user(name="man-user")
-                      .button__caption Добавить фото
-                .form__properties
-                  .form-property
-                    .form-property__label Имя автора
-                    input.input.form-property__input(
-                      name="name"
-                      placeholder="Введите имя")
-                  .form-property
-                    .form-property__label Титул автора
-                    input.input.form-property__input(
-                      name="occupation"
-                      placeholder="Введите титул")
-                  .form-property
-                    .form-property__label Отзыв
-                    textarea.input.input_textarea.form-property__input(
-                      name="yell"
-                      placeholder="Введите отзыв")
-                  .form__buttons
-                    button(type="button").form__button.form__button_secondary Отмена
-                    button(type="submit").form__button сохранить
+        .container.yells__container
+          .section-title.yells__title
+            h1.section-title__text Блок "Отзывы"
+          .yells__content
+            .yells__form
+              form.form
+                h2.form__title Новый отзыв
+                .form__content
+                  .form__loader.yells__loader
+                    .photo-loader
+                      button.button.button_user.yells__user-button(type="button")
+                        Icon.button__icon.button__icon_man-user(name="man-user")
+                        .button__caption Добавить фото
+                  .form__properties
+                    .form-property
+                      .form-property__label Имя автора
+                      input.input.form-property__input(
+                        name="name"
+                        placeholder="Введите имя")
+                    .form-property
+                      .form-property__label Титул автора
+                      input.input.form-property__input(
+                        name="occupation"
+                        placeholder="Введите титул")
+                    .form-property
+                      .form-property__label Отзыв
+                      textarea.input.input_textarea.form-property__input(
+                        name="yell"
+                        placeholder="Введите отзыв")
+                    .form__buttons
+                      button(type="button").form__button.form__button_secondary Отмена
+                      button(type="submit").form__button сохранить
 
-          ul.section-list.yells__list
-            li.section-list__item.yells__item
-              NewItem(caption="Добавить отзыв")
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  User.yell__user(
-                    name="Владимир Сабанцев"
-                    image="content/avatar-2.jpg"
-                    occupation="Преподаватель"
-                  )
-                .yell__info
-                  .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  User.yell__user(
-                      name="Ковальчук Дмитрий"
-                      image="content/avatar-1.jpg"
-                      occupation="Основатель Loftschool"
+            ul.section-list.yells__list
+              li.section-list__item.yells__item
+                NewItem(caption="Добавить отзыв")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                      name="Владимир Сабанцев"
+                      image="content/avatar-2.jpg"
+                      occupation="Преподаватель"
                     )
-                .yell__info
-                  .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
-            li.section-list__item.yells__item
-              .yell
-                .yell__header
-                  User.yell__user(
-                    name="Владимир Сабанцев"
-                    image="content/avatar-2.jpg"
-                    occupation="Преподаватель"
-                  )
-                .yell__info
-                  .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-                .yell__bar
-                  .control-bar
-                    button.button.button_edit.control-bar__button(type="button")
-                      .button__caption Редактировать
-                      Icon.button__icon.button__icon_edit(name="pencil")
-                    button.button.button_remove.control-bar__button(type="button")
-                      .button__caption Удалить
-                      Icon.button__icon.button__icon_remove(name="remove")
+                  .yell__info
+                    .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                        name="Ковальчук Дмитрий"
+                        image="content/avatar-1.jpg"
+                        occupation="Основатель Loftschool"
+                      )
+                  .yell__info
+                    .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
+              li.section-list__item.yells__item
+                .yell
+                  .yell__header
+                    User.yell__user(
+                      name="Владимир Сабанцев"
+                      image="content/avatar-2.jpg"
+                      occupation="Преподаватель"
+                    )
+                  .yell__info
+                    .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
+                  .yell__bar
+                    .control-bar
+                      button.button.button_edit.control-bar__button(type="button")
+                        .button__caption Редактировать
+                        Icon.button__icon.button__icon_edit(name="pencil")
+                      button.button.button_remove.control-bar__button(type="button")
+                        .button__caption Удалить
+                        Icon.button__icon.button__icon_remove(name="remove")
 
 </template>
 
@@ -454,6 +449,8 @@ import Headline from './components/headline';
 import Tabs from './components/tabs';
 import IconedButton from './components/iconed-button';
 import NewItem from './components/new-item';
+import TitleEditor from './components/title-editor';
+import About from './pages/about';
 
 export default {
   components: {
@@ -463,6 +460,8 @@ export default {
     Tabs,
     IconedButton,
     NewItem,
+    TitleEditor,
+    About,
   },
 };
 </script>
@@ -655,7 +654,7 @@ export default {
   color: $text-color30;
 }
 
-//edit-control
+//edit-control TODO
 .edit-control {
   display: flex;
   justify-content: flex-end;

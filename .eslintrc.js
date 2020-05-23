@@ -15,6 +15,13 @@ module.exports = {
       "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
       "linebreak-style": 0,
       "global-require": 0,  
+      "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }],
       "vue/html-closing-bracket-newline": ["error", {
         "singleline": "never",
         "multiline": "never"

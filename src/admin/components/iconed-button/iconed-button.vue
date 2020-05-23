@@ -1,7 +1,7 @@
 <template lang="pug">
   button.iconed-button-component(
     type="button"
-    @click=""
+    v-on="$listeners"
     :class="modificator"
   )
     .iconed-button__caption.iconed-button__caption_before(

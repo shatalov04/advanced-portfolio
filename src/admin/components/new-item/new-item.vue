@@ -1,7 +1,7 @@
 <template lang="pug">
   .new-item-component
     button.button(
-      type="button" 
+      type="button"
       @click="")
       Icon.button__icon(name="plus")
       .button__caption {{caption}}
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.new-item-component{
+.new-item-component {
   height: 100%;
 }
 .button {
@@ -38,14 +38,13 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition:$delay;
-  opacity:0.99;
+  transition: $delay;
+  opacity: 0.99;
 
-
-  &:hover{
+  &:hover {
     background: $links-color;
     background: var(--bg-reversed-gradient);
-    opacity:1;
+    opacity: 1;
   }
 
   & .button__icon {
@@ -56,8 +55,8 @@ export default {
     color: white;
     background: transparent;
     margin-bottom: 20px;
-    overflow:hidden;
-    border-radius:50%;
+    overflow: hidden;
+    border-radius: 50%;
   }
   & .button__caption {
     width: 30%;
