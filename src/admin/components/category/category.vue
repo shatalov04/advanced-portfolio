@@ -2,40 +2,61 @@
   .category
     .category__header
       .property-row.property-row_title
-        TitleEditor(
+        CategoryTitle(
           :initialTitle="category.category"
           placeholder="Название новой группы"
           @changeTitle="handleChangeTitle"
           @deleteCategory="handleDeleteCategory"
         )
     .category__content
+      ul.properties
+        li.properties__item(
+            v-for="skill in skills"
+            :key="skill.id")
+          CategorySkill.property-row(
+            :skill="skill"
+          )
     .category__footer
-      .property-row.property-row_new
+      form(@submit.prevent="addNewSkill").property-row.property-row_new
         .property
           input.input.input_new(
+            v-model="newSkill.title"
             name="title"
             type="text"
             placeholder="Новый навык"
+            :disabled="!hasCategoryId"
             required)
         .property.property_percentage
           input.input.input_percentage(
-            name="title"
-            type="text"
+            v-model.number="newSkill.percent"
+            name="percent"
+            type="number"
             value="100"
+            :disabled="!hasCategoryId"
             required)
-        button.button.button_add(
-          type="button"
+        IconedButton(
+          type="submit"
+          icon="plus"
+          modificator="add plus white big"
+          :isEnabled="hasCategoryId"
         )
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import IconedButton from '../iconed-button';
-import TitleEditor from '../title-editor';
+import CategoryTitle from '../category-title';
+import CategorySkill from '../category-skill';
 
 export default {
   data() {
-    return {};
+    return {
+      newSkill: {
+        title: '',
+        percent: 0,
+        category: -1,
+      },
+    };
   },
   props: {
     categoryId: {
@@ -43,20 +64,37 @@ export default {
       required: true,
     },
   },
-  components: { TitleEditor, IconedButton },
+  components: {
+    CategoryTitle,
+    CategorySkill,
+    IconedButton,
+  },
   computed: {
-    ...mapGetters('categories', ['getCategory']),
+    ...mapGetters({
+      getCategory: 'categories/getCategory',
+      getSkills: 'skills/getSkillsByCategoryId',
+    }),
     category() {
       return this.getCategory(this.categoryId);
     },
+    skills() {
+      console.log(
+        'this.getSkills(this.categoryId) :>> ',
+        this.getSkills(this.categoryId)
+      );
+      return this.getSkills(this.categoryId);
+    },
+    hasCategoryId() {
+      return this.category.id > 0;
+    },
   },
   methods: {
-    ...mapActions('categories', [
-      'addCategory',
-      'updateCategory',
-      'deleteCategory',
-    ]),
-
+    ...mapActions({
+      addCategory: 'categories/addCategory',
+      updateCategory: 'categories/updateCategory',
+      deleteCategory: 'categories/deleteCategory',
+      addSkill: 'skills/addSkill',
+    }),
     handleChangeTitle(title) {
       this.category.category = title;
       if (this.category.id < 0) {
@@ -67,7 +105,6 @@ export default {
     },
     async addNewCategory() {
       try {
-        console.log('this.category :>> ', this.category);
         await this.addCategory(this.category);
       } catch (error) {
         console.error(error.message);
@@ -83,6 +120,14 @@ export default {
     async handleDeleteCategory() {
       try {
         await this.deleteCategory(this.category.id);
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
+    async addNewSkill() {
+      this.newSkill.category = this.category.id;
+      try {
+        await this.addSkill(this.newSkill);
       } catch (error) {
         console.error(error.message);
       }
@@ -113,10 +158,5 @@ export default {
   padding-bottom: 25px;
   width: 75%;
   align-self: flex-end;
-}
-.category__add-icon {
-  width: 41px;
-  height: 41px;
-  padding: 13px;
 }
 </style>

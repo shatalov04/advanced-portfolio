@@ -3,6 +3,7 @@
     :type="type"
     v-on="$listeners"
     :class="modificator"
+    :disabled="!isEnabled"
   )
     .iconed-button__caption.iconed-button__caption_before(
       v-if="hasBeforeCaption") {{caption}}
@@ -22,13 +23,17 @@ export default {
     return {};
   },
   props: {
+    icon: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       default: 'button',
     },
-    icon: {
-      type: String,
-      required: true,
+    isEnabled: {
+      type: Boolean,
+      default: true,
     },
     modificator: {
       type: String,
@@ -143,6 +148,20 @@ export default {
       }
     }
   }
+
+  // не вставлять сстили ниже disabled!
+  &:disabled {
+    cursor: default;
+    .iconed-button__icon {
+      cursor: default;
+      background: $text-color30;
+    }
+    &:hover {
+      .iconed-button__icon {
+        background: $text-color30;
+      }
+    }
+  }
 }
 
 .iconed-button__icon {
@@ -160,8 +179,14 @@ export default {
   &.plus {
     width: 20px;
     height: 20px;
-    padding: 6px;
+    padding: 5px;
   }
+  &.big {
+    width: 41px;
+    height: 41px;
+    padding: 12px;
+  }
+
   &.white {
     color: #fff;
   }

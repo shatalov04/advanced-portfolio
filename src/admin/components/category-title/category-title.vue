@@ -1,5 +1,5 @@
 <template lang="pug">
-  form.title-editor-component(
+  form.category-title-component(
     @submit.prevent="handleApply"
   )
     .content
@@ -107,7 +107,7 @@ export default {
 <style lang="postcss" scoped>
 @import '../../styles/property-input.pcss';
 
-.title-editor-component {
+.category-title-component {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,13 +118,5 @@ export default {
   width: 50%;
   font-size: 18px;
   font-weight: 600;
-}
-
-.edit-control {
-  display: flex;
-  justify-content: flex-end;
-
-  &.active {
-  }
 }
 </style>

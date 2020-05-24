@@ -121,7 +121,6 @@ export default {
         maxIndex = selectedIndex + halfOfQuantity;
       } else {
         const halfOfQuantity = (filterQuantity - 1) / 2;
-        console.log('halfOfQuantity :>> ', halfOfQuantity);
         minIndex = selectedIndex - halfOfQuantity;
         maxIndex = selectedIndex + halfOfQuantity;
       }

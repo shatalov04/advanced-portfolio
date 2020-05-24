@@ -50,7 +50,7 @@ export default {
   & .button__icon {
     width: 150px;
     height: 150px;
-    padding: 64px;
+    padding: 60px;
     border: 2px solid white;
     color: white;
     background: transparent;

@@ -1,21 +1,32 @@
+import AdminHeader from '../components/admin-header';
+
 export default [
   {
     path: '/',
-    component: () => import('../pages/about'),
+    components: {
+      default: () => import('../pages/about'),
+      header: AdminHeader,
+    },
     meta: {
       title: 'Блок «Обо мне»',
     },
   },
   {
     path: '/works',
-    component: () => import('../pages/works'),
+    components: {
+      default: () => import('../pages/works'),
+      header: AdminHeader,
+    },
     meta: {
       title: 'Блок «Работы»',
     },
   },
   {
     path: '/yells',
-    component: () => import('../pages/yells'),
+    components: {
+      default: () => import('../pages/yells'),
+      header: AdminHeader,
+    },
     meta: {
       title: 'Блок «Отзывы»',
     },
@@ -24,7 +35,7 @@ export default [
     path: '/login',
     component: () => import('../pages/login'),
     meta: {
-      public: true,
+      isPublic: true,
     },
   },
 ];

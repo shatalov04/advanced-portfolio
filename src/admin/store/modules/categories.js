@@ -41,11 +41,11 @@ const categories = {
     },
     async addCategory({ commit }, payload) {
       try {
-        console.log('payload.category :>> ', payload.category);
         const { data } = await this.$axios.post(baseRoute, {
           title: payload.category,
         });
-        commit('DELETE_CATEGORY', payload.id);
+        const temporaryId = payload.id;
+        commit('DELETE_CATEGORY', temporaryId);
         commit('ADD_CATEGORY', data);
       } catch (error) {
         const errorData = error.response.data;
@@ -65,7 +65,10 @@ const categories = {
     },
     async deleteCategory({ commit }, id) {
       try {
-        await this.$axios.delete(`${baseRoute}/${id}`);
+        const isCreatedInDatabase = id >= 0;
+        if (isCreatedInDatabase) {
+          await this.$axios.delete(`${baseRoute}/${id}`);
+        }
         commit('DELETE_CATEGORY', id);
       } catch (error) {
         const errorData = error.response.data;

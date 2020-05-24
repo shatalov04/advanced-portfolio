@@ -48,12 +48,18 @@
                 .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
               .yell__bar
                 .control-bar
-                  button.button.button_edit.control-bar__button(type="button")
-                    .button__caption Редактировать
-                    Icon.button__icon.button__icon_edit(name="pencil")
-                  button.button.button_remove.control-bar__button(type="button")
-                    .button__caption Удалить
-                    Icon.button__icon.button__icon_remove(name="remove")
+                  IconedButton(
+                    icon="pencil"
+                    modificator="blue-icon"
+                    caption="Редактировать"
+                    isCaptionBefore=true
+                  )
+                  IconedButton(
+                    icon="remove"
+                    modificator="cancel"
+                    caption="Удалить"
+                    isCaptionBefore=true
+                  )
           li.section-list__item.yells__item
             .yell
               .yell__header
@@ -66,12 +72,18 @@
                 .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
               .yell__bar
                 .control-bar
-                  button.button.button_edit.control-bar__button(type="button")
-                    .button__caption Редактировать
-                    Icon.button__icon.button__icon_edit(name="pencil")
-                  button.button.button_remove.control-bar__button(type="button")
-                    .button__caption Удалить
-                    Icon.button__icon.button__icon_remove(name="remove")
+                  IconedButton(
+                    icon="pencil"
+                    modificator="blue-icon"
+                    caption="Редактировать"
+                    isCaptionBefore=true
+                  )
+                  IconedButton(
+                    icon="remove"
+                    modificator="cancel"
+                    caption="Удалить"
+                    isCaptionBefore=true
+                  )
           li.section-list__item.yells__item
             .yell
               .yell__header
@@ -84,12 +96,18 @@
                 .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
               .yell__bar
                 .control-bar
-                  button.button.button_edit.control-bar__button(type="button")
-                    .button__caption Редактировать
-                    Icon.button__icon.button__icon_edit(name="pencil")
-                  button.button.button_remove.control-bar__button(type="button")
-                    .button__caption Удалить
-                    Icon.button__icon.button__icon_remove(name="remove")
+                  IconedButton(
+                    icon="pencil"
+                    modificator="blue-icon"
+                    caption="Редактировать"
+                    isCaptionBefore=true
+                  )
+                  IconedButton(
+                    icon="remove"
+                    modificator="cancel"
+                    caption="Удалить"
+                    isCaptionBefore=true
+                  )
 </template>
 
 <script>

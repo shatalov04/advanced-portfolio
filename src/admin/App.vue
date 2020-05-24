@@ -1,13 +1,9 @@
 <template lang="pug">
   .admin
     .admin__header
-      AdminHeader
+      router-view(name="header")
     main.admin__maincontent
       router-view
-      //About
-      //Login
-      //Works
-      //Yells
 </template>
 
 <script>

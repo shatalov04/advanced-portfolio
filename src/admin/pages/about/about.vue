@@ -4,13 +4,12 @@ section.about#about
     .about__title
       .section-title
         h1.section-title__text.about__title-text Блок "Обо мне"
-      IconedButton.add(
+      IconedButton(
         icon="plus"
-        modificator="plus white"
+        modificator="add plus white"
         caption="Добавить группу"
         @click="addNewCategory"
         )
-    pre {{categories}}
     .about__content
       ul.section-list.about__list
         li.section-list__item.about__item(
@@ -20,49 +19,6 @@ section.about#about
           Category(
             :categoryId="category.id"
           )
-        //- li.section-list__item.about__item
-        //-   .skill-group
-        //-     .skill-group__header
-        //-       .property-row.property-row_title
-        //-         .property.property_title
-        //-           input.input.input_title(
-        //-             name="title"
-        //-             type="text"
-        //-             placeholder="Название новой группы"
-        //-             value="Workflow"
-        //-             required)
-        //-         .edit-control.active
-        //-             Icon.button__icon.button__icon_edit(name="pencil")
-        //-             Icon.button__icon.button__icon_apply(name="tick")
-        //-             Icon.button__icon.button__icon_cancel(name="remove")
-        //-     .skill-group__content
-        //-       ul.properties
-        //-         li.property-row.properties__item
-        //-           .property
-        //-             input.input(
-        //-             name="title"
-        //-             type="text"
-        //-             placeholder="Название навыка"
-        //-             value="Git"
-        //-             required)
-        //-           .property.property_percentage
-        //-             input.input.input_percentage(value="95")
-        //-           .edit-control
-        //-             Icon.button__icon.button__icon_edit(name="pencil")
-        //-             Icon.button__icon.button__icon_trash(name="trash")
-        //-             Icon.button__icon.button__icon_apply(name="tick")
-        //-             Icon.button__icon.button__icon_cancel(name="remove")
-        //-     .skill-group__footer
-        //-       .property-row.property-row_new
-        //-         .property
-        //-             input.input.input_new(placeholder="Новый навык")
-        //-         .property.property_percentage
-        //-             input.input.input_percentage(value="100")
-        //-         button.button.button_add(
-        //-           type="button"
-        //-         )
-        //-           Icon.button__icon.button__icon_plus.skill-group__add-icon(
-        //-             name="plus")
 </template>
 
 <script>
@@ -70,8 +26,7 @@ import { mapState, mapMutations, mapActions } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
-import NewItem from '../../components/new-item';
-import TitleEditor from '../../components/title-editor';
+import TitleEditor from '../../components/category-title';
 import Category from '../../components/category';
 
 let categoryId = 0;
@@ -79,7 +34,6 @@ export default {
   components: {
     Icon,
     IconedButton,
-    NewItem,
     TitleEditor,
     Category,
   },
@@ -90,6 +44,7 @@ export default {
   },
   methods: {
     ...mapActions('categories', ['addEmptyCategory', 'fetchCategories']),
+    ...mapActions('skills', ['fetchSkills']),
     ...mapMutations('categories', ['ADD_EMPTY_CATEGORY']),
     addNewCategory() {
       categoryId -= 1;
@@ -97,8 +52,9 @@ export default {
       this.addEmptyCategory(newCategory);
     },
   },
-  created() {
-    this.fetchCategories();
+  async created() {
+    await this.fetchCategories();
+    await this.fetchSkills();
   },
 };
 </script>
