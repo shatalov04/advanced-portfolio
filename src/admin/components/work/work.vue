@@ -2,11 +2,9 @@
   .work-component
     .work__header
       img.work__image(:src="imagePath")
-      .tags.work__tags
-        ul.tags__list
-          li.tags__item HTML5
-          li.tags__item CSS3
-          li.tags__item Javascript
+      Tags.work__tags(
+        :tagsString="work.techs"
+        )
     .work__info
       h2.work__title {{work.title}}
       .work__desc {{work.description}}
@@ -31,8 +29,10 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { getAbsoluteImgPath } from '../../shared/pictures';
+
 import IconedButton from '../iconed-button';
-import { baseUrl } from '../../shared/constants.json';
+import Tags from '../tags';
 
 export default {
   data() {
@@ -47,11 +47,12 @@ export default {
   },
   computed: {
     imagePath() {
-      return baseUrl + this.work.photo;
+      return getAbsoluteImgPath(this.work.photo);
     },
   },
   components: {
     IconedButton,
+    Tags,
   },
   methods: {
     ...mapActions({
@@ -108,20 +109,5 @@ export default {
 
 .work__bar {
   margin-top: auto;
-}
-//tags
-.tags {
-}
-.tags__list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.tags__item {
-  padding: 4px 15px;
-  border-radius: 16px;
-  background: $tag-bg-color;
-  margin-right: 15px;
-  margin-bottom: 15px;
 }
 </style>

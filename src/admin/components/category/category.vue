@@ -78,10 +78,6 @@ export default {
       return this.getCategory(this.categoryId);
     },
     skills() {
-      console.log(
-        'this.getSkills(this.categoryId) :>> ',
-        this.getSkills(this.categoryId)
-      );
       return this.getSkills(this.categoryId);
     },
     hasCategoryId() {

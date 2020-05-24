@@ -5,13 +5,17 @@
     h2.form__title Редактирование работы
     .form__content
       .form__loader
-        .loader
-          .loader__caption Перетащите или загрузите изображение
-          label.loader__button.form__button загрузить
-            input.input.input_file(
-              type="file"
-              @change="handleFileChange"
-            )
+        label.loader(:style="backgroundStyle")
+          .loader__caption(
+            v-if="!isPhotoLoaded"
+            ) Перетащите или загрузите изображение
+          .loader__button.form__button(
+            v-if="!isPhotoLoaded"
+            ) загрузить
+          input.input.input_file(
+            type="file"
+            @change="handleFileChange"
+          )
       .form__properties
         .form-property
           .form-property__label Название
@@ -42,19 +46,10 @@
               v-model="changedWork.techs"
               placeholder="Введите теги через запятую"
               required)
-          ul.tags-editor__list
-            li.tags-editor__item
-              .tags-editor__text HTML5
-              IconedButton(
-                icon="remove"
-                modificator="close"
-              )
-            li.tags-editor__item
-              .tags-editor__text Vue
-              IconedButton(
-                icon="remove"
-                modificator="close"
-              )
+          TagsEditor(
+            :work="changedWork"
+            @changeTags="handleChangeTags"
+            )
         .form__buttons
           button(
             type="button"
@@ -67,7 +62,9 @@
 <script>
 /* eslint-disable prettier/prettier */
 import { mapActions } from 'vuex';
+import { renderer, getAbsoluteImgPath } from '../../shared/pictures';
 import IconedButton from '../iconed-button';
+import TagsEditor from '../tags-editor';
 
 export default {
   data() {
@@ -80,6 +77,7 @@ export default {
         description: '',
       },
       isPhotoChanged: false,
+      renderedPhoto: null,
     };
   },
   props: {
@@ -91,17 +89,31 @@ export default {
   },
   components: {
     IconedButton,
+    TagsEditor,
   },
-  computed: {},
+  computed: {
+    backgroundStyle() {
+      return {
+        backgroundImage: `url(${this.renderedPhoto})`,
+      };
+    },
+    isPhotoLoaded() {
+      return this.renderedPhoto !== null;
+    },
+  },
   methods: {
     ...mapActions({
       addWork: 'works/addWork',
       updateWork: 'works/updateWork',
     }),
-    handleFileChange(event) {
+    async handleFileChange(event) {
       this.isPhotoChanged = true;
-      [this.changedWork.photo] = event.target.files;
-      console.log('this.changedWork.photo :>> ', this.changedWork.photo);
+      const [photo] = event.target.files;
+      this.changedWork.photo = photo;
+      await this.setPhoto(this.changedWork.photo);
+    },
+    handleChangeTags(newTags) {
+      this.changedWork.techs = newTags;
     },
     async handleSubmit() {
       try {
@@ -118,7 +130,7 @@ export default {
         this.$emit('closeWorksForm');
       } catch (error) {
         console.error(error.message);
-      } finally { }
+      }
     },
     isWorkChanged() {
       const { work, changedWork } = this;
@@ -131,12 +143,32 @@ export default {
         || work.description !== changedWork.description
       );
     },
+    async setPhoto(photo) {
+      if (photo === undefined) {
+        this.renderedPhoto = null;
+        return;
+      }
+      if (typeof (photo) === 'object') {
+        try {
+          this.renderedPhoto = await renderer(photo);
+        } catch (error) {
+          console.log(error);
+        }
+      } else if (photo.length > 0) {
+        this.renderedPhoto = getAbsoluteImgPath(photo);
+      }
+    },
   },
   watch: {
-    work() {
+    async work() {
       this.isPhotoChanged = false;
       this.changedWork = { ...this.work };
+      await this.setPhoto(this.changedWork.photo);
     },
+  },
+  async created() {
+    this.changedWork = { ...this.work };
+    await this.setPhoto(this.changedWork.photo);
   },
 };
 </script>
@@ -150,12 +182,14 @@ export default {
 
 .loader {
   height: 100%;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
   border: 2px $text-color50 dashed;
+  background-size: cover;
 }
 .loader__caption {
   max-width: 50%;
@@ -167,21 +201,4 @@ export default {
   padding-top: 10px;
 }
 
-.tags-editor {
-  padding-bottom: 20px;
-}
-.tags-editor__list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.tags-editor__item {
-  display: flex;
-  align-items: center;
-  margin-right: 15px;
-  background: $tag-bg-color;
-  border-radius: 20px;
-  padding-left: 15px;
-}
-.tags-editor__text {
-}
 </style>

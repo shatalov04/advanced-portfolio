@@ -24,4 +24,7 @@ export default {
   );
   --form-boxshadow: 4px 3px 10px rgba(0, 0, 0, 0.07);
 }
+.admin {
+  min-height: 100vh;
+}
 </style>

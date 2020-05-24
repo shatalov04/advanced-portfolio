@@ -69,7 +69,6 @@ export default {
 .about {
   background: $admin-bg-color;
   padding-bottom: 50px;
-  min-height: 100vh;
 }
 // prettier-ignore
 .about__container {

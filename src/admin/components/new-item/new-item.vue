@@ -64,7 +64,7 @@ export default {
     border-radius: 50%;
   }
   & .button__caption {
-    width: 30%;
+    width: 60%;
     font-weight: 600;
     color: white;
     line-height: 30px;
