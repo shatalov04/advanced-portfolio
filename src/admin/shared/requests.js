@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { baseUrl } from './constants.json';
 
 const token = localStorage.getItem('token');
 
@@ -7,7 +8,7 @@ if (!token) {
 }
 
 const $axios = axios.create({
-  baseURL: 'https://webdev-api.loftschool.com/',
+  baseURL: baseUrl,
   headers: {
     Authorization: `Bearer ${token}`,
   },

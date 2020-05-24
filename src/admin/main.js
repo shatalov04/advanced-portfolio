@@ -5,7 +5,7 @@ import App from './App.vue';
 
 import store from './store';
 import router from './router';
-import $axios from './requests';
+import $axios from './shared/requests';
 
 store.$axios = $axios;
 

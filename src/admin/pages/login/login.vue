@@ -36,7 +36,7 @@ import { mapState, mapMutations } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
-import $axios from '../../requests';
+import $axios from '../../shared/requests';
 
 export default {
   data() {

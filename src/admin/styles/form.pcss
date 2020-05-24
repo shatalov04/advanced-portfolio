@@ -47,10 +47,18 @@
   color: white;
   height: 50px;
   border-radius: 25px;
+  cursor: pointer;
   text-transform: uppercase;
   padding: 0 40px;
   background: $links-color;
   background: var(--bg-gradient);
+  transition: $delay;
+  opacity: 1;
+  &:hover {
+    opacity: 0.99;
+    background: $links-color;
+    background: var(--bg-reversed-gradient);
+  }
   &_auth {
     background: $links-color;
     background: var(--bg-gradient);
@@ -61,10 +69,6 @@
     text-transform: uppercase;
     transition: $delay;
     color: white;
-    &:hover {
-      opacity: 0.95;
-      background: var(--bg-reversed-gradient);
-    }
   }
 }
 .form__button_secondary {
@@ -72,4 +76,10 @@
   background: transparent;
   text-transform: capitalize;
   font-weight: 600;
+
+  &:hover {
+    background: transparent;
+    color: $admin-error-color;
+    opacity: 1;
+  }
 }

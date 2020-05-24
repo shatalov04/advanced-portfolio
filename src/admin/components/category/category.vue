@@ -128,9 +128,14 @@ export default {
       this.newSkill.category = this.category.id;
       try {
         await this.addSkill(this.newSkill);
+        this.resetNewSkill();
       } catch (error) {
         console.error(error.message);
       }
+    },
+    resetNewSkill() {
+      this.newSkill.title = '';
+      this.newSkill.percent = 0;
     },
   },
 };

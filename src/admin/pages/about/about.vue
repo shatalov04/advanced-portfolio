@@ -53,8 +53,12 @@ export default {
     },
   },
   async created() {
-    await this.fetchCategories();
-    await this.fetchSkills();
+    try {
+      await this.fetchCategories();
+      await this.fetchSkills();
+    } catch (error) {
+      console.error(error.message);
+    }
   },
 };
 </script>
