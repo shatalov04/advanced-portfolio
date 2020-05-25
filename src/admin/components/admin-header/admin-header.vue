@@ -5,7 +5,7 @@
         Headline
           User.header__user(
             name="Максим Шаталов"
-            image="content/avatar.jpg"
+            :image="imagePath"
           )
     .header__nav
       .container.header__container
@@ -18,10 +18,20 @@ import Headline from '../headline';
 import Tabs from '../tabs';
 
 export default {
+  data() {
+    return {
+      imagePath: '',
+    };
+  },
   components: {
     User,
     Headline,
     Tabs,
+  },
+  created() {
+    const requiredImage = require('../../../images/content/avatar.jpg');
+    // eslint-disable-next-line no-param-reassign
+    this.imagePath = requiredImage;
   },
 };
 </script>

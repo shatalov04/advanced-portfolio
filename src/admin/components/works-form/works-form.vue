@@ -62,11 +62,11 @@
 <script>
 /* eslint-disable prettier/prettier */
 import { mapActions } from 'vuex';
-import { renderer, getAbsoluteImgPath } from '../../shared/pictures';
-import IconedButton from '../iconed-button';
 import TagsEditor from '../tags-editor';
+import imageMixin from '../mixins/imageMixin';
 
 export default {
+  mixins: [imageMixin],
   data() {
     return {
       changedWork: {
@@ -88,18 +88,7 @@ export default {
     },
   },
   components: {
-    IconedButton,
     TagsEditor,
-  },
-  computed: {
-    backgroundStyle() {
-      return {
-        backgroundImage: `url(${this.renderedPhoto})`,
-      };
-    },
-    isPhotoLoaded() {
-      return this.renderedPhoto !== null;
-    },
   },
   methods: {
     ...mapActions({
@@ -110,7 +99,7 @@ export default {
       this.isPhotoChanged = true;
       const [photo] = event.target.files;
       this.changedWork.photo = photo;
-      await this.setPhoto(this.changedWork.photo);
+      await this.setPhoto(photo);
     },
     handleChangeTags(newTags) {
       this.changedWork.techs = newTags;
@@ -143,21 +132,7 @@ export default {
         || work.description !== changedWork.description
       );
     },
-    async setPhoto(photo) {
-      if (photo === undefined) {
-        this.renderedPhoto = null;
-        return;
-      }
-      if (typeof (photo) === 'object') {
-        try {
-          this.renderedPhoto = await renderer(photo);
-        } catch (error) {
-          console.log(error);
-        }
-      } else if (photo.length > 0) {
-        this.renderedPhoto = getAbsoluteImgPath(photo);
-      }
-    },
+
   },
   watch: {
     async work() {

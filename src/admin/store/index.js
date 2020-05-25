@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import categories from './modules/categories';
 import skills from './modules/skills';
 import works from './modules/works';
+import yells from './modules/yells';
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ const store = new Vuex.Store({
     categories,
     skills,
     works,
+    yells,
   },
 });
 

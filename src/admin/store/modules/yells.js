@@ -2,21 +2,20 @@
 import Vue from 'vue';
 import { userId } from '../../shared/constants.json';
 
-const baseRoute = '/works';
+const baseRoute = '/reviews';
 
 function setFormData(payload) {
   const result = new FormData();
 
   result.append('photo', payload.photo);
-  result.append('title', payload.title);
-  result.append('techs', payload.techs);
-  result.append('link', payload.link);
-  result.append('description', payload.description);
+  result.append('author', payload.author);
+  result.append('occ', payload.occ);
+  result.append('text', payload.text);
 
   return result;
 }
 
-const works = {
+const yells = {
   namespaced: true,
   state: {
     items: [],
@@ -40,16 +39,17 @@ const works = {
     },
   },
   actions: {
-    async fetchWorks({ commit }) {
+    async fetchYells({ commit }) {
       try {
         const { data } = await this.$axios.get(`${baseRoute}/${userId}`);
+
         commit('SET_ITEMS', data);
       } catch (error) {
         const errorData = error.response.data;
         console.error(errorData.error || errorData.message);
       }
     },
-    async addWork({ commit }, payload) {
+    async addYell({ commit }, payload) {
       try {
         const formData = setFormData(payload);
         const { data } = await this.$axios.post(baseRoute, formData);
@@ -60,7 +60,7 @@ const works = {
         console.error(errorData.error || errorData.message);
       }
     },
-    async updateWork({ commit }, payload) {
+    async updateYell({ commit }, payload) {
       try {
         const formData = setFormData(payload);
         const { data } = await this.$axios.post(
@@ -68,13 +68,13 @@ const works = {
           formData
         );
 
-        commit('UPDATE', data.work);
+        commit('UPDATE', data.review);
       } catch (error) {
         const errorData = error.response.data;
         console.error(errorData.error || errorData.message);
       }
     },
-    async deleteWork({ commit }, id) {
+    async deleteYell({ commit }, id) {
       try {
         await this.$axios.delete(`${baseRoute}/${id}`);
         commit('DELETE', id);
@@ -85,8 +85,8 @@ const works = {
     },
   },
   getters: {
-    getWork: (state) => (id) => state.items.find((item) => item.id === id),
+    getYell: (state) => (id) => state.items.find((item) => item.id === id),
   },
 };
 
-export default works;
+export default yells;

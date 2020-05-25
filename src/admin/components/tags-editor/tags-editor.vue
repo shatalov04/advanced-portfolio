@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     tags() {
-      return this.work.techs.split(',');
+      return this.work.techs !== undefined ? this.work.techs.split(',') : '';
     },
   },
   components: {

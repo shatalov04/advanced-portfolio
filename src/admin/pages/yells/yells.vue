@@ -5,131 +5,84 @@
         h1.section-title__text Блок "Отзывы"
       .yells__content
         .yells__form
-          form.form
-            h2.form__title Новый отзыв
-            .form__content
-              .form__loader.yells__loader
-                .photo-loader
-                  button.button.button_user.yells__user-button(type="button")
-                    Icon.button__icon.button__icon_man-user(name="man-user")
-                    .button__caption Добавить фото
-              .form__properties
-                .form-property
-                  .form-property__label Имя автора
-                  input.input.form-property__input(
-                    name="name"
-                    placeholder="Введите имя")
-                .form-property
-                  .form-property__label Титул автора
-                  input.input.form-property__input(
-                    name="occupation"
-                    placeholder="Введите титул")
-                .form-property
-                  .form-property__label Отзыв
-                  textarea.input.input_textarea.form-property__input(
-                    name="yell"
-                    placeholder="Введите отзыв")
-                .form__buttons
-                  button(type="button").form__button.form__button_secondary Отмена
-                  button(type="submit").form__button сохранить
-
+          YellsForm(
+            v-if="isInEditingMode"
+            :yell="activeYell"
+            @cancelEditing="handleFinishEditing"
+            @closeYellsForm="handleFinishEditing")
         ul.section-list.yells__list
           li.section-list__item.yells__item
-            NewItem(caption="Добавить отзыв")
-          li.section-list__item.yells__item
-            .yell
-              .yell__header
-                User.yell__user(
-                  name="Владимир Сабанцев"
-                  image="content/avatar-2.jpg"
-                  occupation="Преподаватель"
-                )
-              .yell__info
-                .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-              .yell__bar
-                .control-bar
-                  IconedButton(
-                    icon="pencil"
-                    modificator="blue-icon"
-                    caption="Редактировать"
-                    isCaptionBefore=true
-                  )
-                  IconedButton(
-                    icon="remove"
-                    modificator="cancel"
-                    caption="Удалить"
-                    isCaptionBefore=true
-                  )
-          li.section-list__item.yells__item
-            .yell
-              .yell__header
-                User.yell__user(
-                    name="Ковальчук Дмитрий"
-                    image="content/avatar-1.jpg"
-                    occupation="Основатель Loftschool"
-                  )
-              .yell__info
-                .yell__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .yell__bar
-                .control-bar
-                  IconedButton(
-                    icon="pencil"
-                    modificator="blue-icon"
-                    caption="Редактировать"
-                    isCaptionBefore=true
-                  )
-                  IconedButton(
-                    icon="remove"
-                    modificator="cancel"
-                    caption="Удалить"
-                    isCaptionBefore=true
-                  )
-          li.section-list__item.yells__item
-            .yell
-              .yell__header
-                User.yell__user(
-                  name="Владимир Сабанцев"
-                  image="content/avatar-2.jpg"
-                  occupation="Преподаватель"
-                )
-              .yell__info
-                .yell__desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque pariatur eius, maiores repellat, sint veniam quibusdam odio tenetur ullam praesentium itaque alias assumenda quos totam fugit accusantium at voluptates eligendi id nemo sit voluptas magni, dolores magnam?
-              .yell__bar
-                .control-bar
-                  IconedButton(
-                    icon="pencil"
-                    modificator="blue-icon"
-                    caption="Редактировать"
-                    isCaptionBefore=true
-                  )
-                  IconedButton(
-                    icon="remove"
-                    modificator="cancel"
-                    caption="Удалить"
-                    isCaptionBefore=true
-                  )
+            NewItem(
+            caption="Добавить отзыв"
+            :isEnabled="!isInCreateNewMode"
+            @addNewItem="handleAddNewYell"
+            )
+          li.section-list__item.yells__item(
+            v-for="yell in yells"
+            )
+            Yell(
+              :yell="yell"
+              @editYell="handleEditYell"
+              )
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
 import NewItem from '../../components/new-item';
-import User from '../../components/user';
+import Yell from '../../components/yell';
+
+let yellTemporaryId = 0;
 
 export default {
+  data() {
+    return {
+      activeYell: {},
+      isInCreateNewMode: false,
+      isInEditingMode: false,
+    };
+  },
   components: {
     Icon,
     IconedButton,
     NewItem,
-    User,
+    YellsForm: () => import('../../components/yells-form'),
+    Yell,
   },
   computed: {
-    ...mapState({}),
+    ...mapState('yells', {
+      yells: (state) => state.items,
+    }),
   },
   methods: {
-    ...mapMutations(),
+    ...mapActions({
+      fetchYells: 'yells/fetchYells',
+    }),
+    handleAddNewYell() {
+      yellTemporaryId -= 1;
+      this.activeYell = { id: yellTemporaryId };
+      this.isInEditingMode = true;
+      this.isInCreateNewMode = true;
+    },
+    handleFinishEditing() {
+      this.activeYell = null;
+      this.isInEditingMode = false;
+      this.isInCreateNewMode = false;
+    },
+    handleEditYell(yell) {
+      this.isInCreateNewMode = false;
+      this.activeYell = { ...yell };
+      this.isInEditingMode = true;
+    },
+  },
+  async created() {
+    try {
+      await this.fetchYells();
+    } catch (error) {
+      console.error(error.message);
+    }
   },
 };
 </script>
@@ -138,7 +91,6 @@ export default {
 @import '../../styles/section.pcss';
 @import '../../styles/property-input.pcss';
 
-//yells
 .yells {
   background: $admin-bg-color;
   padding-bottom: 50px;
@@ -154,10 +106,7 @@ export default {
 }
 .yells__form {
 }
-.yells__loader {
-  background: white;
-  width: 230px;
-}
+
 .yells__list {
   margin-right: -20px;
   margin-top: 20px;
@@ -169,9 +118,7 @@ export default {
   background: white;
   box-shadow: var(--form-boxshadow);
 }
-.yells__user-button {
-  flex-direction: column;
-}
+
 .yells__add-button {
   flex-direction: column;
 }
@@ -200,50 +147,5 @@ export default {
     color: white;
     line-height: 30px;
   }
-}
-
-//photo-loader
-.photo-loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  & .button__icon_man-user {
-    overflow: hidden;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    padding: 15px;
-    color: white;
-    background: $admin-loader-color;
-    margin-bottom: 20px;
-  }
-  & .button__caption {
-    font-weight: 600;
-    color: $links-color;
-    line-height: 30px;
-  }
-}
-
-//work
-.yell {
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.yell__header {
-}
-.yell__user {
-  margin-bottom: 20px;
-}
-.yell__info {
-}
-.yell__desc {
-  margin-bottom: 20px;
-}
-.yell__bar {
-  margin-top: auto;
 }
 </style>
