@@ -158,6 +158,15 @@ export default {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  transition: $delay;
+   &:hover{
+    & .button__icon_man-user {
+     border: 2px $text-color50 dashed;
+    }
+    & .button__caption{
+        color: $main-color;
+    }
+  }
 }
 .button__icon{
   overflow: hidden;
@@ -174,6 +183,7 @@ export default {
   padding: 15px;
   color: white;
   background: $admin-loader-color;
+
 }
 .button__caption {
   text-align: center;
@@ -181,6 +191,8 @@ export default {
   font-weight: 600;
   color: $links-color;
   line-height: 30px;
+
+
 }
 
 </style>
