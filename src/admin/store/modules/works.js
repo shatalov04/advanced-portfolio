@@ -4,6 +4,18 @@ import { userId } from '../../shared/constants.json';
 
 const baseRoute = '/works';
 
+function setFormData(payload) {
+  const workData = new FormData();
+
+  workData.append('photo', payload.photo);
+  workData.append('title', payload.title);
+  workData.append('techs', payload.techs);
+  workData.append('link', payload.link);
+  workData.append('description', payload.description);
+
+  return workData;
+}
+
 const works = {
   namespaced: true,
   state: {
@@ -39,14 +51,9 @@ const works = {
     },
     async addWork({ commit }, payload) {
       try {
-        const workData = new FormData();
-        workData.append('photo', payload.photo);
-        workData.append('title', payload.title);
-        workData.append('techs', payload.techs);
-        workData.append('link', payload.link);
-        workData.append('description', payload.description);
-
+        const workData = setFormData(payload);
         const { data } = await this.$axios.post(baseRoute, workData);
+
         commit('ADD', data);
       } catch (error) {
         const errorData = error.response.data;
@@ -55,10 +62,13 @@ const works = {
     },
     async updateWork({ commit }, payload) {
       try {
+        const workData = setFormData(payload);
         const { data } = await this.$axios.post(
           `${baseRoute}/${payload.id}`,
-          payload
+          workData
         );
+
+        console.log('data :>> ', data);
         commit('UPDATE', data.work);
       } catch (error) {
         const errorData = error.response.data;
