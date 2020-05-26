@@ -1,4 +1,4 @@
-.input {
+.property {
   position: relative;
   margin-right: 55px;
   border-bottom: 1px solid $text-color;
@@ -6,31 +6,27 @@
   &:last-child {
     margin-right: 0;
   }
-  .input__label {
-    display: none;
+  .property__label {
   }
 
-  &_active {
+  &.active {
     border-bottom: 1px solid $main-color;
-    .input__label {
-      display: block;
-    }
-    .input__icon {
-      fill: $main-color;
+    .property__icon {
+      color: $main-color;
     }
   }
-  &_error {
+  &.error {
     border-bottom: 1px solid $error-color;
-    .input__icon {
-      fill: $error-color;
+    .property__icon {
+      color: $error-color;
     }
-    .input__tooltip {
+    .property__tooltip {
       display: block;
     }
   }
 }
 
-.input__icon {
+.property__icon {
   position: absolute;
   right: 100%;
   top: 76px;
@@ -38,15 +34,15 @@
   width: 30px;
   height: 30px;
   display: block;
-  fill: $text-color30;
+  color: $text-color30;
 }
 
-.input__label {
+.property__label {
   position: absolute;
   left: 0;
   transform: translate(45px, 0);
 }
-.input__control {
+.property-input {
   border: 0;
   padding-top: 46px;
   margin-left: 45px;
@@ -66,7 +62,7 @@
   }
 }
 
-.input__tooltip {
+.property__tooltip {
   position: absolute;
   top: 100%;
   display: none;

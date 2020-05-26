@@ -12,6 +12,9 @@ import Parallax from './scripts/parallax';
 import BuddaParallax from './scripts/budda-parallax';
 import Yells from './scripts/yells';
 import Works from './scripts/works';
+import Property from './scripts/property';
+import PropertyInput from './scripts/property-input';
+import FeedbackForm from './scripts/feedback-form';
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -25,6 +28,9 @@ Vue.component('budda-parallax', BuddaParallax);
 Vue.component('skills', Skills);
 Vue.component('yells', Yells);
 Vue.component('works', Works);
+Vue.component('property', Property);
+Vue.component('property-input', PropertyInput);
+Vue.component('feedback-form', FeedbackForm);
 
 Vue.use(VueScrollTo);
 
