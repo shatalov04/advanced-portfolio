@@ -2,7 +2,8 @@
   .new-item-component
     button.button(
       type="button"
-      @click="")
+      :disabled="!isEnabled"
+      @click="$emit('addNewItem')")
       Icon.button__icon(name="plus")
       .button__caption {{caption}}
 </template>
@@ -18,6 +19,10 @@ export default {
     caption: {
       type: String,
       default: '',
+    },
+    isEnabled: {
+      type: Boolean,
+      default: true,
     },
   },
   components: { Icon },
@@ -50,7 +55,7 @@ export default {
   & .button__icon {
     width: 150px;
     height: 150px;
-    padding: 64px;
+    padding: 60px;
     border: 2px solid white;
     color: white;
     background: transparent;
@@ -59,10 +64,19 @@ export default {
     border-radius: 50%;
   }
   & .button__caption {
-    width: 30%;
+    width: 60%;
     font-weight: 600;
     color: white;
     line-height: 30px;
+  }
+
+  // не вставлять сстили ниже disabled!
+  &:disabled {
+    cursor: default;
+    background: $text-color30;
+    &:hover {
+      background: $text-color30;
+    }
   }
 }
 </style>

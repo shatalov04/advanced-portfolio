@@ -25,7 +25,6 @@ export default {
       console.log(message);
     },
     handleFocused(event) {
-      console.log('focused :>> ', event);
       this.isActive = true;
     },
     handleBlurred() {

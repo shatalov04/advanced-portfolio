@@ -1,5 +1,7 @@
 <template lang="pug">
-  .title-editor-component()
+  form.category-title-component(
+    @submit.prevent="handleApply"
+  )
     .content
       input.input.input_title(
         v-show="isActive"
@@ -26,9 +28,9 @@
       )
       IconedButton(
         v-show="isActive"
+        type="submit"
         icon="tick"
         modificator="apply"
-        @click="handleApply"
       )
       IconedButton(
         v-show="isActive"
@@ -103,7 +105,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.title-editor-component {
+@import '../../styles/property-input.pcss';
+
+.category-title-component {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,13 +118,5 @@ export default {
   width: 50%;
   font-size: 18px;
   font-weight: 600;
-}
-
-.edit-control {
-  display: flex;
-  justify-content: flex-end;
-
-  &.active {
-  }
 }
 </style>
