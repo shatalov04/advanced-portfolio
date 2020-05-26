@@ -59,7 +59,6 @@ export default {
       }
     },
     handleBlur(control) {
-      console.log('blur :>> ', control);
       switch (control) {
         case 'email':
           this.isEmailActive = false;
