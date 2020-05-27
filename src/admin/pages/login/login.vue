@@ -32,7 +32,7 @@ section.authorization#authorization
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
@@ -47,26 +47,24 @@ export default {
       },
     };
   },
-  computed: {
-    ...mapState({}),
-  },
   components: {
     Icon,
     IconedButton,
   },
   methods: {
-    ...mapMutations(),
+    ...mapActions({
+      login: 'user/login',
+    }),
     async loginUser() {
       try {
         const {
           data: { token },
         } = await $axios.post('/login', this.user);
 
-        localStorage.setItem('token', token);
-        $axios.defaults.headers.Authorization = `Bearer ${token}`;
-
+        await this.login(token);
         this.$router.replace('/');
       } catch (error) {
+        console.log('error:>> ', error);
         const errorData = error.response.data;
 
         console.error(errorData.error || errorData.message);
