@@ -5,6 +5,7 @@ import categories from './modules/categories';
 import skills from './modules/skills';
 import works from './modules/works';
 import yells from './modules/yells';
+import user from './modules/user';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ const store = new Vuex.Store({
     skills,
     works,
     yells,
+    user,
   },
 });
 

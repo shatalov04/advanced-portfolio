@@ -2,7 +2,7 @@
   header.header
     .header__bar
       .container.header__container
-        Headline
+        Headline(@logout="handleLogout")
           User.header__user(
             name="Максим Шаталов"
             :image="imagePath"
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import User from '../user';
 import Headline from '../headline';
 import Tabs from '../tabs';
@@ -27,6 +28,15 @@ export default {
     User,
     Headline,
     Tabs,
+  },
+  methods: {
+    ...mapActions({
+      logout: 'user/logout',
+    }),
+    handleLogout() {
+      this.logout();
+      this.$router.replace('/login');
+    },
   },
   created() {
     const requiredImage = require('../../../images/content/avatar.jpg');
