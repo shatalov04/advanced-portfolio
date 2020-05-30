@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import Flickity from 'vue-flickity';
+import { baseUrl } from '../admin/shared/constants.json';
 
 export default {
   template: '#yells-template',
@@ -23,6 +25,7 @@ export default {
       isPreviousButtonEnabled: false,
     };
   },
+  props: ['yellsFetched'],
   computed: {
     isNextDisabled() {
       return !this.isNextButtonEnabled;
@@ -36,12 +39,11 @@ export default {
   },
   methods: {
     transformPathsInArray(array) {
-      return array.map((i) => {
-        const requiredImage = require(`../images/${i.avatar}`);
+      return array.map((yell) => {
         // eslint-disable-next-line no-param-reassign
-        i.avatar = requiredImage;
+        yell.photo = `${baseUrl}${yell.photo}`;
 
-        return i;
+        return yell;
       });
     },
     handleNext() {
@@ -58,15 +60,16 @@ export default {
     },
     checkNextState() {
       this.isNextButtonEnabled = this.$refs.flickity.selectedIndex()
-      < this.$refs.flickity.slides().length - 1;
+       < this.$refs.flickity.slides().length - 1;
     },
     checkPreviousState() {
       this.isPreviousButtonEnabled = this.$refs.flickity.selectedIndex() > 0;
     },
   },
-  created() {
-    const data = require('../data/yells.json');
-
-    this.yells = this.transformPathsInArray(data);
+  watch: {
+    yellsFetched(newValue) {
+      this.yells = this.transformPathsInArray(newValue);
+      this.$nextTick(function () { this.$refs.flickity.rerender(); });
+    },
   },
 };

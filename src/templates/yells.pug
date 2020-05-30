@@ -25,7 +25,7 @@ script(type="text/x-template")#yells-template
               .yell__text.text.text_semi-bold.text_50 {{yell.text}}
               .yell__user
                 .avatar.yell__avatar
-                  img(:src="yell.avatar").avatar__img
+                  img(:src="yell.photo").avatar__img
                 .yell__user-desc
-                  .yell__username.text.text_bold {{yell.user}}
-                  .yell__user-occupation.text.text_semi-bold.text_30 {{yell.occupation}}
+                  .yell__username.text.text_bold {{yell.author}}
+                  .yell__user-occupation.text.text_semi-bold.text_30 {{yell.occ}}

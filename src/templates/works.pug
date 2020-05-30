@@ -2,20 +2,21 @@ script(type="text/x-template")#works-template
   .works__content
     .work
       workSlider(
-        :selectedWork="selectedWork"
+        :selected-work="selectedWork"
+        :work-index="workIndex"
         :previews="previews"
         :isNextDisabled='isNextDisabled'
         :isPreviousDisabled='isPreviousDisabled'
         @slide="handleSlide"
         @select="handleSelect"
         )
-      workInfo(:selectedWork="selectedWork")
+      workInfo(:selected-work="selectedWork")
 
 script(type="text/x-template")#work-slider-template
   .work__slider 
-    .work__index.text.text_super {{selectedWork.id}}
+    .work__index.text.text_super {{workIndex}}
     workView(
-      :selectedWork="selectedWork"
+      :selected-work="work"
       :previews="previews"
       :isNextDisabled='isNextDisabled'
       :isPreviousDisabled='isPreviousDisabled'
@@ -25,7 +26,7 @@ script(type="text/x-template")#work-slider-template
 
 script(type="text/x-template")#work-view-template
   .work__view 
-    img(:src="selectedWork.image").work__img
+    img(:src="selectedWork.photo").work__img
     buttons(
       :isNextDisabled='isNextDisabled'
       :isPreviousDisabled='isPreviousDisabled'
@@ -57,18 +58,18 @@ script(type="text/x-template")#previews-template
         :key="preview.id"
         ) 
         img(
-          :src="preview.image", class="previews__img"
+          :src="preview.photo", class="previews__img"
           :class="{active: selectedWork.id === preview.id}"
           @click.prevent="$emit('select', preview.index)"
 )
 
 script(type="text/x-template")#work-info-template
   .work__desc
-    tags(:tags="selectedWork.tags")
-    .section-title__text.work__title.title-text.title-text_small {{selectedWork.title}}
-    .work__text.text.text_semi-bold.text_70 {{selectedWork.description}}
+    //tags(:tags="work.tags")
+    .section-title__text.work__title.title-text.title-text_small {{work.title}}
+    .work__text.text.text_semi-bold.text_70 {{work.description}}
     .work__link
-      a.link(:href="selectedWork.link") Посмотреть сайт
+      a.link(:href="work.link") Посмотреть сайт
         +icon('link', 'link__img')
 
 script(type="text/x-template")#tags-template
