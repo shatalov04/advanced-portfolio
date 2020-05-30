@@ -16,10 +16,6 @@ const userModule = {
     },
   },
   actions: {
-    async login(store, token) {
-      localStorage.setItem('token', token);
-      this.$axios.defaults.headers.Authorization = `Bearer ${token}`;
-    },
     async setUser({ commit }, guard) {
       const { data } = await guard.get(`${baseRoute}`);
 
@@ -27,13 +23,13 @@ const userModule = {
     },
     async logout({ commit }) {
       try {
-        localStorage.removeItem('token');
         await this.$axios.post('/logout');
       } catch (error) {
         const errorData = error.response.data;
         console.error(errorData.error || errorData.message);
       } finally {
         commit('LOGOUT_USER');
+        localStorage.removeItem('token');
       }
     },
   },
