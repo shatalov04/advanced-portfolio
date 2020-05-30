@@ -1,26 +1,27 @@
 import axios from 'axios';
 import { baseUrl } from './constants.json';
 
-const tokenFromStorage = localStorage.getItem('token') || '';
-
-const $axios = axios.create({
+const tokenFromStorage = localStorage.getItem('token');
+console.log('tokenFromStorage :>> ', tokenFromStorage);
+const requests = axios.create({
   baseURL: baseUrl,
   headers: {
     Authorization: `Bearer ${tokenFromStorage}`,
   },
 });
 
-axios.interceptors.response.use(
+requests.interceptors.response.use(
   (response) => response,
   async (error) => {
+    console.log('interceptor error :>> ', error);
     const originalRequest = error.config;
 
     if (error.response.status === 401) {
-      const response = await $axios.post('/refreshToken');
+      const response = await requests.post('/refreshToken');
       const { token } = response.data;
 
       localStorage.setItem('token', token);
-      $axios.defaults.headers.Authorization = `Bearer ${token}`;
+      requests.defaults.headers.Authorization = `Bearer ${token}`;
       originalRequest.headers.Authorization = `Bearer ${token}`;
 
       return axios(originalRequest);
@@ -30,4 +31,4 @@ axios.interceptors.response.use(
   }
 );
 
-export default $axios;
+export default requests;

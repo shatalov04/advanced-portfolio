@@ -69,7 +69,7 @@ script(type="text/x-template")#work-info-template
     .section-title__text.work__title.title-text.title-text_small {{work.title}}
     .work__text.text.text_semi-bold.text_70 {{work.description}}
     .work__link
-      a.link(:href="work.link") Посмотреть сайт
+      a.link(:href="work.link" target="_blank") Посмотреть сайт
         +icon('link', 'link__img')
 
 script(type="text/x-template")#tags-template
