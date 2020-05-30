@@ -46,29 +46,6 @@ include ./mixins.pug
     },
   }
 
--
-  var feedbackInputs = [
-    {
-      tooltip:'Введите ваше имя',
-      placeholder:'Ковальчук Дмитрий',
-      icon: 'user',
-      name: 'username',
-    },
-      {
-        tooltip:'Введите ваш email',
-        placeholder:'loftschool@study.com',
-        icon: 'envelope',
-        name: 'email',
-    },
-    {
-      tooltip:'Сообщение к письму',
-      placeholder:'Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса.',
-      icon: 'message',
-      name: 'message',
-    }
-  ]
-
-
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -129,7 +106,7 @@ html(lang="en")
                 h2.section-title__text.title-text.title-text_small #{skillsTitle}
                 .section-title__desc.text.text_semi-bold.text_50 
                   p #{jobContent}      
-            skills
+            skills(:categories='categories')
           .triangles.skills__triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item
               polygon(points="0,0 0,100 1000,100")
@@ -140,12 +117,14 @@ html(lang="en")
           .works__section-title
             .section-title
               h2.section-title__text.title-text Мои работы
-          works(:previews-quantity=4)
+          works-section(
+            :previews-quantity=3
+            :works-fetched="works")
       .closing-section
         budda-parallax
         section.yells#yells
           .container.yells__container
-            yells
+            yells-section(:yells-fetched="yells")
         section.feedback#feedback
           .container.feedback__container
             .feedback__section-title

@@ -24,7 +24,7 @@ export default {
     reactOnChildEvent(message) {
       console.log(message);
     },
-    handleFocused(event) {
+    handleFocused() {
       this.isActive = true;
     },
     handleBlurred() {

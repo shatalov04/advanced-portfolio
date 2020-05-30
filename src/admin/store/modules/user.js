@@ -12,7 +12,6 @@ const userModule = {
       state.user = user;
     },
     LOGOUT_USER(state) {
-      console.log('logout user :>> ');
       state.user = {};
     },
   },
@@ -25,10 +24,8 @@ const userModule = {
       const { data } = await guard.get(`${baseRoute}`);
 
       commit('SET_USER', data.user);
-      console.log('data :>> ', data);
     },
     async logout({ commit }) {
-      console.log('logout :>> ');
       try {
         localStorage.removeItem('token');
         await this.$axios.post('/logout');
@@ -42,7 +39,6 @@ const userModule = {
   },
   getters: {
     isUserLoggedIn: ({ user }) => {
-      console.log('user :>> ', user);
       const userObjectIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
       return userObjectIsEmpty === false;
     },

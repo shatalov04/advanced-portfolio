@@ -64,7 +64,6 @@ export default {
         await this.login(token);
         this.$router.replace('/');
       } catch (error) {
-        console.log('error:>> ', error);
         const errorData = error.response.data;
 
         console.error(errorData.error || errorData.message);

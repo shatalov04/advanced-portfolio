@@ -15,7 +15,6 @@ const guard = axios.create({
 router.beforeEach(async (to, from, next) => {
   const isPublicRoute = to.matched.some((route) => route.meta.isPublic);
   const isUserLoggedIn = store.getters['user/isUserLoggedIn'];
-  console.log('isUserLoggedIn :>> ', isUserLoggedIn);
 
   try {
     if (isPublicRoute === false && isUserLoggedIn === false) {

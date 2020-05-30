@@ -26,7 +26,7 @@ form.form.yells-form-component(
         .form-property__label Имя автора
         input.input.form-property__input(
           v-model="changedYell.author"
-          placeholder="Введите название работы"
+          placeholder="Введите имя автора"
           autofocus
           required
           )

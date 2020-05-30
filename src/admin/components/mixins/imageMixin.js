@@ -21,7 +21,7 @@ const imageMixin = {
         try {
           this.renderedPhoto = await renderer(photo);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       } else if (photo.length > 0) {
         this.renderedPhoto = getAbsoluteImgPath(photo);

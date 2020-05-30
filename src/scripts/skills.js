@@ -4,17 +4,15 @@ import SkillGroup from './skill-group';
 export default {
   template: '#skills-template',
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
+  props: {
+    categories: {
+      type: Array,
+      required: true,
+    },
   },
   components: {
     SkillGroup,
-  },
-  created() {
-    const data = require('../data/skills.json');
-
-    this.skills = data;
   },
 };

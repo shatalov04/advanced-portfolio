@@ -2,8 +2,15 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 
+import { baseUrl } from '../admin/shared/constants.json';
+
 const previews = {
   template: '#previews-template',
+  data() {
+    return {
+      previewsWithPaths: [],
+    };
+  },
   props: ['selectedWork', 'previews'],
 };
 const buttons = {
@@ -22,9 +29,20 @@ const workView = {
 
 const workSlider = {
   template: '#work-slider-template',
-  props: ['selectedWork', 'previews', 'isNextDisabled', 'isPreviousDisabled'],
+  props: [
+    'selectedWork',
+    'previews',
+    'workIndex',
+    'isNextDisabled',
+    'isPreviousDisabled',
+  ],
   components: {
     workView,
+  },
+  computed: {
+    work() {
+      return { ...this.selectedWork };
+    },
   },
 };
 
@@ -39,6 +57,11 @@ const workInfo = {
   components: {
     tags,
   },
+  computed: {
+    work() {
+      return { ...this.selectedWork };
+    },
+  },
 };
 
 export default {
@@ -51,10 +74,13 @@ export default {
       isPreviousButtonEnabled: false,
     };
   },
-  props: ['previewsQuantity'],
+  props: ['previewsQuantity', 'worksFetched'],
   computed: {
     selectedWork() {
       return this.works[this.selectedIndex];
+    },
+    workIndex() {
+      return this.selectedIndex + 1;
     },
     previews() {
       return this.filterWorksForPreview();
@@ -74,12 +100,12 @@ export default {
     transformImagePaths(array) {
       const works = [...array];
 
-      return works.map((i) => {
-        const requiredImage = require(`../images/${i.image}`);
+      return works.map((work) => {
+        // const requiredImage = require(`../images/${i.image}`);
         // eslint-disable-next-line no-param-reassign
-        i.image = requiredImage;
+        work.photo = `${baseUrl}${work.photo}`;
 
-        return i;
+        return work;
       });
     },
     filterWorksForPreview() {
@@ -89,7 +115,7 @@ export default {
 
       const result = reversedIndexes.map((i) => ({
         id: this.works[i].id,
-        image: this.works[i].image,
+        photo: this.works[i].photo,
         index: i,
       }));
 
@@ -178,9 +204,9 @@ export default {
       this.isPreviousButtonEnabled = this.selectedIndex > 0;
     },
   },
-  created() {
-    const data = require('../data/works.json');
-
-    this.works = this.transformImagePaths(data);
+  watch: {
+    worksFetched(newValue) {
+      this.works = this.transformImagePaths(newValue);
+    },
   },
 };
