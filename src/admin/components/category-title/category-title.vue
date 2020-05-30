@@ -38,14 +38,24 @@
         modificator="cancel"
         @click="handleCancel"
       )
+    ContextTooltip(
+      v-if="validation.hasError('title')"
+      :errorMessage="validation.firstError('title')").property__tooltip
 </template>
 
 <script>
+import { Validator, mixin } from 'simple-vue-validator';
 import IconedButton from '../iconed-button';
 
 let unchangedTitle = '';
 
 export default {
+  mixins: [mixin],
+  validators: {
+    title(value) {
+      return Validator.value(value).required();
+    },
+  },
   data() {
     return {
       isActive: false,
@@ -62,7 +72,10 @@ export default {
       default: '',
     },
   },
-  components: { IconedButton },
+  components: {
+    IconedButton,
+    ContextTooltip: () => import('../context-tooltip'),
+  },
   methods: {
     handleEdit() {
       unchangedTitle = this.title;
@@ -112,11 +125,18 @@ export default {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }
 .content {
   margin: 0 10px;
   width: 50%;
   font-size: 18px;
   font-weight: 600;
+}
+.property__tooltip {
+  position: absolute;
+  top: calc(100%+2px);
+  color: $admin-error-color;
+  font-size: 12px;
 }
 </style>
