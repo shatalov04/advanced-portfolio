@@ -8,10 +8,15 @@ const previews = {
   template: '#previews-template',
   data() {
     return {
-      previewsWithPaths: [],
+      slides: [],
     };
   },
   props: ['selectedWork', 'previews'],
+  watch: {
+    previews(newValue) {
+      this.slides = [...newValue];
+    },
+  },
 };
 const buttons = {
   template: '#buttons-template',
@@ -71,7 +76,7 @@ export default {
       works: [],
       selectedIndex: 0,
       isNextButtonEnabled: true,
-      isPreviousButtonEnabled: false,
+      isPreviousButtonEnabled: true,
     };
   },
   props: ['previewsQuantity', 'worksFetched'],
@@ -128,16 +133,6 @@ export default {
         return works.map((w, i) => i);
       }
 
-      if (selectedIndex < filterQuantity - 1) {
-        return [...Array(filterQuantity).keys()];
-      }
-
-      if (selectedIndex > lastIndex - filterQuantity + 1) {
-        return [...Array(filterQuantity).keys()]
-          .map((i) => lastIndex - i)
-          .reverse();
-      }
-
       let minIndex = 0;
       let maxIndex = 0;
 
@@ -152,9 +147,14 @@ export default {
       }
 
       const result = [];
-
       for (let i = minIndex; i <= maxIndex; i++) {
-        result.push(i);
+        if (i < 0) {
+          result.push(lastIndex + i + 1);
+        } else if (i > lastIndex) {
+          result.push(i - lastIndex - 1);
+        } else {
+          result.push(i);
+        }
       }
 
       return result;
@@ -183,25 +183,15 @@ export default {
     },
     handleSelect(index) {
       this.selectedIndex = index;
-      this.checkState();
     },
     handleNext() {
-      this.selectedIndex++;
-      this.checkState();
+      const nextIndex = this.selectedIndex + 1;
+      this.selectedIndex = nextIndex > this.works.length - 1 ? 0 : nextIndex;
     },
     handlePrevious() {
-      this.selectedIndex--;
-      this.checkState();
-    },
-    checkState() {
-      this.checkNextState();
-      this.checkPreviousState();
-    },
-    checkNextState() {
-      this.isNextButtonEnabled = this.selectedIndex < this.works.length - 1;
-    },
-    checkPreviousState() {
-      this.isPreviousButtonEnabled = this.selectedIndex > 0;
+      const previousIndex = this.selectedIndex - 1;
+      // eslint-disable-next-line prettier/prettier
+      this.selectedIndex = previousIndex < 0 ? this.works.length - 1 : previousIndex;
     },
   },
   watch: {

@@ -54,13 +54,13 @@ script(type="text/x-template")#previews-template
   .previews.work__previews
     ul.previews__list
       li.previews__item(
-        v-for="preview in previews"
-        :key="preview.id"
+        v-for="slide in slides"
+        :key="slide.id"
         ) 
         img(
-          :src="preview.photo", class="previews__img"
-          :class="{active: selectedWork.id === preview.id}"
-          @click.prevent="$emit('select', preview.index)"
+          :src="slide.photo", class="previews__img"
+          :class="{active: selectedWork.id === slide.id}"
+          @click.prevent="$emit('select', slide.index)"
 )
 
 script(type="text/x-template")#work-info-template
