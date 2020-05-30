@@ -37,6 +37,16 @@
     width: 100%;
   }
 }
+
+.work__image-wrapper {
+  top: 0;
+  left: 0;
+  position: absolute;
+  &_hidden-dog-nail {
+    opacity: 0;
+  }
+}
+
 .work__img {
 }
 
@@ -69,11 +79,11 @@
   }
   &:disabled {
     color: $text-color70;
-    background: $text-color30;
+    background: $text-color;
     cursor: auto;
     &:hover {
-      background: $text-color30;
-      color: $text-color70;
+      color: $text-color;
+      background: $text-color70;
     }
   }
 }
@@ -92,9 +102,7 @@
   position: absolute;
   top: 100%;
   left: 100%;
-  width: 20%;
   transform: translate(-100%, -100%);
-
   @include phone {
     display: none;
   }
@@ -146,4 +154,25 @@
     display: inline-block;
     margin: 0 auto;
   }
+}
+
+.work-fade-leave-active,
+.work-fade-enter-active {
+  transition: $slider-delay;
+}
+
+.work-fade-leave {
+  opacity: 1;
+}
+.work-fade-leave-to {
+  opacity: 0;
+}
+
+.work-fade-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.work-fade-enter-to {
+  opacity: 1;
+  transform: translateY(-100%);
 }
