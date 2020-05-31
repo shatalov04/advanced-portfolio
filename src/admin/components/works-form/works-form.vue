@@ -23,29 +23,38 @@
             v-model="changedWork.title"
             placeholder="Введите название работы"
             autofocus
-            required
             )
+          ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedWork.title')"
+            :errorMessage="validation.firstError('changedWork.title')")
         .form-property
           .form-property__label Ссылка
           input.input.form-property__input(
             v-model="changedWork.link"
             placeholder="Введите ссылку на работу"
-            required
             )
+          ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedWork.link')"
+            :errorMessage="validation.firstError('changedWork.link')")
         .form-property
           .form-property__label Описание
           textarea.input.input_textarea.form-property__input(
             v-model="changedWork.description"
             placeholder="Введите описание работы"
-            required
             )
+          ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedWork.description')"
+            :errorMessage="validation.firstError('changedWork.description')")
         .tags-editor
           .form-property
             .form-property__label Добавление тегов
             input.input(
               v-model="changedWork.techs"
               placeholder="Введите теги через запятую"
-              required)
+              )
+            ContextTooltip.property__tooltip(
+              v-if="validation.hasError('changedWork.techs')"
+              :errorMessage="validation.firstError('changedWork.techs')")
           TagsEditor(
             :work="changedWork"
             @changeTags="handleChangeTags"
@@ -61,12 +70,34 @@
 
 <script>
 /* eslint-disable prettier/prettier */
+/* eslint-disable func-names */
 import { mapActions } from 'vuex';
+import { Validator, mixin } from 'simple-vue-validator';
 import TagsEditor from '../tags-editor';
 import imageMixin from '../mixins/imageMixin';
 
 export default {
-  mixins: [imageMixin],
+  mixins: [imageMixin, mixin],
+  validators: {
+    'changedWork.title': function (value) {
+      return Validator.value(value)
+        .required();
+    },
+    'changedWork.techs': function (value) {
+      return Validator.value(value)
+        .required();
+    },
+    'changedWork.link': function (value) {
+      return Validator.value(value)
+        .required()
+        .url();
+    },
+    'changedWork.description': function (value) {
+      return Validator.value(value)
+        .required()
+        .minLength(15);
+    },
+  },
   data() {
     return {
       changedWork: {
@@ -89,6 +120,7 @@ export default {
   },
   components: {
     TagsEditor,
+    ContextTooltip: () => import('../context-tooltip'),
   },
   methods: {
     ...mapActions({
@@ -106,10 +138,14 @@ export default {
     },
     async handleSubmit() {
       try {
+        const isValid = await this.$validate();
+        if (!isValid) return;
+
         if (!this.isWorkChanged()) {
           alert('В работе нет изменений');
           return;
         }
+
         const isCreatedInDatabase = this.work.id >= 0;
 
         await (isCreatedInDatabase
@@ -118,7 +154,8 @@ export default {
 
         this.$emit('closeWorksForm');
       } catch (error) {
-        console.error(error.message);
+        console.error('Ошибка валидации',
+          error.message);
       }
     },
     isWorkChanged() {

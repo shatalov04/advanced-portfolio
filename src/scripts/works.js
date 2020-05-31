@@ -80,7 +80,7 @@ const workSlider = {
 
 const tags = {
   template: '#tags-template',
-  props: ['tags'],
+  props: ['tagList'],
 };
 
 const workInfo = {
@@ -92,6 +92,11 @@ const workInfo = {
   computed: {
     work() {
       return { ...this.selectedWork };
+    },
+    tagList() {
+      const serializedTags = this.work.techs;
+
+      return serializedTags === undefined ? [] : serializedTags.split(', ');
     },
   },
 };

@@ -20,7 +20,7 @@ form.form.yells-form-component(
         input.input.input_file(
           type="file"
           @change="handleFileChange"
-        )
+          )
     .form__properties
       .form-property
         .form-property__label Имя автора
@@ -28,22 +28,28 @@ form.form.yells-form-component(
           v-model="changedYell.author"
           placeholder="Введите имя автора"
           autofocus
-          required
           )
+        ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedYell.author')"
+            :errorMessage="validation.firstError('changedYell.author')")
       .form-property
         .form-property__label Титул автора
         input.input.form-property__input(
           v-model="changedYell.occ"
           placeholder="Введите титул"
-          required
           )
+        ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedYell.occ')"
+            :errorMessage="validation.firstError('changedYell.occ')")
       .form-property
         .form-property__label Отзыв
           textarea.input.input_textarea.form-property__input(
             v-model="changedYell.text"
             placeholder="Введите отзыв"
-            required
             )
+          ContextTooltip.property__tooltip(
+            v-if="validation.hasError('changedYell.text')"
+            :errorMessage="validation.firstError('changedYell.text')")
         .form__buttons
           button(
             type="button"
@@ -54,13 +60,30 @@ form.form.yells-form-component(
 
 <script>
 /* eslint-disable prettier/prettier */
+/* eslint-disable func-names */
 import { mapActions } from 'vuex';
+import { Validator, mixin } from 'simple-vue-validator';
 import imageMixin from '../mixins/imageMixin';
 
 import Icon from '../Icon.vue';
 
 export default {
-  mixins: [imageMixin],
+  mixins: [imageMixin, mixin],
+  validators: {
+    'changedYell.author': function (value) {
+      return Validator.value(value)
+        .required();
+    },
+    'changedYell.occ': function (value) {
+      return Validator.value(value)
+        .required();
+    },
+    'changedYell.text': function (value) {
+      return Validator.value(value)
+        .required()
+        .minLength(15);
+    },
+  },
   data() {
     return {
       changedYell: {
@@ -82,6 +105,7 @@ export default {
   },
   components: {
     Icon,
+    ContextTooltip: () => import('../context-tooltip'),
   },
   methods: {
     ...mapActions({
@@ -96,10 +120,14 @@ export default {
     },
     async handleSubmit() {
       try {
+        const isValid = await this.$validate();
+        if (!isValid) return;
+
         if (!this.isYellChanged()) {
           alert('В отзыве нет изменений');
           return;
         }
+
         const isCreatedInDatabase = this.yell.id >= 0;
 
         await (isCreatedInDatabase
@@ -108,7 +136,7 @@ export default {
 
         this.$emit('closeYellsForm');
       } catch (error) {
-        console.error(error.message);
+        console.error('Ошибка валидации', error.message);
       }
     },
     isYellChanged() {

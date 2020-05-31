@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable implicit-arrow-linebreak */
-const baseRoute = '/user';
-
 const userModule = {
   namespaced: true,
   state: {
@@ -16,10 +14,8 @@ const userModule = {
     },
   },
   actions: {
-    async setUser({ commit }, guard) {
-      const { data } = await guard.get(`${baseRoute}`);
-
-      commit('SET_USER', data.user);
+    async setUser({ commit }, user) {
+      commit('SET_USER', user);
     },
     async logout({ commit }) {
       try {

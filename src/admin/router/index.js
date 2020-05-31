@@ -1,16 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import axios from 'axios';
+import $axios from '../shared/requests';
 import routes from './routes';
 import store from '../store';
-import { baseUrl } from '../shared/constants.json';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({ routes });
-const guard = axios.create({
-  baseURL: baseUrl,
-});
 
 router.beforeEach(async (to, from, next) => {
   const isPublicRoute = to.matched.some((route) => route.meta.isPublic);
@@ -20,16 +16,15 @@ router.beforeEach(async (to, from, next) => {
     if (isPublicRoute === false && isUserLoggedIn === false) {
       const token = localStorage.getItem('token');
 
-      guard.defaults.headers.Authorization = `Bearer ${token}`;
-
-      await store.dispatch('user/setUser', guard);
+      $axios.defaults.headers.Authorization = `Bearer ${token}`;
+      const { data } = await $axios.get('/user');
+      store.dispatch('user/setUser', data.user);
     }
     next();
   } catch (error) {
-    console.error(error);
-    localStorage.removeItem('token');
+    router.replace('/login');
 
-    next('/login');
+    localStorage.removeItem('token');
   }
 });
 
