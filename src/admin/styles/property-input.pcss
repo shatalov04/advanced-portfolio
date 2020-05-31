@@ -1,6 +1,7 @@
 //property
 .property {
   margin: 0 10px;
+  position: relative;
   flex: 1;
   &_title {
     width: 50%;
@@ -8,7 +9,6 @@
   }
   &_percentage {
     max-width: 75px;
-    position: relative;
     &:after {
       content: '%';
       display: block;
@@ -19,7 +19,15 @@
     }
   }
 }
-
+.property__tooltip {
+  position: absolute;
+  top: calc(100%+2px);
+  color: $admin-error-color;
+  font-size: 12px;
+  &_percentage {
+    left: -75%;
+  }
+}
 //input
 .input {
   border: 0;

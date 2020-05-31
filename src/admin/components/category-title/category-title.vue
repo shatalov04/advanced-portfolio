@@ -82,17 +82,15 @@ export default {
       this.isActive = true;
     },
     handleApply() {
-      if (this.title === '') {
-        return;
-      }
+      this.$validate().then((success) => {
+        if (!success) return;
 
-      this.isActive = false;
+        this.isActive = false;
 
-      if (this.title === unchangedTitle) {
-        return;
-      }
+        if (this.title === unchangedTitle) return;
 
-      this.$emit('changeTitle', this.title);
+        this.$emit('changeTitle', this.title);
+      });
     },
     handleCancel() {
       this.title = unchangedTitle;
@@ -132,11 +130,5 @@ export default {
   width: 50%;
   font-size: 18px;
   font-weight: 600;
-}
-.property__tooltip {
-  position: absolute;
-  top: calc(100%+2px);
-  color: $admin-error-color;
-  font-size: 12px;
 }
 </style>
