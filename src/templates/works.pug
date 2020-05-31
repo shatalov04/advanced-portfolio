@@ -80,7 +80,7 @@ script(type="text/x-template")#previews-template
 
 script(type="text/x-template")#work-info-template
   .work__desc
-    //tags(:tags="work.tags")
+    tags(:tagList="tagList")
     .section-title__text.work__title.title-text.title-text_small {{work.title}}
     .work__text.text.text_semi-bold.text_70 {{work.description}}
     .work__link
@@ -90,4 +90,4 @@ script(type="text/x-template")#work-info-template
 script(type="text/x-template")#tags-template
   .tags.work__tags
     ul.tags__list
-      li(v-for="tag in tags" :key="tag").tags__item.text.text_semi-bold.text_70 {{tag}}
+      li(v-for="tag in tagList" :key="tag").tags__item.text.text_semi-bold.text_70 {{tag}}
