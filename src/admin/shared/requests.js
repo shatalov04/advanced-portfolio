@@ -2,7 +2,6 @@ import axios from 'axios';
 import { baseUrl } from './constants.json';
 
 const tokenFromStorage = localStorage.getItem('token');
-console.log('tokenFromStorage :>> ', tokenFromStorage);
 const requests = axios.create({
   baseURL: baseUrl,
   headers: {
