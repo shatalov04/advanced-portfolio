@@ -24,16 +24,20 @@
             name="title"
             type="text"
             placeholder="Новый навык"
-            :disabled="!hasCategoryId"
-            required)
+            :disabled="!hasCategoryId")
+          ContextTooltip.property__tooltip(
+            v-if="validation.hasError('newSkill.title')"
+            :errorMessage="validation.firstError('newSkill.title')")
         .property.property_percentage
           input.input.input_percentage(
             v-model.number="newSkill.percent"
             name="percent"
             type="number"
             value="100"
-            :disabled="!hasCategoryId"
-            required)
+            :disabled="!hasCategoryId")
+          ContextTooltip.property__tooltip.property__tooltip_percentage(
+            v-if="validation.hasError('newSkill.percent')"
+            :errorMessage="validation.firstError('newSkill.percent')")
         IconedButton(
           type="submit"
           icon="plus"
@@ -43,12 +47,28 @@
 </template>
 
 <script>
+/* eslint-disable prettier/prettier */
+/* eslint-disable func-names */
 import { mapGetters, mapActions } from 'vuex';
+import { Validator, mixin } from 'simple-vue-validator';
 import IconedButton from '../iconed-button';
 import CategoryTitle from '../category-title';
 import CategorySkill from '../category-skill';
 
 export default {
+  mixins: [mixin],
+  validators: {
+    'newSkill.title': function (value) {
+      return Validator.value(value).required();
+    },
+    'newSkill.percent': function (value) {
+      return Validator.value(value)
+        .required()
+        .integer()
+        .lessThanOrEqualTo(100)
+        .greaterThan(0);
+    },
+  },
   data() {
     return {
       newSkill: {
@@ -68,6 +88,7 @@ export default {
     CategoryTitle,
     CategorySkill,
     IconedButton,
+    ContextTooltip: () => import('../context-tooltip'),
   },
   computed: {
     ...mapGetters({
@@ -121,8 +142,12 @@ export default {
       }
     },
     async addNewSkill() {
-      this.newSkill.category = this.category.id;
       try {
+        const isValid = await this.$validate();
+        if (!isValid) return;
+
+        this.newSkill.category = this.category.id;
+
         await this.addSkill(this.newSkill);
         this.resetNewSkill();
       } catch (error) {
@@ -132,6 +157,7 @@ export default {
     resetNewSkill() {
       this.newSkill.title = '';
       this.newSkill.percent = 0;
+      this.validation.reset();
     },
   },
 };
