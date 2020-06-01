@@ -6,6 +6,7 @@ import skills from './modules/skills';
 import works from './modules/works';
 import yells from './modules/yells';
 import user from './modules/user';
+import message from './modules/message';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ const store = new Vuex.Store({
     works,
     yells,
     user,
+    message,
   },
 });
 

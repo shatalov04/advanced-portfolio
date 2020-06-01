@@ -1,6 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 import { userId } from '../../shared/constants.json';
+import errorGenerator from '../../shared/error-generator';
 
 const baseRoute = '/works';
 
@@ -45,8 +46,7 @@ const works = {
         const { data } = await this.$axios.get(`${baseRoute}/${userId}`);
         commit('SET_ITEMS', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async addWork({ commit }, payload) {
@@ -56,8 +56,7 @@ const works = {
 
         commit('ADD', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async updateWork({ commit }, payload) {
@@ -70,8 +69,7 @@ const works = {
 
         commit('UPDATE', data.work);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async deleteWork({ commit }, id) {
@@ -79,8 +77,7 @@ const works = {
         await this.$axios.delete(`${baseRoute}/${id}`);
         commit('DELETE', id);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
   },

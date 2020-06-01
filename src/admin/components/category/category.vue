@@ -51,12 +51,13 @@
 /* eslint-disable func-names */
 import { mapGetters, mapActions } from 'vuex';
 import { Validator, mixin } from 'simple-vue-validator';
+import messageMixin from '../mixins/message-mixin';
 import IconedButton from '../iconed-button';
 import CategoryTitle from '../category-title';
 import CategorySkill from '../category-skill';
 
 export default {
-  mixins: [mixin],
+  mixins: [mixin, messageMixin],
   validators: {
     'newSkill.title': function (value) {
       return Validator.value(value).required();
@@ -123,22 +124,25 @@ export default {
     async addNewCategory() {
       try {
         await this.addCategory(this.category);
+        this.sendNotification('Категория успешно добавлена');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
     async updateCurrentCategory() {
       try {
         await this.updateCategory(this.category);
+        this.sendNotification('Категория успешно обновлена');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
     async handleDeleteCategory() {
       try {
         await this.deleteCategory(this.category.id);
+        this.sendNotification('Категория успешно удалена');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
     async addNewSkill() {
@@ -149,9 +153,10 @@ export default {
         this.newSkill.category = this.category.id;
 
         await this.addSkill(this.newSkill);
+        this.sendNotification('Новый навык добавлен');
         this.resetNewSkill();
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
     resetNewSkill() {

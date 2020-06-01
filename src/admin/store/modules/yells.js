@@ -1,6 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 import { userId } from '../../shared/constants.json';
+import errorGenerator from '../../shared/error-generator';
 
 const baseRoute = '/reviews';
 
@@ -45,8 +46,7 @@ const yells = {
 
         commit('SET_ITEMS', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async addYell({ commit }, payload) {
@@ -56,8 +56,7 @@ const yells = {
 
         commit('ADD', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async updateYell({ commit }, payload) {
@@ -70,8 +69,7 @@ const yells = {
 
         commit('UPDATE', data.review);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async deleteYell({ commit }, id) {
@@ -79,8 +77,7 @@ const yells = {
         await this.$axios.delete(`${baseRoute}/${id}`);
         commit('DELETE', id);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
   },

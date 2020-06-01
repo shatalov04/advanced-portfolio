@@ -30,11 +30,13 @@
 <script>
 import { mapActions } from 'vuex';
 import { getAbsoluteImgPath } from '../../shared/pictures';
+import messageMixin from '../mixins/message-mixin';
 
 import IconedButton from '../iconed-button';
 import Tags from '../tags';
 
 export default {
+  mixins: [messageMixin],
   data() {
     return {};
   },
@@ -61,8 +63,9 @@ export default {
     async handleDeleteWork() {
       try {
         await this.deleteWork(this.work.id);
+        this.sendNotification('Работа успешно удалена');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
   },
