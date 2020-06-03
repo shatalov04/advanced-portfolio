@@ -76,6 +76,7 @@ export default {
 <style lang="postcss" scoped>
 @import '../../styles/form.pcss';
 @import '../../styles/property-input.pcss';
+@import '../../../styles/mixins.pcss';
 
 .authorization {
   background: url(../../../images/content/welcome-background.jpg) no-repeat

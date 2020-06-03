@@ -61,6 +61,7 @@ export default {
 
 <style lang="postcss" scoped>
 @import '../../styles/section.pcss';
+@import '../../../styles/mixins.pcss';
 
 .about {
   background: $admin-bg-color;
@@ -68,7 +69,22 @@ export default {
 }
 // prettier-ignore
 .about__container {
-  width: 1200Px;
+  margin: 0 auto;
+  max-width: 1200Px;
+  width: 95%;
+
+  @include desktop {
+    max-width: 1080Px;
+  }
+
+  @include tablet {
+    max-width: 688Px;
+    width: 90%;
+  }
+
+  @include phone {
+    width: 85%;
+  }
 }
 .about__content {
 }

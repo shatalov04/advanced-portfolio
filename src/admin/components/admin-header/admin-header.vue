@@ -1,14 +1,14 @@
 <template lang="pug">
   header.header
     .header__bar
-      .container.header__container
+      .section-container.header__container
         Headline(@logout="handleLogout")
           User.header__user(
             name="Максим Шаталов"
             :image="imagePath"
           )
     .header__nav
-      .container.header__container
+      .section-container.header__container
           Tabs.header_nav
 </template>
 
@@ -47,9 +47,26 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../../styles/mixins.pcss';
+
 // prettier-ignore
 .header__container {
-  width: 1200Px;
+    margin: 0 auto;
+  max-width: 1200Px;
+  width: 95%;
+
+  @include desktop {
+    max-width: 1080Px;
+  }
+
+  @include tablet {
+    max-width: 688Px;
+    width: 90%;
+  }
+
+  @include phone {
+    width: 85%;
+  }
 }
 .header_nav {
   height: 80px;

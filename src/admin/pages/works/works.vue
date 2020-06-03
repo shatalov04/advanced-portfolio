@@ -90,6 +90,7 @@ export default {
 @import '../../styles/form.pcss';
 @import '../../styles/section.pcss';
 @import '../../styles/property-input.pcss';
+@import '../../../styles/mixins.pcss';
 
 //works
 .works {
@@ -98,7 +99,22 @@ export default {
 }
 // prettier-ignore
 .works__container {
-  width: 1200Px;
+   margin: 0 auto;
+  max-width: 1200Px;
+  width: 95%;
+
+  @include desktop {
+    max-width: 1080Px;
+  }
+
+  @include tablet {
+    max-width: 688Px;
+    width: 90%;
+  }
+
+  @include phone {
+    width: 85%;
+  }
 }
 .works__title {
   padding: 60px 0;
@@ -116,5 +132,9 @@ export default {
   margin-bottom: 20px;
   background: white;
   box-shadow: var(--form-boxshadow);
+
+  @include tablet {
+    width: calc((100% / 2) -20px);
+  }
 }
 </style>

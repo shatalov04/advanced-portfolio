@@ -3,8 +3,8 @@
     @submit.prevent="handleSubmit"
   )
     h2.form__title Редактирование работы
-    .form__content
-      .form__loader
+    .form__content.works__content
+      .form__loader.works__loader
         label.loader(:style="backgroundStyle")
           .loader__caption(
             v-if="!isPhotoLoaded"
@@ -16,7 +16,7 @@
             type="file"
             @change="handleFileChange"
           )
-      .form__properties
+      .form__properties.works__properties
         .form-property
           .form-property__label Название
           input.input.form-property__input(
@@ -191,8 +191,25 @@ export default {
 <style lang="postcss" scoped>
 @import '../../styles/form.pcss';
 @import '../../styles/property-input.pcss';
+@import '../../../styles/mixins.pcss';
 
 .works-form-component {
+}
+.works__content{
+  flex-wrap: wrap;
+}
+
+.works__loader{
+  @include tablet{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+.works__properties{
+  @include tablet{
+    width: 100%;
+    margin-left: 30px;
+  }
 }
 
 .loader {
