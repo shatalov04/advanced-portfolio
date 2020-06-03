@@ -55,10 +55,11 @@
 /* eslint-disable func-names */
 import { mapActions } from 'vuex';
 import { Validator, mixin } from 'simple-vue-validator';
+import messageMixin from '../mixins/message-mixin';
 import IconedButton from '../iconed-button';
 
 export default {
-  mixins: [mixin],
+  mixins: [mixin, messageMixin],
   validators: {
     'changedSkill.title': function (value) {
       return Validator.value(value)
@@ -110,8 +111,9 @@ export default {
         if (!this.isSkillChanged()) return;
 
         await this.updateSkill(this.changedSkill);
+        this.sendNotification('Навык успешно обновлен');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
     isSkillChanged() {
@@ -129,8 +131,9 @@ export default {
     async handleDeleteSkill() {
       try {
         await this.deleteSkill(this.skill.id);
+        this.sendNotification('Навык успешно удален');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
   },

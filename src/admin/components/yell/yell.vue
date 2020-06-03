@@ -29,11 +29,13 @@
 <script>
 import { mapActions } from 'vuex';
 import { getAbsoluteImgPath } from '../../shared/pictures';
+import messageMixin from '../mixins/message-mixin';
 
 import IconedButton from '../iconed-button';
 import User from '../user';
 
 export default {
+  mixins: [messageMixin],
   data() {
     return {};
   },
@@ -60,8 +62,9 @@ export default {
     async handleDeleteYell() {
       try {
         await this.deleteYell(this.yell.id);
+        this.sendNotification('Отзыв успешно удален');
       } catch (error) {
-        console.error(error.message);
+        this.sendError(error);
       }
     },
   },

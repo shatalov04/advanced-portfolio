@@ -4,11 +4,15 @@
       router-view(name="header")
     main.admin__maincontent
       router-view
+    ContextNotifier
 </template>
 
 <script>
+import ContextNotifier from './components/context-notifier';
+
 export default {
   components: {
+    ContextNotifier,
     AdminHeader: () => import('./components/admin-header'),
   },
 };
@@ -26,5 +30,6 @@ export default {
 }
 .admin {
   min-height: 100vh;
+  position: relative;
 }
 </style>

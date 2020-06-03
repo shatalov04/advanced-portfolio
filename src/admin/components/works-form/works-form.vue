@@ -142,7 +142,7 @@ export default {
         if (!isValid) return;
 
         if (!this.isWorkChanged()) {
-          alert('В работе нет изменений');
+          this.sendWarning('В работе нет изменений');
           return;
         }
 
@@ -152,10 +152,13 @@ export default {
           ? this.updateWork(this.changedWork)
           : this.addWork(this.changedWork));
 
+        this.sendNotification(isCreatedInDatabase
+          ? 'Работа успешно обновлена'
+          : 'Работа успешно добавлена');
+
         this.$emit('closeWorksForm');
       } catch (error) {
-        console.error('Ошибка валидации',
-          error.message);
+        this.sendError(error);
       }
     },
     isWorkChanged() {

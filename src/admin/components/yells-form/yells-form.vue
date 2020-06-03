@@ -64,11 +64,12 @@ form.form.yells-form-component(
 import { mapActions } from 'vuex';
 import { Validator, mixin } from 'simple-vue-validator';
 import imageMixin from '../mixins/imageMixin';
+import messageMixin from '../mixins/message-mixin';
 
 import Icon from '../Icon.vue';
 
 export default {
-  mixins: [imageMixin, mixin],
+  mixins: [imageMixin, mixin, messageMixin],
   validators: {
     'changedYell.author': function (value) {
       return Validator.value(value)
@@ -111,6 +112,7 @@ export default {
     ...mapActions({
       addYell: 'yells/addYell',
       updateYell: 'yells/updateYell',
+      sendMessage: 'message/sendMessage',
     }),
     async handleFileChange(event) {
       this.isPhotoChanged = true;
@@ -124,19 +126,22 @@ export default {
         if (!isValid) return;
 
         if (!this.isYellChanged()) {
-          alert('В отзыве нет изменений');
+          this.sendWarning('В отзыве нет изменений');
           return;
         }
 
         const isCreatedInDatabase = this.yell.id >= 0;
-
         await (isCreatedInDatabase
           ? this.updateYell(this.changedYell)
           : this.addYell(this.changedYell));
 
+        this.sendNotification(isCreatedInDatabase
+          ? 'Отзыв успешно обновлен'
+          : 'Отзыв успешно добавлен');
+
         this.$emit('closeYellsForm');
       } catch (error) {
-        console.error('Ошибка валидации', error.message);
+        this.sendError(error);
       }
     },
     isYellChanged() {

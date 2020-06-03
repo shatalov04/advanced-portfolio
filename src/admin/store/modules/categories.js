@@ -1,5 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
+import errorGenerator from '../../shared/error-generator';
 
 const baseRoute = '/categories';
 
@@ -32,8 +33,7 @@ const categories = {
         const { data } = await this.$axios.get(baseRoute);
         commit('SET_CATEGORIES', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     addEmptyCategory({ commit }, newCategory) {
@@ -48,8 +48,7 @@ const categories = {
         commit('DELETE_CATEGORY', temporaryId);
         commit('ADD_CATEGORY', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async updateCategory({ commit }, payload) {
@@ -59,8 +58,7 @@ const categories = {
         });
         commit('UPDATE_CATEGORY', data);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
     async deleteCategory({ commit }, id) {
@@ -71,8 +69,7 @@ const categories = {
         }
         commit('DELETE_CATEGORY', id);
       } catch (error) {
-        const errorData = error.response.data;
-        console.error(errorData.error || errorData.message);
+        errorGenerator(error);
       }
     },
   },
