@@ -37,8 +37,10 @@ import { mapActions } from 'vuex';
 import Icon from '../../components/Icon.vue';
 import IconedButton from '../../components/iconed-button';
 import $axios from '../../shared/requests';
+import messageMixin from '../../components/mixins/message-mixin';
 
 export default {
+  mixins: [messageMixin],
   data() {
     return {
       user: {
@@ -61,11 +63,11 @@ export default {
 
         localStorage.setItem('token', data.token);
         $axios.defaults.headers.Authorization = `Bearer ${data.token}`;
-        this.$router.replace('/');
-      } catch (error) {
-        const errorData = error.response.data;
+        this.sendNotification('Авторизация прошла успешно');
 
-        console.error(errorData.error || errorData.message);
+        this.$router.replace('/');
+      } catch (responseError) {
+        this.sendError(new Error(responseError.response.data.error));
       }
     },
   },

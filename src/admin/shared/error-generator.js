@@ -2,6 +2,8 @@ const errorGenerator = {
   sendError: (errorObj) => {
     const errorResponseObject = errorObj.response.data;
 
+    console.log('errorObj :>> ', errorObj);
+
     if (errorResponseObject.message) {
       console.log(errorResponseObject);
       switch (errorResponseObject.message) {
@@ -22,6 +24,9 @@ const errorGenerator = {
 
         case 'token_expired':
           throw new Error('Токен авторизации просрочен');
+
+        case 'Неверное имя или пароль':
+          throw new Error('Неверное имя или пароль');
         default:
           console.error(errorResponseObject);
           throw new Error(errorResponseObject.error);
