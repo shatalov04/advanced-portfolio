@@ -32,5 +32,6 @@
   "bp-phone": "480px",
   "bp-laptop": "1024px",
   "margin-safe": "15px",
-  "delay": "0.3s"
+  "delay": "0.3s",
+  "slider-delay": "0.6s"
 }

@@ -1,12 +1,12 @@
 script(type="text/x-template")#skills-template
   .skills__widget
     ul.skills__list
-      li.skills__item(v-for='group in skills' :key='group.title')
+      li.skills__item(v-for='group in categories' :key='group.id')
         skillGroup(:skillGroup='group')
 
 script(type="text/x-template")#skill-group-template
   .skill-group
-    h3.skill-group__title.title-text.title-text_sub {{skillGroup.title}}
+    h3.skill-group__title.title-text.title-text_sub {{skillGroup.category}}
     ul.skill-group__list
       li.skill-group__item(v-for='skill in skillGroup.skills' :key='skill.id')
         skill(:skill='skill')

@@ -1,25 +1,48 @@
 .previews {
+  overflow: hidden;
+  width: auto;
+  width: calc(1.6 * 9vmax);
 }
 .previews__list {
+  position: relative;
+  width: 100%;
+  height: calc(3 * 9vmax);
 }
 .previews__item {
   cursor: pointer;
+  height: 9vmax;
 }
 /*prettier-ignore*/
 .previews__img {
   width: 100%;
-  transition: $delay;
-  margin: -4Px 0 -4Px 0;
-  border: 2px solid transparent;
+  height: 100%;
+  object-fit: cover;
+  transition: $slider-delay;
+ border: 2px solid transparent;
   &:last-child{
-  margin: -4Px 0 -2Px 0;
   }
   &:hover {
     border: 2px solid $main-color;
-    transform: translateZ(50px) scale(1.1);
   }
   &.active {
-    transform: translateZ(50px) scale(1.1);
     border: 2px solid $accent-color;
   }
+}
+
+.outsided-next {
+  bottom: 100%;
+  position: absolute;
+}
+.outsided-previous {
+  top: 100%;
+  position: absolute;
+}
+
+.transition {
+  transition: $slider-delay;
+}
+
+.fade {
+  transition: $slider-delay;
+  opacity: 0;
 }

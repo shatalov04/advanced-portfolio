@@ -1,14 +1,20 @@
 <template lang="pug">
   nav.tabs-component
     ul.tabs__list
-      li.tabs__item(
+      router-link(
         v-for="tab in tabs"
         :key="tab.id"
-        :class="{'active' : activeTabId === tab.id}"
-        @click="handleChange(tab)"
+        :to="tab.href"
+        v-slot="{href, route, navigate, isActive, isExactActive}"
         )
-        button.tabs__button(
-          type="button") {{tab.title}}
+        li.tabs__item(
+            :class="[ isExactActive && 'tabs__item_active']"
+          )
+          a.tabs__button(
+            :data-text="tab.title"
+            @click="navigate"
+            :href="href"
+            ) {{tab.title}}
 </template>
 
 <script>
@@ -16,14 +22,17 @@ const tabs = [
   {
     id: 0,
     title: 'Обо мне',
+    href: '/',
   },
   {
     id: 1,
     title: 'Работы',
+    href: '/works',
   },
   {
     id: 2,
     title: 'Отзывы',
+    href: '/yells',
   },
 ];
 
@@ -31,15 +40,9 @@ export default {
   data() {
     return {
       tabs,
-      activeTabId: 0,
     };
   },
-  methods: {
-    handleChange(tab) {
-      this.activeTabId = tab.id;
-      this.$emit('tabChanged', tab);
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -55,7 +58,7 @@ export default {
   position: relative;
   transition: $delay;
 
-  &.active {
+  &_active {
     color: $main-color;
     :before {
       content: '';
@@ -70,7 +73,8 @@ export default {
   }
 }
 .tabs__button {
-  padding: 32px;
+  padding: 26px;
+  display: block;
   transition: $delay;
   font-weight: 600;
   color: inherit;

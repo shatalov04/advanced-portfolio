@@ -1,7 +1,7 @@
 <template lang="pug">
 .user-component
   .avatar.user__avatar
-    img.avatar__img(:src="imagePath")
+    img.avatar__img(:src="image")
   .user__desc
     .user__name {{this.name}}
     .user__caption(v-if="hasOccupation") {{this.occupation}}
@@ -33,11 +33,7 @@ export default {
       return this.occupation !== undefined && this.occupation !== '';
     },
   },
-  created() {
-    const requiredImage = require(`../../../images/${this.image}`);
-    // eslint-disable-next-line no-param-reassign
-    this.imagePath = requiredImage;
-  },
+  created() {},
 };
 </script>
 
